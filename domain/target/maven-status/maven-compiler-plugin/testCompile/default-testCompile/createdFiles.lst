@@ -1,0 +1,9 @@
+br\com\g12\validators\BetValidatorTest.class
+br\com\g12\fake\BetFake.class
+br\com\g12\service\ScoringServiceTest.class
+br\com\g12\fake\MatchFake.class
+br\com\g12\fake\BetFake$BetListBuilder.class
+br\com\g12\validators\ScoreValidatorTest.class
+br\com\g12\fake\BetFake$BetBuilder.class
+br\com\g12\validators\MatchValidatorTest.class
+br\com\g12\fake\MatchFake$MatchBuilder.class

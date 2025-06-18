@@ -1,0 +1,5 @@
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URI}
+      database: g12
