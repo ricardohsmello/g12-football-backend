@@ -38,6 +38,13 @@ public class ScoreBetsUseCase extends AbstractUseCase<Integer> {
             }
 
             List<Match> matches = matchPort.findByRound(round);
+
+            for (Match match : matches) {
+                if (match.getStatus().equals("OPEN")) {
+                    throw new ScoreException("You can't settle round " + round + " with Open matches");
+                }
+            }
+
             List<Bet> allBetsOfRound = new ArrayList<>();
 
             for (Match match : matches) {
