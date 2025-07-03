@@ -2,13 +2,17 @@ package br.com.g12.entity;
 
 import br.com.g12.model.Match;
 import br.com.g12.model.Score;
+import org.springframework.data.mongodb.core.index.CompoundIndex;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
 @Document(collection = "match")
+@CompoundIndex(name = "statusAndDate", def = "{'status': 1, 'date': 1}")
 public class MatchDocument {
     private String id;
+    @Indexed(name = "round_1")
     private int round;
     private String homeTeam;
     private String awayTeam;

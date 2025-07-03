@@ -4,11 +4,13 @@ import br.com.g12.model.Bet;
 import br.com.g12.model.Score;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
 @Document(collection = "bet")
+@CompoundIndex(name = "matchIdAndUsername", def = "{'matchId': 1, 'username': 1}")
 public class BetDocument {
     @Id
     private String id;

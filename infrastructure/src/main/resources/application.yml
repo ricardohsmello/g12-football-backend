@@ -3,3 +3,7 @@ spring:
     mongodb:
       uri: ${MONGODB_URI}
       database: g12
+      auto-index-creation: true
+logging:
+  level:
+    org.springframework.data.mongodb: DEBUG
