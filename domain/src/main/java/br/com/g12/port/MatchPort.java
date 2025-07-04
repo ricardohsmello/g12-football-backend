@@ -12,4 +12,5 @@ public interface MatchPort {
     List<Match> findByRound(int round);
     List<MatchWithPrediction> findByRoundUser(String username, int round);
     int closeExpiredMatches(Date date);
+    int findNextOpenRound();
 }
