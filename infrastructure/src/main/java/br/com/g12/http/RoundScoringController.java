@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/rounds")
+@RequestMapping("/rounds-scoring")
 public class RoundScoringController {
 
     private final ScoreBetsUseCase scoreBetsUseCase;
