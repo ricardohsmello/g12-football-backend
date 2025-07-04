@@ -99,4 +99,10 @@ public class MatchPortImpl implements MatchPort {
         UpdateResult result = mongoTemplate.updateMulti(query, update, MatchDocument.class);
         return (int) result.getModifiedCount();
     }
+
+    @Override
+    public int findNextOpenRound() {
+        var startRound = 13;
+        return matchRepository.findNextOpenRound().orElse(startRound);
+    }
 }
