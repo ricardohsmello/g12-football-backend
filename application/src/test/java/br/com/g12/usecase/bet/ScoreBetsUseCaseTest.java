@@ -42,7 +42,7 @@ public class ScoreBetsUseCaseTest {
 
     @Test
     public void should_score_points_correctly() {
-        Match match = MatchFake.builder().score(new br.com.g12.model.Score(2, 1)).build();
+        Match match = MatchFake.builder().status("CLOSED").score(new br.com.g12.model.Score(2, 1)).build();
         Bet bet = BetFake.builder()
                 .setId("1")
                 .setUserId("ricas")
@@ -70,7 +70,11 @@ public class ScoreBetsUseCaseTest {
 
     @Test
     public void should_score_points_correctly2() {
-        Match match = MatchFake.builder().score(new Score(2, 1)).build();
+        Match match = MatchFake
+                    .builder()
+                    .status("CLOSED")
+                    .score(new Score(2, 1))
+                .build();
 
         Bet bet1 = BetFake.builder()
                 .setId("1")
