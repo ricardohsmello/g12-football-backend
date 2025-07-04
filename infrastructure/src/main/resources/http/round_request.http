@@ -1,0 +1,2 @@
+### Score a round
+GET http://localhost:8080/round/current
