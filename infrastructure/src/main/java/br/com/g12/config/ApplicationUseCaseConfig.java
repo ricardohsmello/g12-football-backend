@@ -10,6 +10,7 @@ import br.com.g12.usecase.match.CloseExpiredMatchesUseCase;
 import br.com.g12.usecase.match.CreateMatchUseCase;
 import br.com.g12.usecase.match.FindMatchesWithUserBetsUseCase;
 import br.com.g12.usecase.match.UpdateMatchScoreUseCase;
+import br.com.g12.usecase.round.FindNextOpenRoundUseCase;
 import br.com.g12.usecase.score.ScoreBoardUseCase;
 import br.com.g12.validators.BetValidator;
 import br.com.g12.validators.MatchValidator;
@@ -69,5 +70,12 @@ public class ApplicationUseCaseConfig {
     public ScoreBoardUseCase scoreBoardUseCase(ScoreboardPort scoreboardPort) {
         return new ScoreBoardUseCase(scoreboardPort);
     }
+
+    @Bean
+    public FindNextOpenRoundUseCase findNextOpenRoundUseCase(MatchPort matchPort) {
+        return new FindNextOpenRoundUseCase(matchPort);
+    }
+
+
 
 }
