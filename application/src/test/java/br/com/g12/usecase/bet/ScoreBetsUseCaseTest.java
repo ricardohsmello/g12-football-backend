@@ -1,6 +1,5 @@
 package br.com.g12.usecase.bet;
 
-import br.com.g12.exception.BetException;
 import br.com.g12.exception.ScoreException;
 import br.com.g12.fake.BetFake;
 import br.com.g12.fake.MatchFake;
