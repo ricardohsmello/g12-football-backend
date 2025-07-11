@@ -4,8 +4,14 @@ import br.com.g12.database.mongodb.BetRepository;
 import br.com.g12.entity.BetDocument;
 import br.com.g12.model.Bet;
 import br.com.g12.port.BetPort;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.BulkWriteOptions;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.ReplaceOneModel;
+import com.mongodb.client.model.ReplaceOptions;
+import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
-import org.springframework.data.mongodb.core.BulkOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -44,9 +50,23 @@ public class BetPortImpl implements BetPort {
                 .map(BetDocument::fromModel)
                 .toList();
 
-        mongoTemplate.bulkOps(BulkOperations.BulkMode.UNORDERED, BetDocument.class)
-                .insert(documents)
-                .execute();
+        List<ReplaceOneModel<Document>> operations = documents.stream()
+                .map(doc -> {
+                    Document bsonDoc = new Document();
+                    mongoTemplate.getConverter().write(doc, bsonDoc);
+                    bsonDoc.remove("_id");
+
+                    Bson filter = Filters.eq("_id", doc.getId());
+
+                    ReplaceOptions options = new ReplaceOptions().upsert(true);
+                    return new ReplaceOneModel<>(filter, bsonDoc, options);
+                })
+                .toList();
+
+        String collectionName = mongoTemplate.getCollectionName(BetDocument.class);
+        MongoCollection<Document> collection = mongoTemplate.getDb().getCollection(collectionName);
+
+        collection.bulkWrite(operations, new BulkWriteOptions().ordered(false));
     }
 
     @Override

@@ -58,4 +58,8 @@ public class BetDocument {
     public Bet toModel() {
         return new Bet(id, matchId.toString(), username, prediction, round, pointsEarned, date);
     }
+
+    public String getId() {
+        return id;
+    }
 }
