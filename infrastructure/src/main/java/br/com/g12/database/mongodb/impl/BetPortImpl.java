@@ -5,6 +5,8 @@ import br.com.g12.entity.BetDocument;
 import br.com.g12.model.Bet;
 import br.com.g12.port.BetPort;
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.BulkOperations;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,8 +16,11 @@ import java.util.Optional;
 public class BetPortImpl implements BetPort {
 
     private final BetRepository betRepository;
+    private final MongoTemplate mongoTemplate;
 
-    BetPortImpl(BetRepository betRepository) {
+    BetPortImpl(BetRepository betRepository, MongoTemplate mongoTemplate)
+    {
+        this.mongoTemplate = mongoTemplate;
         this.betRepository = betRepository;
     }
 
@@ -39,7 +44,9 @@ public class BetPortImpl implements BetPort {
                 .map(BetDocument::fromModel)
                 .toList();
 
-        betRepository.saveAll(documents);
+        mongoTemplate.bulkOps(BulkOperations.BulkMode.UNORDERED, BetDocument.class)
+                .insert(documents)
+                .execute();
     }
 
     @Override
