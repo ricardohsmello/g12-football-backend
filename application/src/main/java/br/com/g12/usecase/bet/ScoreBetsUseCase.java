@@ -34,7 +34,9 @@ public class ScoreBetsUseCase extends AbstractUseCase<Integer> {
 
     public void execute(int round) {
         logInput(round);
+        long start = System.currentTimeMillis();
         try {
+            log.info("Starting validations");
             validateRoundIsNotClosed(round);
 
             List<Match> matches = matchPort.findByRound(round);
@@ -43,6 +45,7 @@ public class ScoreBetsUseCase extends AbstractUseCase<Integer> {
             List<Bet> allBets = betPort.findByRound(round);
             Map<String, Match> matchesById = getMatchesWithScoreById(matches);
 
+            log.info("Finished validations. Took {} s", (System.currentTimeMillis() - start) / 1000);
             List<Bet> scoredBets = calculatePointsForBets(allBets, matchesById);
             betPort.saveAll(scoredBets);
 
@@ -76,6 +79,9 @@ public class ScoreBetsUseCase extends AbstractUseCase<Integer> {
     }
 
     private List<Bet> calculatePointsForBets(List<Bet> allBets, Map<String, Match> matchesById) {
+        long start = System.currentTimeMillis();
+
+        log.info("Starting calculatePointsForBets");
         Map<String, List<Bet>> betsGroupedByMatch = allBets.stream()
                 .collect(Collectors.groupingBy(Bet::getMatchId));
 
@@ -97,6 +103,7 @@ public class ScoreBetsUseCase extends AbstractUseCase<Integer> {
             }
         }
 
+        log.info("Finished calculatePointsForBets took {} s", (System.currentTimeMillis() - start) / 1000);
         return scoredBets;
     }
 
@@ -110,12 +117,19 @@ public class ScoreBetsUseCase extends AbstractUseCase<Integer> {
     }
 
     private void saveScoreboardForRound(int round, List<Bet> bets) {
+        long start = System.currentTimeMillis();
+
+        log.info("starting saveScoreboardForRound");
         Map<String, Integer> roundScores = computeUserScores(bets);
 
         List<Scoreboard> roundScoreboard = toScoreboardList(round, roundScores);
         scoreboardPort.saveAll(roundScoreboard);
 
+        log.info("Finished saveScoreboardForRound took {} s", (System.currentTimeMillis() - start) / 1000);
+
         updateTotalScoreboard(roundScores);
+
+
     }
 
     private Map<String, Integer> computeUserScores(List<Bet> bets) {
@@ -134,6 +148,9 @@ public class ScoreBetsUseCase extends AbstractUseCase<Integer> {
     }
 
     private void updateTotalScoreboard(Map<String, Integer> roundScores) {
+        long start = System.currentTimeMillis();
+        log.info("starting updateTotalScoreboard");
+
         List<String> usernames = new ArrayList<>(roundScores.keySet());
         List<Scoreboard> existingTotals = scoreboardPort.findByRoundAndUsernames(0, usernames);
 
@@ -153,5 +170,6 @@ public class ScoreBetsUseCase extends AbstractUseCase<Integer> {
                 .toList();
 
         scoreboardPort.saveAll(updatedTotals);
+        log.info("Finished updateTotalScoreboard took {} s", (System.currentTimeMillis() - start) / 1000);
     }
 }
