@@ -34,6 +34,20 @@ public class BetPortImpl implements BetPort {
     }
 
     @Override
+    public void saveAll(List<Bet> bets) {
+        List<BetDocument> documents = bets.stream()
+                .map(BetDocument::fromModel)
+                .toList();
+
+        betRepository.saveAll(documents);
+    }
+
+    @Override
+    public List<Bet> findByRound(int round) {
+        return betRepository.findByRound(round).stream().map(BetDocument::toModel).toList();
+    }
+
+    @Override
     public Bet findById(String id) {
         Optional<BetDocument> byId = betRepository.findById(id);
         return byId.map(BetDocument::toModel).orElse(null);

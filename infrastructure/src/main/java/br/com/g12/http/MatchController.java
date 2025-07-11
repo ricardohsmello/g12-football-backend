@@ -55,5 +55,7 @@ public class MatchController {
     @GetMapping("/close")
     public ResponseEntity<String> closeExpiredMatches() {
         return ResponseEntity.ok("Closed expired matches: " + closeExpiredMatchesUseCase.execute());
-     }
+    }
+
+
 }

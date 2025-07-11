@@ -1,7 +1,10 @@
 package br.com.g12.usecase.bet;
 
+import br.com.g12.exception.BetException;
+import br.com.g12.exception.ScoreException;
 import br.com.g12.fake.BetFake;
 import br.com.g12.fake.MatchFake;
+import br.com.g12.fake.ScoreBoardFake;
 import br.com.g12.model.Bet;
 import br.com.g12.model.Match;
 import br.com.g12.model.Score;
@@ -14,9 +17,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
@@ -39,85 +43,78 @@ public class ScoreBetsUseCaseTest {
         useCase = new ScoreBetsUseCase(matchPort, betPort, scoreboardPort, scoringService);
     }
 
+    @Test
+    public void should_throw_error_when_round_has_already_executed() {
+        var round = 13;
+        when(scoreboardPort.findByRound(round)).thenReturn(List.of(ScoreBoardFake.getOne()));
+        ScoreException ex = assertThrows(ScoreException.class, () -> useCase.execute(13));
+        assertEquals("Round " + round + " has already been executed!", ex.getMessage());
+    }
+
 
     @Test
-    public void should_score_points_correctly() {
-        Match match = MatchFake.builder().status("CLOSED").score(new br.com.g12.model.Score(2, 1)).build();
-        Bet bet = BetFake.builder()
-                .setId("1")
-                .setUserId("ricas")
+    public void should_throw_error_when_round_has_opened_matches() {
+        var round = 13;
+        when(scoreboardPort.findByRound(round)).thenReturn(new ArrayList<>());
+        when(matchPort.findByRound(round)).thenReturn(List.of(MatchFake.builder().status("OPEN").build()));
 
-                .build();
-
-        Bet bet2 = BetFake.builder()
-                .setId("2")
-                .setUserId("henrique")
-
-                .build();
-
-        List<Match> matches = List.of(match);
-        List<Bet> bets = List.of(bet, bet2);
-
-        when(matchPort.findByRound(1)).thenReturn(matches);
-        when(betPort.findByMatchId(match.getId())).thenReturn(bets);
-        when(scoringService.calculate(eq(match), eq(bet), anyList())).thenReturn(10);
-
-        useCase.execute(1);
-
-        verify(betPort).save(bet);
-        verify(scoringService, times(2)).calculate(any(), any(), anyList());
+        ScoreException ex = assertThrows(ScoreException.class, () -> useCase.execute(13));
+        assertEquals("You can't settle the round with OPEN matches.", ex.getMessage());
     }
 
     @Test
     public void should_score_points_correctly2() {
-        Match match = MatchFake
-                    .builder()
-                    .status("CLOSED")
-                    .score(new Score(2, 1))
+
+        Match match = MatchFake.builder()
+                .status("CLOSED")
+                .score(new Score(2, 1))
                 .build();
 
         Bet bet1 = BetFake.builder()
                 .setId("1")
                 .setUserId("ricas")
+                .setMatchId(match.getId())
+                .setRound(1)
                 .build();
 
         Bet bet2 = BetFake.builder()
                 .setId("2")
                 .setUserId("henrique")
+                .setMatchId(match.getId())
+                .setRound(1)
                 .build();
 
-        List<Match> matches = List.of(match);
         List<Bet> bets = List.of(bet1, bet2);
+        List<Match> matches = List.of(match);
 
         when(matchPort.findByRound(1)).thenReturn(matches);
-        when(betPort.findByMatchId(match.getId())).thenReturn(bets);
+        when(betPort.findByRound(1)).thenReturn(bets);
+        when(scoreboardPort.findByRound(1)).thenReturn(List.of());
+        when(scoreboardPort.findByRoundAndUsernames(eq(0), anyList())).thenReturn(List.of());
         when(scoringService.calculate(eq(match), eq(bet1), anyList())).thenReturn(10);
         when(scoringService.calculate(eq(match), eq(bet2), anyList())).thenReturn(5);
-        when(scoreboardPort.findByRoundAndUsername(0, "ricas")).thenReturn(null);
-        when(scoreboardPort.findByRoundAndUsername(0, "henrique")).thenReturn(null);
 
         useCase.execute(1);
 
-        verify(betPort).save(bet1);
-        verify(betPort).save(bet2);
-
-        verify(matchPort, atLeastOnce()).save(argThat(m ->
-                m.getId().equals(match.getId()) && "CLOSED".equals(m.getStatus())));
+        verify(betPort).saveAll(bets);
+        verify(scoringService, times(2)).calculate(any(), any(), anyList());
 
         ArgumentCaptor<List<Scoreboard>> scoreboardCaptor = ArgumentCaptor.forClass(List.class);
-        verify(scoreboardPort).saveAll(scoreboardCaptor.capture());
+        verify(scoreboardPort, times(2)).saveAll(scoreboardCaptor.capture());
 
-        List<Scoreboard> roundScoreboard = scoreboardCaptor.getValue();
+        List<List<Scoreboard>> allSaves = scoreboardCaptor.getAllValues();
+        assertEquals(2, allSaves.size());
+
+        List<Scoreboard> roundScoreboard = allSaves.get(0);
+        List<Scoreboard> totalScoreboard = allSaves.get(1);
+
         assertEquals(2, roundScoreboard.size());
+        assertTrue(roundScoreboard.stream().anyMatch(s -> s.round() == 1 && s.username().equals("ricas") && s.points() == 10));
+        assertTrue(roundScoreboard.stream().anyMatch(s -> s.round() == 1 && s.username().equals("henrique") && s.points() == 5));
 
-        verify(scoreboardPort).findByRoundAndUsername(0, "ricas");
-        verify(scoreboardPort).findByRoundAndUsername(0, "henrique");
-
-        verify(scoreboardPort).save(argThat(s ->
-                s.round() == 0 && s.username().equals("ricas") && s.points() == 10));
-
-        verify(scoreboardPort).save(argThat(s ->
-                s.round() == 0 && s.username().equals("henrique") && s.points() == 5));
+        assertEquals(2, totalScoreboard.size());
+        assertTrue(totalScoreboard.stream().anyMatch(s -> s.round() == 0 && s.username().equals("ricas") && s.points() == 10));
+        assertTrue(totalScoreboard.stream().anyMatch(s -> s.round() == 0 && s.username().equals("henrique") && s.points() == 5));
     }
 
 

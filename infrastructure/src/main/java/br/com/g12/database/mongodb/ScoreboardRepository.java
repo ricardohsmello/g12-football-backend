@@ -11,6 +11,6 @@ import java.util.Optional;
 public interface ScoreboardRepository extends MongoRepository<ScoreboardDocument, String> {
 
     List<ScoreboardDocument> findByRoundOrderByPointsDesc(int round);
-
+    List<ScoreboardDocument> findByRoundAndUsernameIn(int round, List<String> usernames);
     Optional<ScoreboardDocument> findByRoundAndUsername(int round, String username);
 }

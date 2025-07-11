@@ -18,7 +18,7 @@ public class CloseMatchesScheduler {
     }
 
 //    @Scheduled(cron = "0 20 10,15,16,18,20,21 * * *", zone = "America/Sao_Paulo")
-    @Scheduled(cron = "0 36 20 * * *", zone = "America/Sao_Paulo")
+    @Scheduled(cron = "0 25 10 * * *", zone = "America/Sao_Paulo")
     public void run() {
         int closed = closeExpiredMatchesUseCase.execute();
         log.info("Closing Matches: {}", closed);

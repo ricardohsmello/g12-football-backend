@@ -1,11 +1,11 @@
 ### POST
-POST http://localhost:8080/match
+POST https://g12-football-backend.onrender.com/match
 Content-Type: application/json
 
 {
-  "round": 30,
-  "homeTeam": "Corinthians",
-  "awayTeam": "Santos",
+  "round": 21,
+  "homeTeam": "Sao Paulo",
+  "awayTeam": "Fluminense",
   "matchDate": "2025-10-10",
   "status": "Open"
 }

@@ -40,6 +40,14 @@ public class ScoreboardPortImpl implements ScoreboardPort {
     }
 
     @Override
+    public List<Scoreboard> findByRoundAndUsernames(int round, List<String> usernames) {
+        List<ScoreboardDocument> documents = repository.findByRoundAndUsernameIn(round, usernames);
+        return documents.stream()
+                .map(ScoreboardDocument::toModel)
+                .toList();
+    }
+
+    @Override
     public void save(Scoreboard scoreboard) {
         repository.save(ScoreboardDocument.fromModel(scoreboard));
     }

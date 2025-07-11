@@ -15,6 +15,3 @@ Content-Type: application/json
 ### A
 GET localhost:8080/bet/matchId/6847406bc8ad24151108b067
 
-
-requestStorageAccess: Permission denied
-requestStorageAccess: must be handling a user gesture to use

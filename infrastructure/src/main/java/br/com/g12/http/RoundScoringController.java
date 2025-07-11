@@ -19,7 +19,10 @@ public class RoundScoringController {
 
     @PutMapping("/{round}/score")
     public ResponseEntity<Void> scoreBets(@PathVariable int round) {
-        scoreBetsUseCase.execute(round);
+        for (int i = 1; i < 39; i++) {
+            scoreBetsUseCase.execute(i);
+        }
+//        scoreBetsUseCase.execute(round);
         return ResponseEntity.noContent().build();
     }
 }
