@@ -5,16 +5,13 @@ import br.com.g12.entity.BetDocument;
 import br.com.g12.model.Bet;
 import br.com.g12.port.BetPort;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.model.BulkWriteOptions;
-import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.ReplaceOneModel;
-import com.mongodb.client.model.ReplaceOptions;
+import com.mongodb.client.model.*;
 import org.bson.Document;
-import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,24 +46,32 @@ public class BetPortImpl implements BetPort {
         List<BetDocument> documents = bets.stream()
                 .map(BetDocument::fromModel)
                 .toList();
+        MongoCollection<Document> collection = mongoTemplate
+                .getCollection(mongoTemplate.getCollectionName(BetDocument.class));
 
-        List<ReplaceOneModel<Document>> operations = documents.stream()
-                .map(doc -> {
-                    Document bsonDoc = new Document();
-                    mongoTemplate.getConverter().write(doc, bsonDoc);
-                    bsonDoc.remove("_id");
+        List<WriteModel<Document>> operations = new ArrayList<>();
 
-                    Bson filter = Filters.eq("_id", doc.getId());
+        for (BetDocument doc : documents) {
+            Document updateDoc = new Document();
+            mongoTemplate.getConverter().write(doc, updateDoc);
 
-                    ReplaceOptions options = new ReplaceOptions().upsert(true);
-                    return new ReplaceOneModel<>(filter, bsonDoc, options);
-                })
-                .toList();
+            Object id = updateDoc.get("_id");
+            updateDoc.remove("_id");
 
-        String collectionName = mongoTemplate.getCollectionName(BetDocument.class);
-        MongoCollection<Document> collection = mongoTemplate.getDb().getCollection(collectionName);
+            Document setDoc = new Document("$set", updateDoc);
 
-        collection.bulkWrite(operations, new BulkWriteOptions().ordered(false));
+            UpdateOneModel<Document> model = new UpdateOneModel<>(
+                    Filters.eq("_id", id),
+                    setDoc,
+                    new UpdateOptions().upsert(true)
+            );
+
+            operations.add(model);
+        }
+
+        if (!operations.isEmpty()) {
+            collection.bulkWrite(operations, new BulkWriteOptions().ordered(false));
+        }
     }
 
     @Override
