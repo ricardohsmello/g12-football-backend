@@ -33,6 +33,7 @@ public class ScoreBetsUseCase extends AbstractUseCase<Integer> {
     }
 
     public void execute(int round) {
+        long total = System.currentTimeMillis();
         logInput(round);
         long start = System.currentTimeMillis();
         try {
@@ -47,12 +48,17 @@ public class ScoreBetsUseCase extends AbstractUseCase<Integer> {
 
             log.info("Finished validations. Took {} s", (System.currentTimeMillis() - start) / 1000);
             List<Bet> scoredBets = calculatePointsForBets(allBets, matchesById);
+
+            long sav = System.currentTimeMillis();
+            log.info("Starting saving all scoreBets");
             betPort.saveAll(scoredBets);
+            log.info("Finished saving all scoreBets in {} s", System.currentTimeMillis() - sav / 1000 );
 
             closeAllMatchesIfNeeded(matches);
 
             saveScoreboardForRound(round, scoredBets);
 
+            log.info("Finished validations. Took {} s", (System.currentTimeMillis() - total) / 1000);
         } catch (ScoreException e) {
             logError(e);
             throw e;
