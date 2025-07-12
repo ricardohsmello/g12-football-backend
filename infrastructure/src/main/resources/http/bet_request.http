@@ -13,5 +13,5 @@ Content-Type: application/json
 }
 
 ### A
-GET localhost:8080/bet/matchId/6847406bc8ad24151108b067
+GET localhost:8080/bet/round/13/bettors-count
 
