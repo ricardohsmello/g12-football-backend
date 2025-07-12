@@ -9,11 +9,16 @@ import com.mongodb.client.model.*;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
 
 @Repository
 public class BetPortImpl implements BetPort {
@@ -89,6 +94,20 @@ public class BetPortImpl implements BetPort {
     public List<Bet> findByMatchId(String id) {
         List<BetDocument> byMatchId = betRepository.findByMatchId(new ObjectId(id));
         return byMatchId.stream().map(BetDocument::toModel).toList();
+    }
+
+    @Override
+    public int countDistinctUsernamesByRound(int round) {
+        Aggregation agg = Aggregation.newAggregation(
+                match(Criteria.where("round").is(round)),
+                group("username"),
+                count().as("total")
+        );
+
+        AggregationResults<Document> result = mongoTemplate.aggregate(agg, "bet", Document.class);
+        Document doc = result.getUniqueMappedResult();
+
+        return doc.getInteger("total", 0);
     }
 
 }

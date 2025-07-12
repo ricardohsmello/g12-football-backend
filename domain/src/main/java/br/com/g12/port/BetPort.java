@@ -11,4 +11,5 @@ public interface BetPort {
     List<Bet> findByRound(int round);
     Bet findById(String id);
     List<Bet> findByMatchId(String id);
+    int countDistinctUsernamesByRound(int round);
 }

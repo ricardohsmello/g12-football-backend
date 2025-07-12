@@ -4,6 +4,7 @@ import br.com.g12.port.BetPort;
 import br.com.g12.port.MatchPort;
 import br.com.g12.port.ScoreboardPort;
 import br.com.g12.service.ScoringService;
+import br.com.g12.usecase.bet.CountBettorsByRoundUseCase;
 import br.com.g12.usecase.bet.CreateBetUseCase;
 import br.com.g12.usecase.bet.ScoreBetsUseCase;
 import br.com.g12.usecase.match.CloseExpiredMatchesUseCase;
@@ -76,6 +77,9 @@ public class ApplicationUseCaseConfig {
         return new FindNextOpenRoundUseCase(matchPort);
     }
 
-
+    @Bean
+    public CountBettorsByRoundUseCase countBettorsByRoundUseCase(BetPort betPort) {
+        return new CountBettorsByRoundUseCase(betPort);
+    }
 
 }
