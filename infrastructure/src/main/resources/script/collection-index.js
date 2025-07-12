@@ -1,3 +1,4 @@
+/*
 db.bet.createIndex(
   { matchId: 1, username: 1 },
   { name: "matchIdAndUsername" }
@@ -20,7 +21,6 @@ db.match.createIndex(
   { name: "round_1" }
 )
 
-Índice composto em round + username
 db.scoreboard.createIndex(
   { round: 1, username: 1 },
   { name: "roundAndUsername" }
@@ -30,3 +30,4 @@ db.scoreboard.createIndex(
   { round: 1 },
   { name: "round_1" }
 )
+*/
