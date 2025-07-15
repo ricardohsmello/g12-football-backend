@@ -107,6 +107,8 @@ public class BetPortImpl implements BetPort {
         AggregationResults<Document> result = mongoTemplate.aggregate(agg, "bet", Document.class);
         Document doc = result.getUniqueMappedResult();
 
+        if (doc == null) return 0;
+
         return doc.getInteger("total", 0);
     }
 
