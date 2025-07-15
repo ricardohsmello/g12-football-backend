@@ -11,7 +11,7 @@ import java.util.Optional;
 @Repository
 public interface MatchRepository extends MongoRepository<MatchDocument, String> {
 
-    List<MatchDocument> findByRound(int round);
+    List<MatchDocument> findByRoundAndStatus(int round, String status);
 
     @Aggregation(pipeline = {
             "{ '$match': { 'status': 'OPEN' } }",

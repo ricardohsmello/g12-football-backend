@@ -3,13 +3,18 @@ package br.com.g12.entity;
 import br.com.g12.model.Match;
 import br.com.g12.model.Score;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
+import org.springframework.data.mongodb.core.index.CompoundIndexes;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
 @Document(collection = "match")
-@CompoundIndex(name = "statusAndDate", def = "{'status': 1, 'matchDate': 1}")
+@CompoundIndexes({
+        @CompoundIndex(name = "statusAndDate", def = "{'status': 1, 'matchDate': 1}"),
+        @CompoundIndex(name = "roundAndStatus", def = "{'round': 1, 'status': 1}")
+})
+
 public class MatchDocument {
     private String id;
     @Indexed(name = "round_1")

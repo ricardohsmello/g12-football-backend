@@ -9,7 +9,7 @@ import java.util.List;
 public interface MatchPort {
     Match save(Match match);
     Match find(String id);
-    List<Match> findByRound(int round);
+    List<Match> findByRoundAndStatus(int round, String status);
     List<MatchWithPrediction> findByRoundUser(String username, int round);
     int closeExpiredMatches(Date date);
     int findNextOpenRound();

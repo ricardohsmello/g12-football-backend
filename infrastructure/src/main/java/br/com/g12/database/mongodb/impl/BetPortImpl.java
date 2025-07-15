@@ -80,8 +80,12 @@ public class BetPortImpl implements BetPort {
     }
 
     @Override
-    public List<Bet> findByRound(int round) {
-        return betRepository.findByRound(round).stream().map(BetDocument::toModel).toList();
+    public List<Bet> findByMatchIdInAndPointsEarnedIsNull(List<String> matchIds) {
+        List<ObjectId> objectIds = matchIds.stream()
+                .map(ObjectId::new)
+                .toList();
+
+        return betRepository.findByMatchIdInAndPointsEarnedIsNull(objectIds).stream().map(BetDocument::toModel).toList();
     }
 
     @Override

@@ -3,7 +3,7 @@ package br.com.g12.config;
 import br.com.g12.port.BetPort;
 import br.com.g12.port.MatchPort;
 import br.com.g12.port.ScoreboardPort;
-import br.com.g12.service.ScoringService;
+import br.com.g12.service.PredictionScoringService;
 import br.com.g12.usecase.bet.CountBettorsByRoundUseCase;
 import br.com.g12.usecase.bet.CreateBetUseCase;
 import br.com.g12.usecase.bet.ScoreBetsUseCase;
@@ -53,8 +53,8 @@ public class ApplicationUseCaseConfig {
     }
 
     @Bean
-    public ScoreBetsUseCase scoreBetsUseCase(MatchPort matchPort, BetPort betPort, ScoreboardPort scoreboardPort, ScoringService scoringService) {
-        return new ScoreBetsUseCase(matchPort, betPort, scoreboardPort, scoringService);
+    public ScoreBetsUseCase scoreBetsUseCase(MatchPort matchPort, BetPort betPort, ScoreboardPort scoreboardPort, PredictionScoringService predictionScoringService) {
+        return new ScoreBetsUseCase(matchPort, betPort, scoreboardPort, predictionScoringService);
     }
 
     @Bean

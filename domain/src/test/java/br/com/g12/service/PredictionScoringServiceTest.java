@@ -11,11 +11,11 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ScoringServiceTest {
+public class PredictionScoringServiceTest {
 
     @Test
     public void should_return_0_points_when_prediction_is_incorrect() {
-        ScoringService scoringService = new ScoringService();
+        PredictionScoringService predictionScoringService = new PredictionScoringService();
 
         var userPrediction = new Score(2, 1);
         var matchResult = new Score(1, 1);
@@ -33,14 +33,14 @@ public class ScoringServiceTest {
         List<Bet> otherBets = new BetFake.BetListBuilder("match1")
                 .add("Maria", new Score(1, 0)).build();
 
-        int pointsEarned = scoringService.calculate(match, bet, otherBets);
+        int pointsEarned = predictionScoringService.calculate(match, bet, otherBets);
 
         assertEquals(pointsEarned, 0);
     }
 
     @Test
     public void should_return_5_points_when_winner_is_correct() {
-        ScoringService scoringService = new ScoringService();
+        PredictionScoringService predictionScoringService = new PredictionScoringService();
 
         var userPrediction = new Score(2, 1);
         var matchResult = new Score(1, 0);
@@ -58,7 +58,7 @@ public class ScoringServiceTest {
         List<Bet> otherBets = new BetFake.BetListBuilder("match1")
                 .add("Maria", new Score(1, 0)).build();
 
-        int pointsEarned = scoringService.calculate(match, bet, otherBets);
+        int pointsEarned = predictionScoringService.calculate(match, bet, otherBets);
 
         assertEquals(pointsEarned, 5);
     }
@@ -66,7 +66,7 @@ public class ScoringServiceTest {
     @Test
     @DisplayName("Should return only 10 points for exact score when more than one player guessed it correctly (no uniqueness bonus applied)")
     public void should_return_10_points_when_score_is_exact() {
-        ScoringService scoringService = new ScoringService();
+        PredictionScoringService predictionScoringService = new PredictionScoringService();
 
         var userPrediction = new Score(3, 0);
         var matchResult = new Score(3, 0);
@@ -84,7 +84,7 @@ public class ScoringServiceTest {
         List<Bet> otherBets = new BetFake.BetListBuilder("match1")
                 .add("Maria", new Score(3, 0)).build();
 
-        int pointsEarned = scoringService.calculate(match, bet, otherBets);
+        int pointsEarned = predictionScoringService.calculate(match, bet, otherBets);
 
         assertEquals(pointsEarned, 10);
     }
@@ -92,7 +92,7 @@ public class ScoringServiceTest {
     @Test
     @DisplayName("Should add 1 bonus point when only one player gets the exact score correctly (10 + 1 points for being the only one)")
     public void should_return_11_points_when_only_user_with_exact_score() {
-        ScoringService scoringService = new ScoringService();
+        PredictionScoringService predictionScoringService = new PredictionScoringService();
 
         var userPrediction = new Score(3, 0);
         var matchResult = new Score(3, 0);
@@ -114,7 +114,7 @@ public class ScoringServiceTest {
                 .add("Braulio", new Score(1, 2))
                 .build();
 
-        int pointsEarned = scoringService.calculate(match, bet, otherBets);
+        int pointsEarned = predictionScoringService.calculate(match, bet, otherBets);
 
         assertEquals(pointsEarned, 11);
     }
@@ -122,7 +122,7 @@ public class ScoringServiceTest {
     @Test
     @DisplayName("Should return 12 points: 10 for exact score, 1 for being the only one to guess it, and 1 for a match with 4+ total goals")
     public void should_return_12_points_when_score_is_exact() {
-        ScoringService scoringService = new ScoringService();
+        PredictionScoringService predictionScoringService = new PredictionScoringService();
 
         var userPrediction = new Score(4, 2);
         var matchResult = new Score(4, 2);
@@ -144,7 +144,7 @@ public class ScoringServiceTest {
                 .add("Julia", new Score(2, 4))
                 .build();
 
-        int pointsEarned = scoringService.calculate(match, bet, otherBets);
+        int pointsEarned = predictionScoringService.calculate(match, bet, otherBets);
         assertEquals(pointsEarned, 12);
     }
 

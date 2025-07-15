@@ -11,6 +11,6 @@ import java.util.List;
 public interface BetRepository extends MongoRepository<BetDocument, String> {
 
     List<BetDocument> findByMatchId(ObjectId id);
-    List<BetDocument> findByRound(int round);
+    List<BetDocument> findByMatchIdInAndPointsEarnedIsNull(List<ObjectId> matchIds);
     BetDocument findByMatchIdAndUsername(ObjectId matchId, String username);
 }

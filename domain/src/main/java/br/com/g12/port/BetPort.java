@@ -8,7 +8,7 @@ public interface BetPort {
 
     Bet save(Bet bet);
     void saveAll(List<Bet> bets);
-    List<Bet> findByRound(int round);
+    List<Bet> findByMatchIdInAndPointsEarnedIsNull(List<String> matchIds);
     Bet findById(String id);
     List<Bet> findByMatchId(String id);
     int countDistinctUsernamesByRound(int round);

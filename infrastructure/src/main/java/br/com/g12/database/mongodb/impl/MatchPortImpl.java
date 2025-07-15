@@ -48,8 +48,8 @@ public class MatchPortImpl implements MatchPort {
     }
 
     @Override
-    public List<Match> findByRound(int round) {
-        List<MatchDocument> byRound = matchRepository.findByRound(round);
+    public List<Match> findByRoundAndStatus(int round, String status) {
+        List<MatchDocument> byRound = matchRepository.findByRoundAndStatus(round, status);
         return byRound.stream().map(MatchDocument::toModel).toList();
     }
 
