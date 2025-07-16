@@ -4,6 +4,7 @@ import br.com.g12.port.BetPort;
 import br.com.g12.port.MatchPort;
 import br.com.g12.port.ScoreboardPort;
 import br.com.g12.service.PredictionScoringService;
+import br.com.g12.service.RoundScoreboardService;
 import br.com.g12.usecase.bet.CountBettorsByRoundUseCase;
 import br.com.g12.usecase.bet.CreateBetUseCase;
 import br.com.g12.usecase.bet.ScoreBetsUseCase;
@@ -53,8 +54,8 @@ public class ApplicationUseCaseConfig {
     }
 
     @Bean
-    public ScoreBetsUseCase scoreBetsUseCase(MatchPort matchPort, BetPort betPort, ScoreboardPort scoreboardPort, PredictionScoringService predictionScoringService) {
-        return new ScoreBetsUseCase(matchPort, betPort, scoreboardPort, predictionScoringService);
+    public ScoreBetsUseCase scoreBetsUseCase(MatchPort matchPort, BetPort betPort, PredictionScoringService predictionScoringService, RoundScoreboardService roundScoreboardService) {
+        return new ScoreBetsUseCase(matchPort, betPort, predictionScoringService, roundScoreboardService);
     }
 
     @Bean
@@ -80,6 +81,11 @@ public class ApplicationUseCaseConfig {
     @Bean
     public CountBettorsByRoundUseCase countBettorsByRoundUseCase(BetPort betPort) {
         return new CountBettorsByRoundUseCase(betPort);
+    }
+
+    @Bean
+    public RoundScoreboardService roundScoreboardService(ScoreboardPort scoreboardPort) {
+        return new RoundScoreboardService(scoreboardPort);
     }
 
 }

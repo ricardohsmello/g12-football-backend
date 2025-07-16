@@ -2,14 +2,12 @@ package br.com.g12.entity;
 
 import br.com.g12.model.Scoreboard;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "scoreboard")
 @CompoundIndex(name = "roundAndUsername", def = "{'round':1 , 'username': 1}")
 public class ScoreboardDocument {
     private String id;
-    @Indexed(name = "round_1")
     private int round;
     private String username;
     private int points;
