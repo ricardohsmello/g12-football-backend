@@ -41,4 +41,20 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <configuration>
+                    <outputDirectory>${project.build.directory}/jacoco-reports</outputDirectory>
+                    <excludes>
+                        <exclude>**/request/**</exclude>
+                        <exclude>**/response/**</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
