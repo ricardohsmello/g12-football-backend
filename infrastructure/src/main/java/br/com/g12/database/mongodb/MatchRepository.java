@@ -15,9 +15,7 @@ public interface MatchRepository extends MongoRepository<MatchDocument, String> 
 
     List<MatchDocument> findByRoundAndStatus(int round, String status);
 
-
-//    @Query(value = "{ 'matchDate': { $gte: ?0 } }", sort = "{ 'round': 1 }", fields = "{ 'round': 1 }")
-@Aggregation(pipeline = {
+    @Aggregation(pipeline = {
         "{ $facet: { " +
                 "futureRounds: [" +
                 "{ $match: { matchDate: { $gte: ?0 } } }," +
@@ -38,7 +36,7 @@ public interface MatchRepository extends MongoRepository<MatchDocument, String> 
                 "]" +
                 "}" +
                 "} }"
-})
-Optional<Integer> findNextMatchRound(Date now);
+    })
+    Optional<Integer> findNextMatchRound(Date now);
 
 }
