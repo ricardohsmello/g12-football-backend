@@ -3,8 +3,10 @@ package br.com.g12.database.mongodb;
 import br.com.g12.entity.MatchDocument;
 import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,11 +15,30 @@ public interface MatchRepository extends MongoRepository<MatchDocument, String> 
 
     List<MatchDocument> findByRoundAndStatus(int round, String status);
 
-    @Aggregation(pipeline = {
-            "{ '$match': { 'status': 'OPEN' } }",
-            "{ '$group': { '_id': '$round'} }",
-            "{ '$sort': { '_id': 1 } }",
-            "{ '$limit': 1  }"
-    })
-    Optional<Integer> findNextOpenRound();
+
+//    @Query(value = "{ 'matchDate': { $gte: ?0 } }", sort = "{ 'round': 1 }", fields = "{ 'round': 1 }")
+@Aggregation(pipeline = {
+        "{ $facet: { " +
+                "futureRounds: [" +
+                "{ $match: { matchDate: { $gte: ?0 } } }," +
+                "{ $sort: { round: 1 } }," +
+                "{ $limit: 1 }" +
+                "]," +
+                "lastRound: [" +
+                "{ $sort: { round: -1 } }," +
+                "{ $limit: 1 }" +
+                "]" +
+                "} }",
+        "{ $project: {" +
+                "round: {" +
+                "$cond: [" +
+                "{ $gt: [ { $size: '$futureRounds' }, 0 ] }," +
+                "{ $arrayElemAt: [ '$futureRounds.round', 0 ] }," +
+                "{ $arrayElemAt: [ '$lastRound.round', 0 ] }" +
+                "]" +
+                "}" +
+                "} }"
+})
+Optional<Integer> findNextMatchRound(Date now);
+
 }

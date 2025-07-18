@@ -4,11 +4,11 @@ import br.com.g12.exception.RoundSummaryException;
 import br.com.g12.port.MatchPort;
 import br.com.g12.usecase.AbstractUseCase;
 
-public class FindNextOpenRoundUseCase extends AbstractUseCase<String> {
+public class FindCurrentRoundUseCase extends AbstractUseCase<String> {
 
     private final MatchPort matchPort;
 
-    public FindNextOpenRoundUseCase(final MatchPort matchPort) {
+    public FindCurrentRoundUseCase(final MatchPort matchPort) {
         this.matchPort = matchPort;
     }
 
@@ -16,7 +16,7 @@ public class FindNextOpenRoundUseCase extends AbstractUseCase<String> {
         logInput("Finding round");
 
         try {
-            return matchPort.findNextOpenRound();
+            return matchPort.findNextMatchRound();
         } catch (RoundSummaryException e) {
             logError(e);
             throw e;

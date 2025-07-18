@@ -54,6 +54,10 @@ public class MatchDocument {
         );
     }
 
+    public int getRound() {
+        return round;
+    }
+
     public Match toModel() {
         return new Match(id, round, homeTeam, awayTeam, matchDate, score, status);
     }
