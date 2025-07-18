@@ -5,6 +5,7 @@ import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,5 +36,5 @@ public interface MatchRepository extends MongoRepository<MatchDocument, String> 
                 "}" +
                 "} }"
     })
-    Optional<Integer> findNextOpenRound();
+    Optional<Integer> findNextOpenRound(Date now);
 }
