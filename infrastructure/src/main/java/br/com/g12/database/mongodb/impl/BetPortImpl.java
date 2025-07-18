@@ -19,6 +19,8 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
+import static org.springframework.data.mongodb.core.query.Criteria.where;
+import static org.springframework.data.mongodb.core.query.Query.query;
 
 @Repository
 public class BetPortImpl implements BetPort {
@@ -80,36 +82,21 @@ public class BetPortImpl implements BetPort {
     }
 
     @Override
-    public List<Bet> findByRound(int round) {
-        return betRepository.findByRound(round).stream().map(BetDocument::toModel).toList();
-    }
+    public List<Bet> findByMatchIdInAndPointsEarnedIsNull(List<String> matchIds) {
+        List<ObjectId> objectIds = matchIds.stream()
+                .map(ObjectId::new)
+                .toList();
 
-    @Override
-    public Bet findById(String id) {
-        Optional<BetDocument> byId = betRepository.findById(id);
-        return byId.map(BetDocument::toModel).orElse(null);
-    }
-
-    @Override
-    public List<Bet> findByMatchId(String id) {
-        List<BetDocument> byMatchId = betRepository.findByMatchId(new ObjectId(id));
-        return byMatchId.stream().map(BetDocument::toModel).toList();
+        return betRepository.findByMatchIdInAndPointsEarnedIsNull(objectIds).stream().map(BetDocument::toModel).toList();
     }
 
     @Override
     public int countDistinctUsernamesByRound(int round) {
-        Aggregation agg = Aggregation.newAggregation(
-                match(Criteria.where("round").is(round)),
-                group("username"),
-                count().as("total")
-        );
-
-        AggregationResults<Document> result = mongoTemplate.aggregate(agg, "bet", Document.class);
-        Document doc = result.getUniqueMappedResult();
-
-        if (doc == null) return 0;
-
-        return doc.getInteger("total", 0);
+        return mongoTemplate.query(Bet.class)
+                .distinct("username")
+                .matching(query(where("round").is(round)))
+                .all()
+                .size();
     }
 
 }

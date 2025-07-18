@@ -30,4 +30,7 @@ db.scoreboard.createIndex(
   { round: 1 },
   { name: "round_1" }
 )
+
+db.match.createIndex({ round: 1, status: 1 }, { name: "roundAndStatus" })
+
 */

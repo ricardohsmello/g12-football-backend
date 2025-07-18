@@ -5,7 +5,7 @@ import br.com.g12.model.Match;
 
 import java.util.List;
 
-public class ScoringService {
+public class PredictionScoringService {
 
     public int calculate(Match match, Bet bet, List<Bet> allBetsForMatch) {
         int actualHome = match.getScore().homeTeam();

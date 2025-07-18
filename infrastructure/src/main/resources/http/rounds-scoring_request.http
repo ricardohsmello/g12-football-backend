@@ -1,2 +1,2 @@
 ### Score a round
-PUT http://localhost:8080/rounds-scoring/23/score
+PUT http://localhost:8080/rounds-scoring/13/score
