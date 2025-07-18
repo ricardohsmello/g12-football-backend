@@ -13,10 +13,10 @@ public class FindCurrentRoundUseCase extends AbstractUseCase<String> {
     }
 
     public int execute() {
-        logInput("Finding round");
+        logInput("Finding current round");
 
         try {
-            return matchPort.findNextMatchRound();
+            return matchPort.findNextOpenRound();
         } catch (RoundSummaryException e) {
             logError(e);
             throw e;
