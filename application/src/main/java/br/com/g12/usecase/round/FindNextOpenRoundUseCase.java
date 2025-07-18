@@ -16,7 +16,7 @@ public class FindNextOpenRoundUseCase extends AbstractUseCase<String> {
         logInput("Finding round");
 
         try {
-            return matchPort.findNextOpenRound();
+            return matchPort.findNextMatchRound();
         } catch (RoundSummaryException e) {
             logError(e);
             throw e;

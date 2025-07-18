@@ -101,8 +101,9 @@ public class MatchPortImpl implements MatchPort {
     }
 
     @Override
-    public int findNextOpenRound() {
-        var startRound = 13;
-        return matchRepository.findNextOpenRound().orElse(startRound);
+    public int findNextMatchRound() {
+        return matchRepository.findNextMatchRound(new Date())
+                .orElseThrow(() -> new IllegalStateException("No rounds found"));
     }
+
 }
