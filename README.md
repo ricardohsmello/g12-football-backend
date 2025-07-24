@@ -26,6 +26,13 @@ export MONGODB_URI="<YOUR_CONNECTION_STRING>"
 mvn spring-boot:run
 ````
 
+## Running Jacoco Coverage tests
+
+````
+mvn clean test verify -Pcoverage
+````
+Reports will be generated on target/jacoco-reports
+
 ## Endpoints
 
 You can find all endpoints available at resources/http
