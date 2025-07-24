@@ -1,5 +1,6 @@
 package br.com.g12.usecase.match;
 
+import br.com.g12.exception.MatchException;
 import br.com.g12.model.Match;
 import br.com.g12.model.Score;
 import br.com.g12.port.MatchPort;
@@ -10,6 +11,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -42,5 +45,21 @@ public class UpdateMatchScoreUseCaseTest {
         verify(matchPort).save(match);
 
         assert match.getScore().equals(score);
+    }
+
+    @Test
+    public void should_throw_exception_when_update_match_fails() {
+        String matchId = "match-123";
+        ScoreRequest request = new ScoreRequest(2, 1);
+
+        when(matchPort.find(any())).thenThrow(new MatchException("Match not found. Failed to update!"));
+
+        MatchException exception = assertThrows(
+                MatchException.class,
+                () -> useCase.execute(matchId, request)
+        );
+
+        assertEquals("Match not found. Failed to update!", exception.getMessage());
+
     }
 }
