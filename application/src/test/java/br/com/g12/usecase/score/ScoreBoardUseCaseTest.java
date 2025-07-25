@@ -1,16 +1,12 @@
 package br.com.g12.usecase.score;
 
 import br.com.g12.model.Scoreboard;
-import br.com.g12.port.MatchPort;
 import br.com.g12.port.ScoreboardPort;
-import br.com.g12.usecase.match.CloseExpiredMatchesUseCase;
 import org.junit.jupiter.api.Test;
 
-import java.util.Date;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 public class ScoreBoardUseCaseTest {

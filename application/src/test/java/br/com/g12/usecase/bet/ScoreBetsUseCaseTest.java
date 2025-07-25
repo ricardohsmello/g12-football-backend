@@ -1,16 +1,11 @@
 package br.com.g12.usecase.bet;
 
-import br.com.g12.exception.ScoreException;
-import br.com.g12.fake.BetFake;
 import br.com.g12.fake.MatchFake;
-import br.com.g12.fake.ScoreBoardFake;
 import br.com.g12.model.Bet;
 import br.com.g12.model.Match;
 import br.com.g12.model.Score;
-import br.com.g12.model.Scoreboard;
 import br.com.g12.port.BetPort;
 import br.com.g12.port.MatchPort;
-import br.com.g12.port.ScoreboardPort;
 import br.com.g12.service.PredictionScoringService;
 import br.com.g12.service.RoundScoreboardService;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,7 +16,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
