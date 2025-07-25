@@ -66,4 +66,8 @@ public class BetDocument {
     public String getId() {
         return id;
     }
+
+    public String getUsername() {
+        return username;
+    }
 }
