@@ -1,6 +1,5 @@
 package br.com.g12.usecase.match;
 
-import br.com.g12.exception.FindMatchesWithUserException;
 import br.com.g12.exception.MatchException;
 import br.com.g12.model.Match;
 import br.com.g12.port.MatchPort;

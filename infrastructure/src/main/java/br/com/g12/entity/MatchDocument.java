@@ -61,4 +61,8 @@ public class MatchDocument {
     public Match toModel() {
         return new Match(id, round, homeTeam, awayTeam, matchDate, score, status);
     }
+
+    public String getId() {
+        return id;
+    }
 }
