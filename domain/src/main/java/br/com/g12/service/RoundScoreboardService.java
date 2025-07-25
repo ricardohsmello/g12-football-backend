@@ -6,7 +6,10 @@ import br.com.g12.port.ScoreboardPort;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class RoundScoreboardService {

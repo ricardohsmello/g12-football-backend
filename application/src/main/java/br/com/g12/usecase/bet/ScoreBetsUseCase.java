@@ -9,7 +9,10 @@ import br.com.g12.service.PredictionScoringService;
 import br.com.g12.service.RoundScoreboardService;
 import br.com.g12.usecase.AbstractUseCase;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ScoreBetsUseCase extends AbstractUseCase<Integer> {
