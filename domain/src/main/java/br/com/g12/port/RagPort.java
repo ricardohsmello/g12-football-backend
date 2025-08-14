@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface RagPort {
     void add(List<RagIngestData.RagIngestDataResult> data);
+    String answer(String question);
 }
