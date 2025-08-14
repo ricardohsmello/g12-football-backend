@@ -1,0 +1,589 @@
+username,prediction.homeTeam,prediction.awayTeam,round,date,pointsEarned,homeTeam,awayTeam,actualHome,actualAway,roundPoints,totalPoints
+lucas,1,1,13,2025-07-11T21:16:37.000Z,0,Flamengo,São Paulo,2,0,20,111
+lucas,1,0,13,2025-07-11T21:17:09.000Z,10,Internacional,Vitória,1,0,20,111
+lucas,1,2,13,2025-07-11T21:17:16.000Z,5,Vasco,Botafogo,0,2,20,111
+lucas,1,2,13,2025-07-11T21:17:27.000Z,0,Bahia,Atlético-MG,2,1,20,111
+lucas,1,0,13,2025-07-11T21:17:45.000Z,5,Cruzeiro,Grêmio,4,1,20,111
+lucas,0,0,13,2025-07-11T21:17:55.000Z,0,Fortaleza,Ceará,0,1,20,111
+lucas,1,2,13,2025-07-11T21:18:04.000Z,0,Juventude,Sport,2,0,20,111
+ricardomello,2,1,13,2025-07-11T21:18:35.000Z,0,Corinthians,Bragantino,1,2,15,157
+lucas,0,0,13,2025-07-11T21:20:17.000Z,0,Corinthians,Bragantino,1,2,20,111
+ricardomello,1,1,13,2025-07-11T21:24:33.000Z,0,Flamengo,São Paulo,2,0,15,157
+ricardomello,2,0,13,2025-07-11T21:24:51.000Z,5,Internacional,Vitória,1,0,15,157
+ricardomello,2,3,13,2025-07-11T21:25:01.000Z,5,Vasco,Botafogo,0,2,15,157
+ricardomello,1,1,13,2025-07-11T21:25:09.000Z,0,Bahia,Atlético-MG,2,1,15,157
+ricardomello,0,0,13,2025-07-11T21:25:16.000Z,0,Cruzeiro,Grêmio,4,1,15,157
+ricardomello,1,1,13,2025-07-11T21:25:31.000Z,0,Fortaleza,Ceará,0,1,15,157
+ricardomello,1,0,13,2025-07-11T21:25:42.000Z,5,Juventude,Sport,2,0,15,157
+daniel,4,0,13,2025-07-11T21:28:59.000Z,5,Flamengo,São Paulo,2,0,25,132
+daniel,3,1,13,2025-07-11T21:29:07.000Z,5,Internacional,Vitória,1,0,25,132
+daniel,2,0,13,2025-07-11T21:29:16.000Z,0,Vasco,Botafogo,0,2,25,132
+daniel,2,1,13,2025-07-11T21:29:25.000Z,10,Bahia,Atlético-MG,2,1,25,132
+daniel,3,0,13,2025-07-11T21:29:36.000Z,0,Corinthians,Bragantino,1,2,25,132
+daniel,2,0,13,2025-07-11T21:29:45.000Z,5,Cruzeiro,Grêmio,4,1,25,132
+daniel,2,0,13,2025-07-11T21:29:55.000Z,0,Fortaleza,Ceará,0,1,25,132
+daniel,0,0,13,2025-07-11T21:30:04.000Z,0,Juventude,Sport,2,0,25,132
+joaozorzella,2,1,13,2025-07-12T00:47:57.000Z,5,Flamengo,São Paulo,2,0,25,167
+joaozorzella,3,1,13,2025-07-12T00:48:16.000Z,5,Internacional,Vitória,1,0,25,167
+joaozorzella,1,2,13,2025-07-12T00:48:29.000Z,5,Vasco,Botafogo,0,2,25,167
+joaozorzella,2,2,13,2025-07-12T00:48:42.000Z,0,Bahia,Atlético-MG,2,1,25,167
+joaozorzella,1,0,13,2025-07-12T00:49:05.000Z,0,Corinthians,Bragantino,1,2,25,167
+joaozorzella,2,1,13,2025-07-12T00:49:21.000Z,5,Cruzeiro,Grêmio,4,1,25,167
+joaozorzella,2,2,13,2025-07-12T00:49:39.000Z,0,Fortaleza,Ceará,0,1,25,167
+joaozorzella,1,0,13,2025-07-12T00:49:55.000Z,5,Juventude,Sport,2,0,25,167
+luciano,3,1,13,2025-07-12T01:28:25.000Z,5,Flamengo,São Paulo,2,0,30,163
+luciano,1,1,13,2025-07-12T01:28:40.000Z,0,Internacional,Vitória,1,0,30,163
+luciano,0,1,13,2025-07-12T01:29:03.000Z,5,Vasco,Botafogo,0,2,30,163
+luciano,2,2,13,2025-07-12T01:29:24.000Z,0,Bahia,Atlético-MG,2,1,30,163
+luciano,1,2,13,2025-07-12T01:29:40.000Z,10,Corinthians,Bragantino,1,2,30,163
+luciano,2,1,13,2025-07-12T01:30:09.000Z,5,Cruzeiro,Grêmio,4,1,30,163
+luciano,1,1,13,2025-07-12T01:30:30.000Z,0,Fortaleza,Ceará,0,1,30,163
+luciano,1,0,13,2025-07-12T01:30:46.000Z,5,Juventude,Sport,2,0,30,163
+murilo,3,1,13,2025-07-12T03:35:35.000Z,5,Flamengo,São Paulo,2,0,35,105
+murilo,1,0,13,2025-07-12T03:35:44.000Z,10,Internacional,Vitória,1,0,35,105
+murilo,2,2,13,2025-07-12T03:35:56.000Z,0,Vasco,Botafogo,0,2,35,105
+murilo,1,2,13,2025-07-12T03:36:06.000Z,0,Bahia,Atlético-MG,2,1,35,105
+murilo,1,2,13,2025-07-12T03:36:40.000Z,10,Corinthians,Bragantino,1,2,35,105
+murilo,1,0,13,2025-07-12T03:36:49.000Z,5,Cruzeiro,Grêmio,4,1,35,105
+murilo,2,0,13,2025-07-12T03:36:56.000Z,0,Fortaleza,Ceará,0,1,35,105
+murilo,1,0,13,2025-07-12T03:37:05.000Z,5,Juventude,Sport,2,0,35,105
+edmilson,1,2,13,2025-07-12T14:08:32.000Z,0,Flamengo,São Paulo,2,0,20,40
+edmilson,2,0,13,2025-07-12T14:08:53.000Z,5,Internacional,Vitória,1,0,20,40
+edmilson,1,2,13,2025-07-12T14:09:08.000Z,5,Vasco,Botafogo,0,2,20,40
+edmilson,1,0,13,2025-07-12T14:09:29.000Z,5,Bahia,Atlético-MG,2,1,20,40
+edmilson,2,0,13,2025-07-12T14:09:43.000Z,0,Corinthians,Bragantino,1,2,20,40
+edmilson,1,1,13,2025-07-12T14:10:00.000Z,0,Cruzeiro,Grêmio,4,1,20,40
+edmilson,2,1,13,2025-07-12T14:10:43.000Z,0,Fortaleza,Ceará,0,1,20,40
+edmilson,3,1,13,2025-07-12T14:10:59.000Z,5,Juventude,Sport,2,0,20,40
+bruno,1,0,13,2025-07-12T14:58:28.000Z,5,Flamengo,São Paulo,2,0,30,87
+bruno,1,0,13,2025-07-12T14:58:37.000Z,10,Internacional,Vitória,1,0,30,87
+bruno,1,0,13,2025-07-12T14:58:44.000Z,0,Vasco,Botafogo,0,2,30,87
+bruno,1,0,13,2025-07-12T14:58:53.000Z,5,Bahia,Atlético-MG,2,1,30,87
+bruno,1,0,13,2025-07-12T14:58:58.000Z,0,Corinthians,Bragantino,1,2,30,87
+bruno,1,0,13,2025-07-12T14:59:13.000Z,5,Cruzeiro,Grêmio,4,1,30,87
+bruno,1,0,13,2025-07-12T14:59:20.000Z,0,Fortaleza,Ceará,0,1,30,87
+bruno,1,0,13,2025-07-12T14:59:25.000Z,5,Juventude,Sport,2,0,30,87
+braulio,2,2,13,2025-07-12T15:11:29.000Z,0,Flamengo,São Paulo,2,0,25,158
+braulio,2,1,13,2025-07-12T15:11:37.000Z,5,Internacional,Vitória,1,0,25,158
+braulio,1,0,13,2025-07-12T15:11:44.000Z,0,Vasco,Botafogo,0,2,25,158
+braulio,2,1,13,2025-07-12T15:12:00.000Z,10,Bahia,Atlético-MG,2,1,25,158
+braulio,2,1,13,2025-07-12T15:12:11.000Z,0,Corinthians,Bragantino,1,2,25,158
+braulio,2,1,13,2025-07-12T15:12:27.000Z,5,Cruzeiro,Grêmio,4,1,25,158
+braulio,1,1,13,2025-07-12T15:12:36.000Z,0,Fortaleza,Ceará,0,1,25,158
+braulio,1,0,13,2025-07-12T15:12:43.000Z,5,Juventude,Sport,2,0,25,158
+ricardomello,2,1,14,2025-07-15T13:04:53.000Z,0,Palmeiras,Mirassol,1,1,15,157
+ricardomello,1,0,14,2025-07-15T13:05:01.000Z,0,Ceará,Corinthians,0,1,15,157
+ricardomello,3,0,14,2025-07-15T13:05:07.000Z,0,Botafogo,Vitória,0,0,15,157
+ricardomello,2,2,14,2025-07-15T13:05:12.000Z,12,Bragantino,São Paulo,2,2,15,157
+ricardomello,1,1,14,2025-07-15T13:05:18.000Z,0,Fluminense,Cruzeiro,0,2,15,157
+daniel,0,2,14,2025-07-16T13:23:44.000Z,0,Palmeiras,Mirassol,1,1,25,132
+daniel,0,1,14,2025-07-16T13:23:49.000Z,10,Ceará,Corinthians,0,1,25,132
+daniel,2,0,14,2025-07-16T13:23:54.000Z,0,Botafogo,Vitória,0,0,25,132
+daniel,3,1,14,2025-07-16T13:24:00.000Z,0,Bragantino,São Paulo,2,2,25,132
+daniel,2,2,14,2025-07-16T13:24:05.000Z,0,Fluminense,Cruzeiro,0,2,25,132
+braulio,2,1,14,2025-07-16T13:34:52.000Z,0,Palmeiras,Mirassol,1,1,25,158
+braulio,0,1,14,2025-07-16T13:35:02.000Z,10,Ceará,Corinthians,0,1,25,158
+braulio,4,0,14,2025-07-16T13:35:13.000Z,0,Botafogo,Vitória,0,0,25,158
+braulio,1,1,14,2025-07-16T13:35:20.000Z,5,Bragantino,São Paulo,2,2,25,158
+braulio,1,2,14,2025-07-16T13:35:30.000Z,5,Fluminense,Cruzeiro,0,2,25,158
+lucas,1,0,14,2025-07-16T15:38:44.000Z,0,Palmeiras,Mirassol,1,1,20,111
+lucas,1,1,14,2025-07-16T15:49:47.000Z,0,Ceará,Corinthians,0,1,20,111
+lucas,1,0,14,2025-07-16T15:49:56.000Z,0,Botafogo,Vitória,0,0,20,111
+lucas,1,1,14,2025-07-16T15:50:06.000Z,5,Bragantino,São Paulo,2,2,20,111
+lucas,2,1,14,2025-07-16T15:50:26.000Z,0,Fluminense,Cruzeiro,0,2,20,111
+ricardomello,1,2,14,2025-07-16T17:38:29.000Z,0,Santos,Flamengo,1,0,15,157
+daniel,0,3,14,2025-07-16T18:21:08.000Z,0,Santos,Flamengo,1,0,25,132
+lucas,1,2,14,2025-07-16T19:04:51.000Z,0,Santos,Flamengo,1,0,20,111
+braulio,1,3,14,2025-07-16T19:24:58.000Z,0,Santos,Flamengo,1,0,25,158
+joaozorzella,2,0,14,2025-07-16T19:42:19.000Z,0,Palmeiras,Mirassol,1,1,25,167
+joaozorzella,1,1,14,2025-07-16T19:42:34.000Z,0,Ceará,Corinthians,0,1,25,167
+joaozorzella,2,0,14,2025-07-16T19:42:53.000Z,0,Botafogo,Vitória,0,0,25,167
+joaozorzella,1,0,14,2025-07-16T19:43:13.000Z,0,Bragantino,São Paulo,2,2,25,167
+joaozorzella,1,2,14,2025-07-16T19:43:39.000Z,0,Santos,Flamengo,1,0,25,167
+joaozorzella,0,1,14,2025-07-16T19:44:08.000Z,5,Fluminense,Cruzeiro,0,2,25,167
+luciano,3,1,14,2025-07-16T21:01:35.000Z,0,Palmeiras,Mirassol,1,1,30,163
+luciano,2,0,14,2025-07-16T21:01:52.000Z,0,Ceará,Corinthians,0,1,30,163
+luciano,3,1,14,2025-07-16T21:02:12.000Z,0,Botafogo,Vitória,0,0,30,163
+luciano,1,2,14,2025-07-16T21:02:25.000Z,0,Bragantino,São Paulo,2,2,30,163
+luciano,1,1,14,2025-07-16T21:02:43.000Z,0,Fluminense,Cruzeiro,0,2,30,163
+luciano,1,4,14,2025-07-16T21:02:55.000Z,0,Santos,Flamengo,1,0,30,163
+murilo,3,0,14,2025-07-16T21:17:11.000Z,0,Palmeiras,Mirassol,1,1,35,105
+murilo,1,0,14,2025-07-16T21:17:19.000Z,0,Ceará,Corinthians,0,1,35,105
+murilo,1,1,14,2025-07-16T21:17:27.000Z,5,Botafogo,Vitória,0,0,35,105
+murilo,2,1,14,2025-07-16T21:17:35.000Z,0,Bragantino,São Paulo,2,2,35,105
+murilo,0,1,14,2025-07-16T21:17:46.000Z,5,Fluminense,Cruzeiro,0,2,35,105
+murilo,0,2,14,2025-07-16T21:17:56.000Z,0,Santos,Flamengo,1,0,35,105
+bruno,1,0,14,2025-07-16T22:35:49.000Z,0,Botafogo,Vitória,0,0,30,87
+bruno,2,1,14,2025-07-16T22:35:54.000Z,0,Bragantino,São Paulo,2,2,30,87
+bruno,1,0,14,2025-07-16T22:35:59.000Z,0,Fluminense,Cruzeiro,0,2,30,87
+bruno,2,2,14,2025-07-16T22:36:04.000Z,0,Santos,Flamengo,1,0,30,87
+ricardomello,1,1,15,2025-07-19T12:29:49.000Z,10,Fortaleza,Bahia,1,1,15,157
+ricardomello,0,1,15,2025-07-19T12:29:59.000Z,0,Vasco,Grêmio,1,1,15,157
+ricardomello,2,1,15,2025-07-19T12:30:08.000Z,5,Mirassol,Santos,3,0,15,157
+ricardomello,1,2,15,2025-07-19T12:30:20.000Z,0,São Paulo,Corinthians,2,0,15,157
+ricardomello,2,0,15,2025-07-19T12:30:48.000Z,5,Internacional,Ceará,1,0,15,157
+ricardomello,2,0,15,2025-07-19T12:31:05.000Z,5,Cruzeiro,Juventude,4,0,15,157
+ricardomello,1,2,15,2025-07-19T12:31:17.000Z,0,Vitória,Bragantino,1,0,15,157
+ricardomello,2,1,15,2025-07-19T12:31:27.000Z,5,Palmeiras,Atlético Mineiro,3,2,15,157
+ricardomello,1,3,15,2025-07-19T12:31:37.000Z,5,Sport,Botafogo,0,1,15,157
+ricardomello,2,1,15,2025-07-19T12:31:48.000Z,5,Flamengo,Fluminense,1,0,15,157
+luciano,1,1,15,2025-07-19T13:13:53.000Z,10,Fortaleza,Bahia,1,1,30,163
+luciano,2,1,15,2025-07-19T13:14:10.000Z,0,Vasco,Grêmio,1,1,30,163
+luciano,2,1,15,2025-07-19T13:14:34.000Z,5,Mirassol,Santos,3,0,30,163
+luciano,2,0,15,2025-07-19T13:14:46.000Z,10,São Paulo,Corinthians,2,0,30,163
+luciano,1,0,15,2025-07-19T13:15:08.000Z,10,Internacional,Ceará,1,0,30,163
+luciano,4,1,15,2025-07-19T13:15:25.000Z,5,Cruzeiro,Juventude,4,0,30,163
+luciano,1,1,15,2025-07-19T13:15:41.000Z,0,Vitória,Bragantino,1,0,30,163
+luciano,1,2,15,2025-07-19T13:16:03.000Z,0,Palmeiras,Atlético Mineiro,3,2,30,163
+luciano,0,2,15,2025-07-19T13:16:23.000Z,5,Sport,Botafogo,0,1,30,163
+luciano,3,1,15,2025-07-19T13:16:47.000Z,5,Flamengo,Fluminense,1,0,30,163
+murilo,0,1,15,2025-07-19T13:45:31.000Z,0,Fortaleza,Bahia,1,1,35,105
+murilo,0,1,15,2025-07-19T13:45:38.000Z,0,Vasco,Grêmio,1,1,35,105
+murilo,1,3,15,2025-07-19T13:45:47.000Z,0,Mirassol,Santos,3,0,35,105
+murilo,2,0,15,2025-07-19T13:45:54.000Z,10,São Paulo,Corinthians,2,0,35,105
+murilo,0,1,15,2025-07-19T13:46:03.000Z,0,Internacional,Ceará,1,0,35,105
+murilo,1,1,15,2025-07-19T13:46:10.000Z,0,Cruzeiro,Juventude,4,0,35,105
+murilo,1,2,15,2025-07-19T13:46:16.000Z,0,Vitória,Bragantino,1,0,35,105
+murilo,3,1,15,2025-07-19T13:46:33.000Z,5,Palmeiras,Atlético Mineiro,3,2,35,105
+murilo,0,2,15,2025-07-19T13:46:41.000Z,5,Sport,Botafogo,0,1,35,105
+murilo,2,2,15,2025-07-19T13:46:49.000Z,0,Flamengo,Fluminense,1,0,35,105
+braulio,0,2,15,2025-07-19T16:47:03.000Z,0,Fortaleza,Bahia,1,1,25,158
+braulio,0,1,15,2025-07-19T16:47:15.000Z,0,Vasco,Grêmio,1,1,25,158
+braulio,1,2,15,2025-07-19T16:47:23.000Z,0,Mirassol,Santos,3,0,25,158
+braulio,1,0,15,2025-07-19T16:47:33.000Z,5,São Paulo,Corinthians,2,0,25,158
+braulio,2,0,15,2025-07-19T16:47:44.000Z,5,Internacional,Ceará,1,0,25,158
+braulio,3,0,15,2025-07-19T16:47:50.000Z,5,Cruzeiro,Juventude,4,0,25,158
+braulio,0,1,15,2025-07-19T16:47:57.000Z,0,Vitória,Bragantino,1,0,25,158
+braulio,2,1,15,2025-07-19T16:48:04.000Z,5,Palmeiras,Atlético Mineiro,3,2,25,158
+braulio,0,4,15,2025-07-19T16:48:20.000Z,5,Sport,Botafogo,0,1,25,158
+braulio,2,1,15,2025-07-19T16:48:33.000Z,5,Flamengo,Fluminense,1,0,25,158
+daniel,1,2,15,2025-07-19T17:03:30.000Z,0,Fortaleza,Bahia,1,1,25,132
+daniel,1,0,15,2025-07-19T17:03:39.000Z,0,Vasco,Grêmio,1,1,25,132
+daniel,2,2,15,2025-07-19T17:04:03.000Z,0,Mirassol,Santos,3,0,25,132
+daniel,0,3,15,2025-07-19T17:04:25.000Z,0,São Paulo,Corinthians,2,0,25,132
+daniel,1,0,15,2025-07-19T17:04:41.000Z,10,Internacional,Ceará,1,0,25,132
+daniel,4,0,15,2025-07-19T17:05:00.000Z,12,Cruzeiro,Juventude,4,0,25,132
+daniel,2,0,15,2025-07-19T17:05:33.000Z,5,Vitória,Bragantino,1,0,25,132
+daniel,0,3,15,2025-07-19T17:05:42.000Z,0,Palmeiras,Atlético Mineiro,3,2,25,132
+daniel,0,2,15,2025-07-19T17:05:54.000Z,5,Sport,Botafogo,0,1,25,132
+daniel,2,0,15,2025-07-19T17:06:04.000Z,5,Flamengo,Fluminense,1,0,25,132
+bruno,1,0,15,2025-07-19T17:52:50.000Z,0,Fortaleza,Bahia,1,1,30,87
+bruno,1,0,15,2025-07-19T17:52:54.000Z,0,Vasco,Grêmio,1,1,30,87
+bruno,0,1,15,2025-07-19T17:53:00.000Z,0,Mirassol,Santos,3,0,30,87
+bruno,1,0,15,2025-07-19T17:53:06.000Z,5,São Paulo,Corinthians,2,0,30,87
+bruno,1,0,15,2025-07-19T17:53:09.000Z,10,Internacional,Ceará,1,0,30,87
+bruno,1,0,15,2025-07-19T17:53:14.000Z,5,Cruzeiro,Juventude,4,0,30,87
+bruno,1,1,15,2025-07-19T17:53:18.000Z,0,Vitória,Bragantino,1,0,30,87
+bruno,1,0,15,2025-07-19T17:53:22.000Z,5,Palmeiras,Atlético Mineiro,3,2,30,87
+bruno,1,1,15,2025-07-19T17:53:27.000Z,0,Sport,Botafogo,0,1,30,87
+bruno,1,0,15,2025-07-19T17:53:31.000Z,11,Flamengo,Fluminense,1,0,30,87
+lucas,0,0,15,2025-07-19T18:03:25.000Z,5,Fortaleza,Bahia,1,1,20,111
+lucas,0,0,15,2025-07-19T18:03:33.000Z,5,Vasco,Grêmio,1,1,20,111
+lucas,0,0,15,2025-07-19T18:03:47.000Z,0,Mirassol,Santos,3,0,20,111
+lucas,0,0,15,2025-07-19T18:03:54.000Z,0,São Paulo,Corinthians,2,0,20,111
+lucas,0,0,15,2025-07-19T18:04:06.000Z,0,Internacional,Ceará,1,0,20,111
+lucas,0,0,15,2025-07-19T18:04:20.000Z,0,Cruzeiro,Juventude,4,0,20,111
+lucas,0,0,15,2025-07-19T18:04:30.000Z,0,Vitória,Bragantino,1,0,20,111
+lucas,0,0,15,2025-07-19T18:04:37.000Z,0,Palmeiras,Atlético Mineiro,3,2,20,111
+lucas,0,0,15,2025-07-19T18:04:45.000Z,0,Sport,Botafogo,0,1,20,111
+lucas,0,0,15,2025-07-19T18:04:51.000Z,0,Flamengo,Fluminense,1,0,20,111
+joaozorzella,1,1,15,2025-07-19T18:19:10.000Z,10,Fortaleza,Bahia,1,1,25,167
+joaozorzella,1,0,15,2025-07-19T18:19:32.000Z,0,Vasco,Grêmio,1,1,25,167
+joaozorzella,0,0,15,2025-07-19T18:19:49.000Z,0,Mirassol,Santos,3,0,25,167
+joaozorzella,2,1,15,2025-07-19T18:20:16.000Z,5,São Paulo,Corinthians,2,0,25,167
+joaozorzella,1,0,15,2025-07-19T18:20:35.000Z,10,Internacional,Ceará,1,0,25,167
+joaozorzella,3,1,15,2025-07-19T18:20:50.000Z,5,Cruzeiro,Juventude,4,0,25,167
+joaozorzella,1,2,15,2025-07-19T18:21:08.000Z,0,Vitória,Bragantino,1,0,25,167
+joaozorzella,2,1,15,2025-07-19T18:21:26.000Z,5,Palmeiras,Atlético Mineiro,3,2,25,167
+joaozorzella,0,1,15,2025-07-19T18:21:42.000Z,11,Sport,Botafogo,0,1,25,167
+joaozorzella,2,0,15,2025-07-19T18:21:58.000Z,5,Flamengo,Fluminense,1,0,25,167
+daniel,2,0,16,2025-07-23T15:52:54.000Z,0,Fluminense,Palmeiras,1,2,25,132
+daniel,0,4,16,2025-07-23T15:52:59.000Z,5,Ceará,Mirassol,0,2,25,132
+daniel,3,0,16,2025-07-23T15:53:06.000Z,0,Corinthians,Cruzeiro,0,0,25,132
+daniel,2,1,16,2025-07-23T15:53:12.000Z,0,Santos,Internacional,1,2,25,132
+daniel,1,3,16,2025-07-23T15:53:18.000Z,5,Bragantino,Flamengo,1,2,25,132
+daniel,1,0,16,2025-07-23T15:53:24.000Z,0,Vitória,Sport,2,2,25,132
+daniel,2,1,16,2025-07-23T15:53:28.000Z,0,Juventude,São Paulo,0,1,25,132
+braulio,3,3,16,2025-07-23T15:54:27.000Z,0,Fluminense,Palmeiras,1,2,25,158
+braulio,0,1,16,2025-07-23T15:54:37.000Z,5,Ceará,Mirassol,0,2,25,158
+braulio,1,2,16,2025-07-23T15:54:47.000Z,0,Corinthians,Cruzeiro,0,0,25,158
+braulio,1,1,16,2025-07-23T15:54:58.000Z,0,Santos,Internacional,1,2,25,158
+braulio,1,0,16,2025-07-23T15:55:29.000Z,0,Bragantino,Flamengo,1,2,25,158
+braulio,3,0,16,2025-07-23T15:55:41.000Z,0,Vitória,Sport,2,2,25,158
+braulio,1,2,16,2025-07-23T15:55:53.000Z,5,Juventude,São Paulo,0,1,25,158
+lucas,2,0,16,2025-07-23T16:34:42.000Z,0,Fluminense,Palmeiras,1,2,20,111
+lucas,2,0,16,2025-07-23T16:34:55.000Z,0,Ceará,Mirassol,0,2,20,111
+lucas,2,0,16,2025-07-23T16:35:03.000Z,0,Corinthians,Cruzeiro,0,0,20,111
+lucas,2,0,16,2025-07-23T16:35:10.000Z,0,Santos,Internacional,1,2,20,111
+lucas,2,0,16,2025-07-23T16:35:18.000Z,0,Bragantino,Flamengo,1,2,20,111
+lucas,2,0,16,2025-07-23T16:35:27.000Z,0,Vitória,Sport,2,2,20,111
+lucas,2,0,16,2025-07-23T16:35:33.000Z,0,Juventude,São Paulo,0,1,20,111
+ricardomello,2,1,16,2025-07-23T16:37:11.000Z,0,Fluminense,Palmeiras,1,2,15,157
+luciano,1,0,16,2025-07-23T16:41:29.000Z,0,Fluminense,Palmeiras,1,2,30,163
+luciano,1,1,16,2025-07-23T16:41:53.000Z,0,Ceará,Mirassol,0,2,30,163
+luciano,1,3,16,2025-07-23T16:42:27.000Z,0,Corinthians,Cruzeiro,0,0,30,163
+luciano,1,0,16,2025-07-23T16:42:55.000Z,0,Santos,Internacional,1,2,30,163
+luciano,1,2,16,2025-07-23T16:43:26.000Z,10,Bragantino,Flamengo,1,2,30,163
+luciano,2,0,16,2025-07-23T16:43:42.000Z,0,Vitória,Sport,2,2,30,163
+luciano,0,2,16,2025-07-23T16:44:02.000Z,5,Juventude,São Paulo,0,1,30,163
+ricardomello,1,1,16,2025-07-23T17:27:57.000Z,0,Ceará,Mirassol,0,2,15,157
+ricardomello,2,2,16,2025-07-23T17:28:07.000Z,5,Corinthians,Cruzeiro,0,0,15,157
+ricardomello,1,0,16,2025-07-23T17:28:18.000Z,0,Santos,Internacional,1,2,15,157
+ricardomello,1,2,16,2025-07-23T17:28:23.000Z,10,Bragantino,Flamengo,1,2,15,157
+ricardomello,1,0,16,2025-07-23T17:28:33.000Z,0,Vitória,Sport,2,2,15,157
+ricardomello,1,3,16,2025-07-23T17:28:49.000Z,5,Juventude,São Paulo,0,1,15,157
+joaozorzella,1,0,16,2025-07-23T21:46:20.000Z,0,Ceará,Mirassol,0,2,25,167
+joaozorzella,1,2,16,2025-07-23T21:46:30.000Z,11,Fluminense,Palmeiras,1,2,25,167
+joaozorzella,1,1,16,2025-07-23T21:46:43.000Z,5,Corinthians,Cruzeiro,0,0,25,167
+joaozorzella,1,1,16,2025-07-23T21:47:23.000Z,0,Santos,Internacional,1,2,25,167
+joaozorzella,2,2,16,2025-07-23T21:47:52.000Z,0,Bragantino,Flamengo,1,2,25,167
+joaozorzella,0,1,16,2025-07-23T21:48:24.000Z,0,Vitória,Sport,2,2,25,167
+joaozorzella,2,1,16,2025-07-23T21:49:00.000Z,0,Juventude,São Paulo,0,1,25,167
+bruno,1,0,16,2025-07-23T22:08:15.000Z,0,Corinthians,Cruzeiro,0,0,30,87
+bruno,1,0,16,2025-07-23T22:08:23.000Z,0,Santos,Internacional,1,2,30,87
+bruno,0,1,16,2025-07-23T22:08:28.000Z,5,Bragantino,Flamengo,1,2,30,87
+bruno,1,1,16,2025-07-23T22:08:33.000Z,5,Vitória,Sport,2,2,30,87
+bruno,0,1,16,2025-07-23T22:08:38.000Z,11,Juventude,São Paulo,0,1,30,87
+murilo,5,2,16,2025-07-23T22:53:03.000Z,0,Santos,Internacional,1,2,35,105
+murilo,1,4,16,2025-07-23T22:53:14.000Z,5,Bragantino,Flamengo,1,2,35,105
+murilo,2,0,16,2025-07-23T22:53:23.000Z,0,Vitória,Sport,2,2,35,105
+murilo,1,3,16,2025-07-23T22:53:30.000Z,5,Juventude,São Paulo,0,1,35,105
+antonio,1,0,16,2025-07-24T21:56:23.000Z,0,Juventude,São Paulo,0,1,0,56
+ricardomello,2,2,17,2025-07-25T17:50:14.000Z,5,Botafogo,Corinthians,1,1,15,157
+giovanni,1,0,17,2025-07-26T02:19:19.000Z,0,Botafogo,Corinthians,1,1,10,66
+giovanni,3,1,17,2025-07-26T02:19:30.000Z,0,Mirassol,Vitória,1,1,10,66
+giovanni,1,2,17,2025-07-26T02:19:43.000Z,0,Fortaleza,Bragantino,3,1,10,66
+giovanni,0,2,17,2025-07-26T02:19:57.000Z,0,Sport,Santos,2,2,10,66
+giovanni,3,1,17,2025-07-26T02:20:07.000Z,5,Palmeiras,Grêmio,1,0,10,66
+giovanni,1,1,17,2025-07-26T02:20:19.000Z,0,São Paulo,Fluminense,3,1,10,66
+giovanni,2,0,17,2025-07-26T02:20:28.000Z,0,Cruzeiro,Ceará,1,2,10,66
+giovanni,2,1,17,2025-07-26T02:20:38.000Z,0,Internacional,Vasco,1,1,10,66
+giovanni,3,2,17,2025-07-26T02:20:47.000Z,5,Bahia,Juventude,3,0,10,66
+giovanni,1,1,17,2025-07-26T02:20:57.000Z,0,Flamengo,Atlético-MG,1,0,10,66
+joaozorzella,2,1,17,2025-07-26T16:17:54.000Z,0,Botafogo,Corinthians,1,1,25,167
+joaozorzella,2,1,17,2025-07-26T16:18:09.000Z,0,Mirassol,Vitória,1,1,25,167
+joaozorzella,2,1,17,2025-07-26T16:18:25.000Z,5,Fortaleza,Bragantino,3,1,25,167
+joaozorzella,1,0,17,2025-07-26T16:18:50.000Z,0,Sport,Santos,2,2,25,167
+joaozorzella,3,1,17,2025-07-26T16:19:06.000Z,5,Palmeiras,Grêmio,1,0,25,167
+joaozorzella,2,0,17,2025-07-26T16:19:37.000Z,0,Cruzeiro,Ceará,1,2,25,167
+joaozorzella,2,1,17,2025-07-26T16:19:54.000Z,5,São Paulo,Fluminense,3,1,25,167
+joaozorzella,1,0,17,2025-07-26T16:20:29.000Z,0,Internacional,Vasco,1,1,25,167
+joaozorzella,1,0,17,2025-07-26T16:20:40.000Z,5,Bahia,Juventude,3,0,25,167
+joaozorzella,2,1,17,2025-07-26T16:21:14.000Z,5,Flamengo,Atlético-MG,1,0,25,167
+luciano,2,0,17,2025-07-26T16:50:44.000Z,0,Botafogo,Corinthians,1,1,30,163
+luciano,3,1,17,2025-07-26T16:51:00.000Z,0,Mirassol,Vitória,1,1,30,163
+luciano,1,1,17,2025-07-26T16:51:31.000Z,0,Fortaleza,Bragantino,3,1,30,163
+luciano,1,2,17,2025-07-26T16:51:45.000Z,0,Sport,Santos,2,2,30,163
+luciano,2,0,17,2025-07-26T16:51:56.000Z,5,Palmeiras,Grêmio,1,0,30,163
+luciano,3,2,17,2025-07-26T16:52:14.000Z,5,São Paulo,Fluminense,3,1,30,163
+luciano,3,1,17,2025-07-26T16:52:37.000Z,0,Cruzeiro,Ceará,1,2,30,163
+luciano,1,0,17,2025-07-26T16:52:46.000Z,0,Internacional,Vasco,1,1,30,163
+luciano,3,0,17,2025-07-26T16:53:01.000Z,11,Bahia,Juventude,3,0,30,163
+luciano,2,2,17,2025-07-26T16:53:26.000Z,0,Flamengo,Atlético-MG,1,0,30,163
+lucas,2,1,17,2025-07-26T17:49:16.000Z,0,Botafogo,Corinthians,1,1,20,111
+lucas,1,0,17,2025-07-26T17:49:29.000Z,0,Mirassol,Vitória,1,1,20,111
+lucas,0,1,17,2025-07-26T17:51:00.000Z,0,Fortaleza,Bragantino,3,1,20,111
+lucas,0,0,17,2025-07-26T17:51:12.000Z,5,Sport,Santos,2,2,20,111
+lucas,2,1,17,2025-07-26T17:52:16.000Z,5,Palmeiras,Grêmio,1,0,20,111
+lucas,1,0,17,2025-07-26T17:52:26.000Z,5,São Paulo,Fluminense,3,1,20,111
+lucas,2,0,17,2025-07-26T17:54:30.000Z,0,Cruzeiro,Ceará,1,2,20,111
+lucas,1,0,17,2025-07-26T17:55:43.000Z,0,Internacional,Vasco,1,1,20,111
+lucas,1,0,17,2025-07-26T17:57:09.000Z,11,Flamengo,Atlético-MG,1,0,20,111
+lucas,1,0,17,2025-07-26T17:57:18.000Z,5,Bahia,Juventude,3,0,20,111
+daniel,0,2,17,2025-07-26T18:09:26.000Z,0,Botafogo,Corinthians,1,1,25,132
+daniel,4,0,17,2025-07-26T18:09:37.000Z,0,Mirassol,Vitória,1,1,25,132
+daniel,2,3,17,2025-07-26T18:09:46.000Z,0,Fortaleza,Bragantino,3,1,25,132
+daniel,0,3,17,2025-07-26T18:09:56.000Z,0,Sport,Santos,2,2,25,132
+daniel,2,0,17,2025-07-26T18:10:06.000Z,5,Palmeiras,Grêmio,1,0,25,132
+daniel,2,1,17,2025-07-26T18:10:16.000Z,5,São Paulo,Fluminense,3,1,25,132
+daniel,4,0,17,2025-07-26T18:10:25.000Z,0,Cruzeiro,Ceará,1,2,25,132
+daniel,2,0,17,2025-07-26T18:10:34.000Z,0,Internacional,Vasco,1,1,25,132
+daniel,2,1,17,2025-07-26T18:10:42.000Z,5,Bahia,Juventude,3,0,25,132
+daniel,2,1,17,2025-07-26T18:10:55.000Z,5,Flamengo,Atlético-MG,1,0,25,132
+ricardomello,2,0,17,2025-07-26T18:48:41.000Z,0,Mirassol,Vitória,1,1,15,157
+ricardomello,1,0,17,2025-07-26T18:48:49.000Z,5,Fortaleza,Bragantino,3,1,15,157
+ricardomello,1,2,17,2025-07-26T18:48:58.000Z,0,Sport,Santos,2,2,15,157
+ricardomello,2,1,17,2025-07-26T18:49:06.000Z,5,Palmeiras,Grêmio,1,0,15,157
+braulio,4,1,17,2025-07-26T19:15:55.000Z,0,Botafogo,Corinthians,1,1,25,158
+braulio,2,0,17,2025-07-26T19:16:02.000Z,0,Mirassol,Vitória,1,1,25,158
+braulio,1,2,17,2025-07-26T19:16:09.000Z,0,Fortaleza,Bragantino,3,1,25,158
+braulio,0,2,17,2025-07-26T19:16:15.000Z,0,Sport,Santos,2,2,25,158
+braulio,2,2,17,2025-07-26T19:16:23.000Z,0,Palmeiras,Grêmio,1,0,25,158
+braulio,3,1,17,2025-07-26T19:16:31.000Z,12,São Paulo,Fluminense,3,1,25,158
+braulio,2,0,17,2025-07-26T19:16:38.000Z,0,Cruzeiro,Ceará,1,2,25,158
+braulio,1,0,17,2025-07-26T19:16:44.000Z,0,Internacional,Vasco,1,1,25,158
+braulio,1,0,17,2025-07-26T19:16:52.000Z,5,Bahia,Juventude,3,0,25,158
+braulio,2,1,17,2025-07-26T19:17:02.000Z,5,Flamengo,Atlético-MG,1,0,25,158
+murilo,2,0,17,2025-07-26T21:27:46.000Z,0,Botafogo,Corinthians,1,1,35,105
+murilo,1,3,17,2025-07-26T21:27:54.000Z,0,Mirassol,Vitória,1,1,35,105
+murilo,0,1,17,2025-07-26T21:28:01.000Z,0,Fortaleza,Bragantino,3,1,35,105
+murilo,0,2,17,2025-07-26T21:28:08.000Z,0,Sport,Santos,2,2,35,105
+murilo,4,1,17,2025-07-26T21:28:15.000Z,5,Palmeiras,Grêmio,1,0,35,105
+murilo,1,1,17,2025-07-26T21:28:23.000Z,0,São Paulo,Fluminense,3,1,35,105
+murilo,0,1,17,2025-07-26T21:28:29.000Z,5,Cruzeiro,Ceará,1,2,35,105
+murilo,2,0,17,2025-07-26T21:28:35.000Z,0,Internacional,Vasco,1,1,35,105
+murilo,1,0,17,2025-07-26T21:28:41.000Z,5,Bahia,Juventude,3,0,35,105
+murilo,2,3,17,2025-07-26T21:28:47.000Z,0,Flamengo,Atlético-MG,1,0,35,105
+ricardomello,1,1,17,2025-07-27T15:12:38.000Z,0,São Paulo,Fluminense,3,1,15,157
+ricardomello,2,0,17,2025-07-27T15:13:00.000Z,0,Cruzeiro,Ceará,1,2,15,157
+ricardomello,1,0,17,2025-07-27T15:13:10.000Z,0,Internacional,Vasco,1,1,15,157
+ricardomello,3,1,17,2025-07-27T15:13:20.000Z,5,Bahia,Juventude,3,0,15,157
+ricardomello,3,1,17,2025-07-27T15:13:31.000Z,5,Flamengo,Atlético-MG,1,0,15,157
+ricardomello,1,2,18,2025-07-30T23:25:47.000Z,0,Sport,Bahia,0,0,15,157
+luciano,2,1,18,2025-08-01T14:47:20.000Z,0,Sport,Bahia,0,0,30,163
+luciano,2,1,18,2025-08-01T14:47:40.000Z,5,Mirassol,Vasco,3,2,30,163
+luciano,2,0,18,2025-08-01T14:48:08.000Z,5,Fluminense,Grêmio,1,0,30,163
+luciano,2,2,18,2025-08-01T14:48:25.000Z,0,Botafogo,Cruzeiro,0,2,30,163
+luciano,2,1,18,2025-08-01T14:48:49.000Z,0,Corinthians,Fortaleza,1,1,30,163
+luciano,2,2,18,2025-08-01T14:49:20.000Z,0,Atlético‑MG,Bragantino,2,1,30,163
+luciano,1,3,18,2025-08-01T14:49:36.000Z,0,Ceará,Flamengo,1,1,30,163
+luciano,0,1,18,2025-08-01T14:49:51.000Z,0,Vitória,Palmeiras,2,2,30,163
+luciano,2,3,18,2025-08-01T14:50:17.000Z,5,Internacional,São Paulo,1,2,30,163
+luciano,3,1,18,2025-08-01T14:50:41.000Z,12,Santos,Juventude,3,1,30,163
+giovanni,1,2,18,2025-08-02T13:23:31.000Z,0,Sport,Bahia,0,0,10,66
+giovanni,3,1,18,2025-08-02T13:23:40.000Z,5,Mirassol,Vasco,3,2,10,66
+giovanni,2,0,18,2025-08-02T13:23:55.000Z,5,Fluminense,Grêmio,1,0,10,66
+giovanni,1,1,18,2025-08-02T13:24:07.000Z,0,Botafogo,Cruzeiro,0,2,10,66
+giovanni,1,1,18,2025-08-02T13:24:18.000Z,10,Corinthians,Fortaleza,1,1,10,66
+giovanni,2,0,18,2025-08-02T13:24:27.000Z,5,Atlético‑MG,Bragantino,2,1,10,66
+giovanni,1,1,18,2025-08-02T13:24:36.000Z,11,Ceará,Flamengo,1,1,10,66
+giovanni,0,3,18,2025-08-02T13:24:52.000Z,0,Vitória,Palmeiras,2,2,10,66
+giovanni,1,1,18,2025-08-02T13:25:08.000Z,0,Internacional,São Paulo,1,2,10,66
+giovanni,3,0,18,2025-08-02T13:25:15.000Z,5,Santos,Juventude,3,1,10,66
+lucas,1,2,18,2025-08-02T13:53:37.000Z,0,Sport,Bahia,0,0,20,111
+lucas,2,0,18,2025-08-02T13:53:45.000Z,5,Mirassol,Vasco,3,2,20,111
+lucas,2,1,18,2025-08-02T13:54:03.000Z,5,Fluminense,Grêmio,1,0,20,111
+lucas,2,1,18,2025-08-02T13:54:39.000Z,0,Botafogo,Cruzeiro,0,2,20,111
+lucas,1,0,18,2025-08-02T13:55:13.000Z,0,Corinthians,Fortaleza,1,1,20,111
+lucas,2,0,18,2025-08-02T13:55:27.000Z,5,Atlético‑MG,Bragantino,2,1,20,111
+lucas,0,1,18,2025-08-02T13:55:56.000Z,0,Ceará,Flamengo,1,1,20,111
+lucas,1,3,18,2025-08-02T13:56:08.000Z,0,Vitória,Palmeiras,2,2,20,111
+lucas,0,0,18,2025-08-02T13:56:50.000Z,0,Internacional,São Paulo,1,2,20,111
+lucas,2,0,18,2025-08-02T13:57:07.000Z,5,Santos,Juventude,3,1,20,111
+daniel,1,0,18,2025-08-02T14:01:10.000Z,0,Sport,Bahia,0,0,25,132
+daniel,3,0,18,2025-08-02T14:01:18.000Z,5,Mirassol,Vasco,3,2,25,132
+daniel,2,1,18,2025-08-02T14:01:27.000Z,5,Fluminense,Grêmio,1,0,25,132
+daniel,2,2,18,2025-08-02T14:01:37.000Z,0,Botafogo,Cruzeiro,0,2,25,132
+daniel,4,1,18,2025-08-02T14:01:48.000Z,0,Corinthians,Fortaleza,1,1,25,132
+daniel,2,3,18,2025-08-02T14:01:57.000Z,0,Atlético‑MG,Bragantino,2,1,25,132
+daniel,0,2,18,2025-08-02T14:02:05.000Z,0,Ceará,Flamengo,1,1,25,132
+daniel,0,2,18,2025-08-02T14:02:15.000Z,0,Vitória,Palmeiras,2,2,25,132
+daniel,1,0,18,2025-08-02T14:02:23.000Z,0,Internacional,São Paulo,1,2,25,132
+daniel,2,0,18,2025-08-02T14:02:31.000Z,5,Santos,Juventude,3,1,25,132
+joaozorzella,1,2,18,2025-08-02T18:21:51.000Z,0,Sport,Bahia,0,0,25,167
+joaozorzella,2,1,18,2025-08-02T18:22:24.000Z,5,Mirassol,Vasco,3,2,25,167
+joaozorzella,2,1,18,2025-08-02T18:22:47.000Z,5,Fluminense,Grêmio,1,0,25,167
+joaozorzella,2,1,18,2025-08-02T18:23:25.000Z,0,Botafogo,Cruzeiro,0,2,25,167
+joaozorzella,1,0,18,2025-08-02T18:23:48.000Z,0,Corinthians,Fortaleza,1,1,25,167
+joaozorzella,2,1,18,2025-08-02T18:24:09.000Z,10,Atlético‑MG,Bragantino,2,1,25,167
+joaozorzella,0,2,18,2025-08-02T18:24:44.000Z,0,Ceará,Flamengo,1,1,25,167
+joaozorzella,0,2,18,2025-08-02T18:25:44.000Z,0,Vitória,Palmeiras,2,2,25,167
+joaozorzella,1,0,18,2025-08-02T18:26:16.000Z,0,Internacional,São Paulo,1,2,25,167
+joaozorzella,1,0,18,2025-08-02T18:26:42.000Z,5,Santos,Juventude,3,1,25,167
+ricardomello,1,1,18,2025-08-02T18:29:44.000Z,0,Mirassol,Vasco,3,2,15,157
+ricardomello,2,0,18,2025-08-02T18:29:52.000Z,5,Fluminense,Grêmio,1,0,15,157
+ricardomello,1,0,18,2025-08-02T18:30:03.000Z,0,Botafogo,Cruzeiro,0,2,15,157
+ricardomello,0,0,18,2025-08-02T18:30:13.000Z,5,Corinthians,Fortaleza,1,1,15,157
+ricardomello,0,1,18,2025-08-02T18:30:24.000Z,0,Atlético‑MG,Bragantino,2,1,15,157
+ricardomello,1,3,18,2025-08-02T18:30:32.000Z,0,Ceará,Flamengo,1,1,15,157
+ricardomello,1,2,18,2025-08-02T18:30:39.000Z,0,Vitória,Palmeiras,2,2,15,157
+ricardomello,1,1,18,2025-08-02T18:30:49.000Z,0,Internacional,São Paulo,1,2,15,157
+ricardomello,1,0,18,2025-08-02T18:30:58.000Z,5,Santos,Juventude,3,1,15,157
+antonio,1,2,18,2025-08-02T18:33:37.000Z,0,Sport,Bahia,0,0,0,56
+antonio,2,0,18,2025-08-02T18:33:57.000Z,5,Mirassol,Vasco,3,2,0,56
+antonio,1,1,18,2025-08-02T18:34:46.000Z,0,Fluminense,Grêmio,1,0,0,56
+antonio,1,0,18,2025-08-02T18:35:03.000Z,0,Botafogo,Cruzeiro,0,2,0,56
+antonio,1,0,18,2025-08-02T18:35:28.000Z,0,Corinthians,Fortaleza,1,1,0,56
+antonio,2,1,18,2025-08-02T18:35:52.000Z,10,Atlético‑MG,Bragantino,2,1,0,56
+antonio,1,3,18,2025-08-02T18:36:09.000Z,0,Ceará,Flamengo,1,1,0,56
+antonio,0,1,18,2025-08-02T18:36:33.000Z,0,Vitória,Palmeiras,2,2,0,56
+antonio,1,1,18,2025-08-02T18:36:58.000Z,0,Internacional,São Paulo,1,2,0,56
+antonio,1,0,18,2025-08-02T18:37:09.000Z,5,Santos,Juventude,3,1,0,56
+braulio,1,0,18,2025-08-02T20:07:27.000Z,5,Mirassol,Vasco,3,2,25,158
+braulio,1,1,18,2025-08-02T20:07:34.000Z,0,Fluminense,Grêmio,1,0,25,158
+braulio,2,2,18,2025-08-02T20:07:42.000Z,0,Botafogo,Cruzeiro,0,2,25,158
+braulio,1,1,18,2025-08-02T20:07:51.000Z,10,Corinthians,Fortaleza,1,1,25,158
+braulio,0,1,18,2025-08-02T20:08:03.000Z,0,Atlético‑MG,Bragantino,2,1,25,158
+braulio,0,2,18,2025-08-02T20:08:08.000Z,0,Ceará,Flamengo,1,1,25,158
+braulio,0,3,18,2025-08-02T20:08:17.000Z,0,Vitória,Palmeiras,2,2,25,158
+braulio,1,2,18,2025-08-02T20:08:23.000Z,11,Internacional,São Paulo,1,2,25,158
+braulio,1,0,18,2025-08-02T20:08:34.000Z,5,Santos,Juventude,3,1,25,158
+ricardomello,1,0,19,2025-08-06T15:47:49.000Z,5,Flamengo,Mirassol,2,1,15,157
+ricardomello,2,0,19,2025-08-08T02:30:03.000Z,10,São Paulo,Vitória,2,0,15,157
+ricardomello,1,1,19,2025-08-08T02:30:13.000Z,0,Bragantino,Internacional,1,3,15,157
+ricardomello,1,1,19,2025-08-08T02:36:23.000Z,0,Fortaleza,Botafogo,0,5,15,157
+ricardomello,1,1,19,2025-08-08T02:37:20.000Z,5,Bahia,Fluminense,3,3,15,157
+ricardomello,0,2,19,2025-08-08T02:37:26.000Z,0,Vasco,Atlético‑MG,1,1,15,157
+ricardomello,2,1,19,2025-08-08T02:37:33.000Z,10,Palmeiras,Ceará,2,1,15,157
+ricardomello,1,0,19,2025-08-08T02:37:38.000Z,0,Cruzeiro,Santos,1,2,15,157
+ricardomello,1,0,19,2025-08-08T02:42:51.000Z,0,Grêmio,Sport,0,1,15,157
+zitras,2,1,19,2025-08-08T10:04:56.000Z,10,Flamengo,Mirassol,2,1,30,30
+zitras,2,0,19,2025-08-08T10:05:09.000Z,10,São Paulo,Vitória,2,0,30,30
+zitras,1,1,19,2025-08-08T10:05:21.000Z,0,Bragantino,Internacional,1,3,30,30
+zitras,1,1,19,2025-08-08T10:05:32.000Z,0,Fortaleza,Botafogo,0,5,30,30
+zitras,1,0,19,2025-08-08T10:05:43.000Z,0,Bahia,Fluminense,3,3,30,30
+zitras,0,0,19,2025-08-08T10:05:54.000Z,5,Vasco,Atlético‑MG,1,1,30,30
+zitras,3,1,19,2025-08-08T10:06:09.000Z,5,Palmeiras,Ceará,2,1,30,30
+zitras,1,1,19,2025-08-08T10:06:25.000Z,,Juventude,Corinthians,,,30,30
+zitras,2,1,19,2025-08-08T10:06:34.000Z,0,Grêmio,Sport,0,1,30,30
+zitras,3,2,19,2025-08-08T10:06:42.000Z,0,Cruzeiro,Santos,1,2,30,30
+ricardomello,0,1,19,2025-08-08T12:03:27.000Z,,Juventude,Corinthians,,,15,157
+guilherme,3,1,19,2025-08-08T14:04:11.000Z,5,Flamengo,Mirassol,2,1,20,20
+guilherme,2,1,19,2025-08-08T14:04:22.000Z,5,São Paulo,Vitória,2,0,20,20
+guilherme,1,1,19,2025-08-08T14:04:30.000Z,0,Bragantino,Internacional,1,3,20,20
+guilherme,1,3,19,2025-08-08T14:04:38.000Z,5,Fortaleza,Botafogo,0,5,20,20
+guilherme,2,1,19,2025-08-08T14:05:10.000Z,0,Bahia,Fluminense,3,3,20,20
+guilherme,0,2,19,2025-08-08T14:05:18.000Z,0,Vasco,Atlético‑MG,1,1,20,20
+guilherme,2,0,19,2025-08-08T14:05:24.000Z,5,Palmeiras,Ceará,2,1,20,20
+guilherme,3,0,19,2025-08-08T14:05:33.000Z,0,Cruzeiro,Santos,1,2,20,20
+guilherme,1,0,19,2025-08-08T14:05:42.000Z,0,Grêmio,Sport,0,1,20,20
+guilherme,0,2,19,2025-08-08T14:05:56.000Z,,Juventude,Corinthians,,,20,20
+cleber,2,1,19,2025-08-08T15:15:45.000Z,10,Flamengo,Mirassol,2,1,35,35
+cleber,3,1,19,2025-08-08T15:15:52.000Z,5,São Paulo,Vitória,2,0,35,35
+cleber,1,1,19,2025-08-08T15:16:05.000Z,0,Bragantino,Internacional,1,3,35,35
+cleber,1,2,19,2025-08-08T15:16:19.000Z,5,Fortaleza,Botafogo,0,5,35,35
+cleber,2,1,19,2025-08-08T15:16:29.000Z,0,Bahia,Fluminense,3,3,35,35
+cleber,1,1,19,2025-08-08T15:16:43.000Z,10,Vasco,Atlético‑MG,1,1,35,35
+cleber,2,0,19,2025-08-08T15:16:58.000Z,5,Palmeiras,Ceará,2,1,35,35
+cleber,3,1,19,2025-08-08T15:17:19.000Z,0,Cruzeiro,Santos,1,2,35,35
+cleber,2,1,19,2025-08-08T15:17:31.000Z,0,Grêmio,Sport,0,1,35,35
+cleber,2,1,19,2025-08-08T15:17:48.000Z,,Juventude,Corinthians,,,35,35
+murilo,1,2,19,2025-08-09T00:30:34.000Z,0,Flamengo,Mirassol,2,1,35,105
+murilo,1,1,19,2025-08-09T00:30:49.000Z,0,São Paulo,Vitória,2,0,35,105
+murilo,0,1,19,2025-08-09T00:31:01.000Z,5,Bragantino,Internacional,1,3,35,105
+murilo,0,0,19,2025-08-09T00:31:09.000Z,0,Fortaleza,Botafogo,0,5,35,105
+murilo,2,0,19,2025-08-09T00:31:16.000Z,0,Bahia,Fluminense,3,3,35,105
+murilo,1,3,19,2025-08-09T00:31:24.000Z,0,Vasco,Atlético‑MG,1,1,35,105
+murilo,2,0,19,2025-08-09T00:31:32.000Z,5,Palmeiras,Ceará,2,1,35,105
+murilo,0,1,19,2025-08-09T00:31:38.000Z,5,Cruzeiro,Santos,1,2,35,105
+murilo,2,1,19,2025-08-09T00:31:45.000Z,0,Grêmio,Sport,0,1,35,105
+murilo,0,1,19,2025-08-09T00:31:51.000Z,,Juventude,Corinthians,,,35,105
+daniel,0,2,19,2025-08-09T00:35:23.000Z,0,Flamengo,Mirassol,2,1,25,132
+daniel,2,1,19,2025-08-09T00:35:50.000Z,5,São Paulo,Vitória,2,0,25,132
+daniel,1,0,19,2025-08-09T00:35:58.000Z,0,Bragantino,Internacional,1,3,25,132
+daniel,0,2,19,2025-08-09T00:36:10.000Z,5,Fortaleza,Botafogo,0,5,25,132
+daniel,2,1,19,2025-08-09T00:36:21.000Z,0,Bahia,Fluminense,3,3,25,132
+daniel,0,1,19,2025-08-09T00:36:31.000Z,0,Vasco,Atlético‑MG,1,1,25,132
+daniel,2,0,19,2025-08-09T00:36:41.000Z,5,Palmeiras,Ceará,2,1,25,132
+daniel,3,2,19,2025-08-09T00:36:50.000Z,0,Cruzeiro,Santos,1,2,25,132
+daniel,3,0,19,2025-08-09T00:37:01.000Z,0,Grêmio,Sport,0,1,25,132
+daniel,0,3,19,2025-08-09T00:37:09.000Z,,Juventude,Corinthians,,,25,132
+giovanni,1,1,19,2025-08-09T00:59:35.000Z,0,Flamengo,Mirassol,2,1,10,66
+giovanni,2,1,19,2025-08-09T00:59:46.000Z,5,São Paulo,Vitória,2,0,10,66
+giovanni,2,0,19,2025-08-09T01:00:08.000Z,0,Bragantino,Internacional,1,3,10,66
+giovanni,1,1,19,2025-08-09T01:00:20.000Z,0,Fortaleza,Botafogo,0,5,10,66
+giovanni,1,1,19,2025-08-09T01:00:53.000Z,5,Bahia,Fluminense,3,3,10,66
+giovanni,2,3,19,2025-08-09T01:01:08.000Z,0,Vasco,Atlético‑MG,1,1,10,66
+giovanni,4,0,19,2025-08-09T01:01:18.000Z,5,Palmeiras,Ceará,2,1,10,66
+giovanni,2,0,19,2025-08-09T01:01:31.000Z,0,Cruzeiro,Santos,1,2,10,66
+giovanni,2,1,19,2025-08-09T01:01:41.000Z,0,Grêmio,Sport,0,1,10,66
+giovanni,1,1,19,2025-08-09T01:01:50.000Z,,Juventude,Corinthians,,,10,66
+lucas,2,1,19,2025-08-09T13:36:35.000Z,5,São Paulo,Vitória,2,0,20,111
+lucas,3,2,19,2025-08-09T13:36:48.000Z,5,Flamengo,Mirassol,2,1,20,111
+lucas,2,0,19,2025-08-09T13:39:51.000Z,0,Bragantino,Internacional,1,3,20,111
+lucas,0,1,19,2025-08-09T13:41:08.000Z,5,Fortaleza,Botafogo,0,5,20,111
+braulio,2,2,19,2025-08-09T13:44:25.000Z,0,Flamengo,Mirassol,2,1,25,158
+braulio,3,0,19,2025-08-09T13:44:33.000Z,5,São Paulo,Vitória,2,0,25,158
+braulio,1,0,19,2025-08-09T13:44:42.000Z,0,Bragantino,Internacional,1,3,25,158
+luciano,5,2,19,2025-08-09T13:44:47.000Z,5,Flamengo,Mirassol,2,1,30,163
+braulio,1,2,19,2025-08-09T13:44:49.000Z,5,Fortaleza,Botafogo,0,5,25,158
+braulio,1,1,19,2025-08-09T13:44:57.000Z,5,Bahia,Fluminense,3,3,25,158
+braulio,2,1,19,2025-08-09T13:45:04.000Z,0,Vasco,Atlético‑MG,1,1,25,158
+luciano,3,1,19,2025-08-09T13:45:10.000Z,5,São Paulo,Vitória,2,0,30,163
+braulio,2,0,19,2025-08-09T13:45:11.000Z,5,Palmeiras,Ceará,2,1,25,158
+luciano,2,1,19,2025-08-09T13:45:25.000Z,0,Bragantino,Internacional,1,3,30,163
+braulio,2,1,19,2025-08-09T13:45:25.000Z,0,Cruzeiro,Santos,1,2,25,158
+braulio,2,0,19,2025-08-09T13:45:34.000Z,0,Grêmio,Sport,0,1,25,158
+luciano,1,1,19,2025-08-09T13:45:40.000Z,0,Fortaleza,Botafogo,0,5,30,163
+braulio,1,1,19,2025-08-09T13:45:42.000Z,,Juventude,Corinthians,,,25,158
+luciano,2,2,19,2025-08-09T13:45:57.000Z,5,Bahia,Fluminense,3,3,30,163
+luciano,1,2,19,2025-08-09T13:46:20.000Z,0,Vasco,Atlético‑MG,1,1,30,163
+luciano,3,1,19,2025-08-09T13:46:38.000Z,5,Palmeiras,Ceará,2,1,30,163
+luciano,0,0,19,2025-08-09T13:47:03.000Z,,Juventude,Corinthians,,,30,163
+luciano,2,0,19,2025-08-09T13:47:17.000Z,0,Grêmio,Sport,0,1,30,163
+luciano,3,2,19,2025-08-09T13:47:33.000Z,0,Cruzeiro,Santos,1,2,30,163
+lucas,1,1,19,2025-08-09T14:03:12.000Z,5,Bahia,Fluminense,3,3,20,111
+lucas,0,2,19,2025-08-09T14:05:19.000Z,0,Vasco,Atlético‑MG,1,1,20,111
+lucas,2,0,19,2025-08-09T14:05:52.000Z,5,Palmeiras,Ceará,2,1,20,111
+lucas,1,1,19,2025-08-09T14:06:33.000Z,0,Cruzeiro,Santos,1,2,20,111
+lucas,1,0,19,2025-08-09T14:22:28.000Z,0,Grêmio,Sport,0,1,20,111
+lucas,0,1,19,2025-08-09T14:23:00.000Z,,Juventude,Corinthians,,,20,111
+edmilson,3,1,19,2025-08-09T14:34:30.000Z,5,Flamengo,Mirassol,2,1,20,40
+edmilson,2,1,19,2025-08-09T14:34:44.000Z,5,São Paulo,Vitória,2,0,20,40
+edmilson,1,0,19,2025-08-09T14:34:57.000Z,0,Bragantino,Internacional,1,3,20,40
+edmilson,2,0,19,2025-08-09T14:35:11.000Z,0,Fortaleza,Botafogo,0,5,20,40
+edmilson,1,2,19,2025-08-09T14:35:24.000Z,0,Bahia,Fluminense,3,3,20,40
+edmilson,2,0,19,2025-08-09T14:35:44.000Z,0,Vasco,Atlético‑MG,1,1,20,40
+edmilson,3,0,19,2025-08-09T14:36:02.000Z,5,Palmeiras,Ceará,2,1,20,40
+edmilson,0,2,19,2025-08-09T14:36:16.000Z,5,Cruzeiro,Santos,1,2,20,40
+edmilson,2,0,19,2025-08-09T14:36:30.000Z,0,Grêmio,Sport,0,1,20,40
+edmilson,1,1,19,2025-08-09T14:36:44.000Z,,Juventude,Corinthians,,,20,40
+weslley,2,2,19,2025-08-09T16:02:46.000Z,0,Flamengo,Mirassol,2,1,30,30
+weslley,2,0,19,2025-08-09T16:02:59.000Z,10,São Paulo,Vitória,2,0,30,30
+weslley,1,0,19,2025-08-09T16:03:13.000Z,0,Bragantino,Internacional,1,3,30,30
+weslley,1,2,19,2025-08-09T16:03:25.000Z,5,Fortaleza,Botafogo,0,5,30,30
+weslley,2,1,19,2025-08-09T16:03:59.000Z,0,Bahia,Fluminense,3,3,30,30
+weslley,1,1,19,2025-08-09T16:04:10.000Z,10,Vasco,Atlético‑MG,1,1,30,30
+weslley,1,0,19,2025-08-09T16:04:21.000Z,5,Palmeiras,Ceará,2,1,30,30
+weslley,2,0,19,2025-08-09T16:04:33.000Z,0,Cruzeiro,Santos,1,2,30,30
+weslley,1,0,19,2025-08-09T16:04:42.000Z,0,Grêmio,Sport,0,1,30,30
+weslley,2,2,19,2025-08-09T16:04:54.000Z,,Juventude,Corinthians,,,30,30
+gabriel,3,1,19,2025-08-09T16:28:12.000Z,5,Flamengo,Mirassol,2,1,15,15
+gabriel,3,1,19,2025-08-09T16:28:22.000Z,5,São Paulo,Vitória,2,0,15,15
+gabriel,1,1,19,2025-08-09T16:28:42.000Z,0,Bragantino,Internacional,1,3,15,15
+gabriel,1,1,19,2025-08-09T16:29:00.000Z,0,Fortaleza,Botafogo,0,5,15,15
+gabriel,2,1,19,2025-08-09T16:29:16.000Z,0,Bahia,Fluminense,3,3,15,15
+gabriel,1,2,19,2025-08-09T16:29:28.000Z,0,Vasco,Atlético‑MG,1,1,15,15
+gabriel,3,1,19,2025-08-09T16:29:41.000Z,5,Palmeiras,Ceará,2,1,15,15
+gabriel,2,2,19,2025-08-09T16:29:51.000Z,0,Cruzeiro,Santos,1,2,15,15
+gabriel,3,1,19,2025-08-09T16:30:10.000Z,0,Grêmio,Sport,0,1,15,15
+gabriel,2,1,19,2025-08-09T16:30:20.000Z,,Juventude,Corinthians,,,15,15
+matheus,2,0,19,2025-08-09T17:33:45.000Z,5,Flamengo,Mirassol,2,1,20,20
+matheus,2,1,19,2025-08-09T17:33:52.000Z,5,São Paulo,Vitória,2,0,20,20
+matheus,1,0,19,2025-08-09T17:33:58.000Z,0,Bragantino,Internacional,1,3,20,20
+matheus,1,1,19,2025-08-09T17:34:07.000Z,0,Fortaleza,Botafogo,0,5,20,20
+matheus,2,2,19,2025-08-09T17:34:13.000Z,5,Bahia,Fluminense,3,3,20,20
+matheus,1,2,19,2025-08-09T17:34:23.000Z,0,Vasco,Atlético‑MG,1,1,20,20
+matheus,2,0,19,2025-08-09T17:34:30.000Z,5,Palmeiras,Ceará,2,1,20,20
+matheus,2,1,19,2025-08-09T17:34:36.000Z,0,Cruzeiro,Santos,1,2,20,20
+matheus,1,0,19,2025-08-09T17:34:41.000Z,0,Grêmio,Sport,0,1,20,20
+matheus,0,1,19,2025-08-09T17:34:47.000Z,,Juventude,Corinthians,,,20,20
+joaozorzella,2,0,19,2025-08-09T18:02:51.000Z,5,Flamengo,Mirassol,2,1,25,167
+joaozorzella,2,1,19,2025-08-09T18:03:03.000Z,5,São Paulo,Vitória,2,0,25,167
+joaozorzella,1,1,19,2025-08-09T18:03:16.000Z,0,Bragantino,Internacional,1,3,25,167
+joaozorzella,2,2,19,2025-08-09T18:03:39.000Z,0,Fortaleza,Botafogo,0,5,25,167
+joaozorzella,1,0,19,2025-08-09T18:03:50.000Z,0,Bahia,Fluminense,3,3,25,167
+joaozorzella,0,1,19,2025-08-09T18:04:12.000Z,0,Vasco,Atlético‑MG,1,1,25,167
+joaozorzella,2,1,19,2025-08-09T18:04:20.000Z,10,Palmeiras,Ceará,2,1,25,167
+joaozorzella,1,0,19,2025-08-09T18:04:37.000Z,0,Cruzeiro,Santos,1,2,25,167
+joaozorzella,1,0,19,2025-08-09T18:04:48.000Z,0,Grêmio,Sport,0,1,25,167
+joaozorzella,0,1,19,2025-08-09T18:05:10.000Z,,Juventude,Corinthians,,,25,167
+heraldo,2,0,19,2025-08-09T18:13:30.000Z,5,Flamengo,Mirassol,2,1,20,20
+heraldo,3,1,19,2025-08-09T18:13:46.000Z,5,São Paulo,Vitória,2,0,20,20
+heraldo,1,1,19,2025-08-09T18:14:06.000Z,0,Bragantino,Internacional,1,3,20,20
+heraldo,1,2,19,2025-08-09T18:14:18.000Z,5,Fortaleza,Botafogo,0,5,20,20
+heraldo,2,1,19,2025-08-09T18:14:41.000Z,0,Bahia,Fluminense,3,3,20,20
+antonio,2,0,19,2025-08-09T20:58:02.000Z,5,Flamengo,Mirassol,2,1,0,56
+antonio,2,1,19,2025-08-09T20:58:47.000Z,5,São Paulo,Vitória,2,0,0,56
+antonio,1,0,19,2025-08-09T21:00:15.000Z,0,Bragantino,Internacional,1,3,0,56
+antonio,1,2,19,2025-08-09T21:00:27.000Z,5,Fortaleza,Botafogo,0,5,0,56
+antonio,2,2,19,2025-08-09T21:01:32.000Z,5,Bahia,Fluminense,3,3,0,56
+antonio,0,1,19,2025-08-09T21:02:00.000Z,0,Vasco,Atlético‑MG,1,1,0,56
+antonio,1,0,19,2025-08-09T21:02:18.000Z,5,Palmeiras,Ceará,2,1,0,56
+antonio,1,2,19,2025-08-09T21:02:26.000Z,11,Cruzeiro,Santos,1,2,0,56
+antonio,2,0,19,2025-08-09T21:02:40.000Z,0,Grêmio,Sport,0,1,0,56
+antonio,1,1,19,2025-08-09T21:02:52.000Z,,Juventude,Corinthians,,,0,56
+rafaelcarvalho,3,0,19,2025-08-09T21:28:23.000Z,5,Flamengo,Mirassol,2,1,30,30
+rafaelcarvalho,3,0,19,2025-08-09T21:28:42.000Z,5,São Paulo,Vitória,2,0,30,30
+rafaelcarvalho,0,2,19,2025-08-09T21:29:07.000Z,5,Bragantino,Internacional,1,3,30,30
+rafaelcarvalho,1,2,19,2025-08-09T21:29:32.000Z,5,Fortaleza,Botafogo,0,5,30,30
+rafaelcarvalho,0,2,19,2025-08-09T21:29:45.000Z,0,Bahia,Fluminense,3,3,30,30
+rafaelcarvalho,0,1,19,2025-08-09T21:30:00.000Z,0,Vasco,Atlético‑MG,1,1,30,30
+rafaelcarvalho,2,0,19,2025-08-09T21:30:13.000Z,5,Palmeiras,Ceará,2,1,30,30
+rafaelcarvalho,0,2,19,2025-08-09T21:30:30.000Z,5,Cruzeiro,Santos,1,2,30,30
+rafaelcarvalho,3,0,19,2025-08-09T21:30:41.000Z,0,Grêmio,Sport,0,1,30,30
+rafaelcarvalho,2,0,19,2025-08-09T21:30:53.000Z,,Juventude,Corinthians,,,30,30
+heraldo,2,1,19,2025-08-10T18:54:04.000Z,0,Vasco,Atlético‑MG,1,1,20,20
+heraldo,3,1,19,2025-08-10T18:54:14.000Z,5,Palmeiras,Ceará,2,1,20,20
+heraldo,2,1,19,2025-08-10T18:54:24.000Z,0,Cruzeiro,Santos,1,2,20,20
+heraldo,1,0,19,2025-08-10T18:54:38.000Z,0,Grêmio,Sport,0,1,20,20

@@ -86,12 +86,8 @@ public class ApplicationUseCaseConfig {
         return new CountBettorsByRoundUseCase(betPort);
     }
 
-
     @Bean
     public RagIngestDataUseCase ragIngestDataUseCase(RagIngestDataService ragIngestDataService, RagPort ragPort) {
         return new RagIngestDataUseCase(ragIngestDataService, ragPort);
     }
-
-
-
 }
