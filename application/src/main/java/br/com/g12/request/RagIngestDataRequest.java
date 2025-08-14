@@ -12,5 +12,5 @@ public record RagIngestDataRequest(
         int roundPoints,
         int totalPoints,
         int round,
-        java.util.Date betDate
+        String betDate
 ) {}

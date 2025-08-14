@@ -1,99 +1,59 @@
 package br.com.g12.usecase.rag;
 
-import br.com.g12.request.RagIngestDataRequest;
-import br.com.g12.response.RagIngestDataResponse;
+import br.com.g12.model.RagIngestData;
+import br.com.g12.port.RagPort;
+import br.com.g12.service.RagIngestDataService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 
-import java.util.Date;
-import java.util.Map;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
 
-public class RagIngestDataUseCaseTest {
+class RagIngestDataUseCaseTest {
 
-    private final RagIngestDataUseCase useCase = new RagIngestDataUseCase();
+    private RagIngestDataService ragIngestDataService;
+    private RagPort ragPort;
+    private RagIngestDataUseCase useCase;
 
-    @Test
-    public void should_generate_phrases_and_metadata_for_exact_score_hit() {
-        RagIngestDataRequest request = new RagIngestDataRequest(
-                "Ricardo",
-                "Corinthians",
-                "Cruzeiro",
-                2,
-                1,
-                2,
-                1,
-                5,
-                10,
-                100,
-                1,
-                new Date()
-        );
-
-        RagIngestDataResponse response = useCase.execute(request);
-
-        assertNotNull(response);
-        assertNotNull(response.content());
-        assertTrue(response.content().contains("Ricardo"));
-        assertTrue(response.content().contains("Corinthians"));
-        assertTrue(response.content().contains("Cruzeiro"));
-
-        Map<String, Object> metadata = response.metaData();
-        assertEquals("Ricardo", metadata.get("username"));
-        assertEquals("Corinthians", metadata.get("homeTeam"));
-        assertEquals("Cruzeiro", metadata.get("awayTeam"));
-        assertEquals(2, metadata.get("predictedHome"));
-        assertEquals(1, metadata.get("predictedAway"));
-        assertEquals(2, metadata.get("actualHome"));
-        assertEquals(1, metadata.get("actualAway"));
-        assertEquals(5, metadata.get("pointsEarned"));
-        assertEquals(10, metadata.get("roundPoints"));
-        assertEquals(100, metadata.get("totalPoints"));
-        assertEquals(true, metadata.get("hitExactScore"));
-        assertEquals(true, metadata.get("hitOutcome"));
+    @BeforeEach
+    void setUp() {
+        ragIngestDataService = mock(RagIngestDataService.class);
+        ragPort = mock(RagPort.class);
+        useCase = new RagIngestDataUseCase(ragIngestDataService, ragPort);
     }
 
     @Test
-    public void should_generate_phrases_for_draw_without_exact_score() {
-        RagIngestDataRequest request = new RagIngestDataRequest(
-                "Joana",
-                "Corinthians",
-                "Cruzeiro",
-                1, 1,
-                0, 0,
-                0,
-                5,
-                50,
-                2,
-                new Date()
-        );
+    void generateDocs_shouldParseCsvAndCallDependencies() throws Exception {
+        String csvData = """
+                username,homeTeam,awayTeam,prediction.homeTeam,prediction.awayTeam,actualHome,actualAway,pointsEarned,roundPoints,totalPoints,round,date
+                joao,Corinthians,Cruzeiro,2,1,2,1,5,10,100,1,2025-08-10T20:00:00Z
+                maria,Palmeiras,Santos,1,1,0,0,0,3,50,2,2025-08-11T20:00:00Z
+                """;
 
-        RagIngestDataResponse response = useCase.execute(request);
+        when(ragIngestDataService.execute(any(RagIngestData.class)))
+                .thenAnswer(inv -> new RagIngestData.RagIngestDataResult("mock-content", null));
 
-        assertNotNull(response.content());
-        assertTrue(response.content().contains("empate"));
-        assertFalse((Boolean) response.metaData().get("hitExactScore"));
-    }
+        try (InputStreamReader reader = new InputStreamReader(
+                new java.io.ByteArrayInputStream(csvData.getBytes(StandardCharsets.UTF_8)),
+                StandardCharsets.UTF_8)) {
 
-    @Test
-    public void should_handle_big_win_as_many_score() {
-        RagIngestDataRequest request = new RagIngestDataRequest(
-                "Maria",
-                "Corinthians",
-                "Cruzeiro",
-                3, 0,
-                5, 1,
-                3,
-                8,
-                80,
-                3,
-                new Date()
-        );
+            int count = useCase.generateDocs(reader);
 
-        RagIngestDataResponse response = useCase.execute(request);
-        assertTrue(response.content().contains("goleada"));
-        assertTrue(response.content().contains("O Corinthians aplicou uma goleada no Cruzeiro"));
-        assertTrue((Boolean) response.metaData().get("hitOutcome"));
-        assertFalse((Boolean) response.metaData().get("hitExactScore"));
+            assertEquals(2, count);
+        }
+
+        verify(ragIngestDataService, times(2)).execute(any(RagIngestData.class));
+
+        ArgumentCaptor<List<RagIngestData.RagIngestDataResult>> captor = ArgumentCaptor.forClass(List.class);
+        verify(ragPort, times(1)).add(captor.capture());
+
+        List<RagIngestData.RagIngestDataResult> addedDocs = captor.getValue();
+        assertEquals(2, addedDocs.size());
+        assertEquals("mock-content", addedDocs.getFirst().content());
     }
 }
