@@ -1,0 +1,21 @@
+@host = http://localhost:8080
+### Ingest TOTAL (upload de CSV)
+POST {{host}}/rag-admin/ingest-data
+Content-Type: multipart/form-data; boundary=BOUNDARY
+
+--BOUNDARY
+Content-Disposition: form-data;
+
+RAG
+--BOUNDARY
+Content-Disposition: form-data; name="file"; filename="rag_ingest.csv"
+Content-Type: text/csv
+
+< ../rag_data/rag_ingest.csv
+--BOUNDARY--
+
+### Pergunta (POST)
+POST {{host}}/rag-admin/ask
+Content-Type: application/json
+
+{ "question": "qual usuario fez mais pontos nesta rodada?" }

@@ -2,8 +2,10 @@ package br.com.g12.config;
 
 import br.com.g12.port.BetPort;
 import br.com.g12.port.MatchPort;
+import br.com.g12.port.RagPort;
 import br.com.g12.port.ScoreboardPort;
 import br.com.g12.service.PredictionScoringService;
+import br.com.g12.service.RagIngestDataService;
 import br.com.g12.service.RoundScoreboardService;
 import br.com.g12.usecase.bet.CountBettorsByRoundUseCase;
 import br.com.g12.usecase.bet.CreateBetUseCase;
@@ -12,6 +14,8 @@ import br.com.g12.usecase.match.CloseExpiredMatchesUseCase;
 import br.com.g12.usecase.match.CreateMatchUseCase;
 import br.com.g12.usecase.match.FindMatchesWithUserBetsUseCase;
 import br.com.g12.usecase.match.UpdateMatchScoreUseCase;
+import br.com.g12.usecase.rag.RagAnswerQuestionUseCase;
+import br.com.g12.usecase.rag.RagIngestDataUseCase;
 import br.com.g12.usecase.round.FindCurrentRoundUseCase;
 import br.com.g12.usecase.score.ScoreBoardUseCase;
 import br.com.g12.validators.BetValidator;
@@ -84,8 +88,14 @@ public class ApplicationUseCaseConfig {
     }
 
     @Bean
-    public RoundScoreboardService roundScoreboardService(ScoreboardPort scoreboardPort) {
-        return new RoundScoreboardService(scoreboardPort);
+    public RagIngestDataUseCase ragIngestDataUseCase(RagIngestDataService ragIngestDataService, RagPort ragPort) {
+        return new RagIngestDataUseCase(ragIngestDataService, ragPort);
     }
+
+    @Bean
+    public RagAnswerQuestionUseCase ragAnswerQuestionUseCase(RagPort ragPort) {
+        return new RagAnswerQuestionUseCase(ragPort);
+    }
+
 
 }

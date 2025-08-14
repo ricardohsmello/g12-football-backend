@@ -12,6 +12,9 @@
     <version>0.0.1-SNAPSHOT</version>
     <description>This repository is the infrastructure modular part</description>
 
+    <properties>
+        <spring-ai.version>1.0.1</spring-ai.version>
+    </properties>
     <dependencies>
        <!-- INFRA DEPENDS ON DOMAIN AND APPLICATION -->
         <dependency>
@@ -36,7 +39,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
-            <version>3.5.0</version>
+            <version>3.5.4</version>
         </dependency>
 
         <dependency>
@@ -70,7 +73,38 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- SPRING AI-->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-model-openai</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-vector-store-mongodb-atlas</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-advisors-vector-store</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-csv</artifactId>
+        </dependency>
+
     </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.ai</groupId>
+                <artifactId>spring-ai-bom</artifactId>
+                <version>${spring-ai.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>

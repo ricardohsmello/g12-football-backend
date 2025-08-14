@@ -26,6 +26,11 @@ export MONGODB_URI="<YOUR_CONNECTION_STRING>"
 mvn spring-boot:run
 ````
 
+## Running the Test Coverage
+
+````
+mvn clean test verify -Pcoverage
+````
 ## Endpoints
 
 You can find all endpoints available at resources/http
