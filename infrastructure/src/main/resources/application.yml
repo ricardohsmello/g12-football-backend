@@ -11,6 +11,7 @@ spring:
       api-key: ${OPENAI_API_KEY}
     vectorstore:
       mongodb:
+        initialize-schema: true
         collection-name: rag_docs
         index-name: vector_index
         path-name: embedding

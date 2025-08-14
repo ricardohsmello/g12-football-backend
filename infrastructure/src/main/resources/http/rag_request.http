@@ -15,7 +15,7 @@ Content-Type: text/csv
 --BOUNDARY--
 
 ### Pergunta (POST)
-POST {{host}}/ask
+POST {{host}}/rag-admin/ask
 Content-Type: application/json
 
-{ "question": "Quem fez mais pontos na rodada 18??" }
+{ "question": "qual usuario fez mais pontos nesta rodada?" }

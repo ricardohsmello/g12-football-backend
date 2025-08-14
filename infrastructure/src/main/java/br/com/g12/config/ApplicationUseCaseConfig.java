@@ -14,6 +14,7 @@ import br.com.g12.usecase.match.CloseExpiredMatchesUseCase;
 import br.com.g12.usecase.match.CreateMatchUseCase;
 import br.com.g12.usecase.match.FindMatchesWithUserBetsUseCase;
 import br.com.g12.usecase.match.UpdateMatchScoreUseCase;
+import br.com.g12.usecase.rag.RagAnswerQuestionUseCase;
 import br.com.g12.usecase.rag.RagIngestDataUseCase;
 import br.com.g12.usecase.round.FindCurrentRoundUseCase;
 import br.com.g12.usecase.score.ScoreBoardUseCase;
@@ -90,4 +91,11 @@ public class ApplicationUseCaseConfig {
     public RagIngestDataUseCase ragIngestDataUseCase(RagIngestDataService ragIngestDataService, RagPort ragPort) {
         return new RagIngestDataUseCase(ragIngestDataService, ragPort);
     }
+
+    @Bean
+    public RagAnswerQuestionUseCase ragAnswerQuestionUseCase(RagPort ragPort) {
+        return new RagAnswerQuestionUseCase(ragPort);
+    }
+
+
 }
