@@ -2,11 +2,6 @@ package br.com.g12.database.mongodb.impl;
 
 import br.com.g12.model.RagIngestData;
 import br.com.g12.port.RagPort;
-import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.document.Document;
-import org.springframework.ai.transformer.splitter.TokenTextSplitter;
-import org.springframework.ai.vectorstore.SearchRequest;
-import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

@@ -4,17 +4,17 @@ spring:
       uri: ${MONGODB_URI}
       database: g12
       auto-index-creation: true
-  ai:
-    openai:
-      chat.options.model: gpt-4o-mini
-      embedding.options.model: text-embedding-3-small
-      api-key: ${OPENAI_API_KEY}
-    vectorstore:
-      mongodb:
-        initialize-schema: true
-        collection-name: rag_docs
-        index-name: vector_index
-        path-name: embedding
+#  ai:
+#    openai:
+#      chat.options.model: gpt-4o-mini
+#      embedding.options.model: text-embedding-3-small
+#      api-key: ${OPENAI_API_KEY}
+#    vectorstore:
+#      mongodb:
+#        initialize-schema: true
+#        collection-name: rag_docs
+#        index-name: vector_index
+#        path-name: embedding
 logging:
   level:
     org.springframework.data.mongodb: DEBUG
