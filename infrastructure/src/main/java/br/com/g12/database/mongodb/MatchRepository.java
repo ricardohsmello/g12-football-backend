@@ -13,6 +13,12 @@ import java.util.Optional;
 public interface MatchRepository extends MongoRepository<MatchDocument, String> {
 
     List<MatchDocument> findByRoundAndStatus(int round, String status);
+    List<MatchDocument> findByRoundAndStatusAndMatchDateGreaterThanEqualAndMatchDateLessThan(
+            int round,
+            String status,
+            Date startDate,
+            Date endDate
+    );
 
     @Aggregation(pipeline = {
         "{ $facet: { " +

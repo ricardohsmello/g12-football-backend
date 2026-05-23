@@ -12,7 +12,8 @@ import java.util.Date;
 @Document(collection = "match")
 @CompoundIndexes({
         @CompoundIndex(name = "statusAndDate", def = "{'status': 1, 'matchDate': 1}"),
-        @CompoundIndex(name = "roundAndStatus", def = "{'round': 1, 'status': 1}")
+        @CompoundIndex(name = "roundAndStatus", def = "{'round': 1, 'status': 1}"),
+        @CompoundIndex(name = "roundStatusAndDate", def = "{'round': 1, 'status': 1, 'matchDate': 1}")
 })
 
 public class MatchDocument {

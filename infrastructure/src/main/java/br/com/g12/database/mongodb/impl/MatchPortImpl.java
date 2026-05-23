@@ -54,6 +54,13 @@ public class MatchPortImpl implements MatchPort {
     }
 
     @Override
+    public List<Match> findByRoundAndStatusAndMatchDateBetween(int round, String status, Date startDate, Date endDate) {
+        List<MatchDocument> byRound = matchRepository
+                .findByRoundAndStatusAndMatchDateGreaterThanEqualAndMatchDateLessThan(round, status, startDate, endDate);
+        return byRound.stream().map(MatchDocument::toModel).toList();
+    }
+
+    @Override
     public List<MatchWithPrediction> findByRoundUser(String username, int round) {
         Aggregation aggregation = Aggregation.newAggregation(
                 match(Criteria.where("round").is(round)),

@@ -9,6 +9,8 @@ import br.com.g12.service.PredictionScoringService;
 import br.com.g12.service.RoundScoreboardService;
 import br.com.g12.usecase.AbstractUseCase;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -30,11 +32,20 @@ public class ScoreBetsUseCase extends AbstractUseCase<Integer> {
     }
 
     public void execute(int round) {
+        execute(round, LocalDate.now().getYear());
+    }
+
+    public void execute(int round, int year) {
         try {
             logInput(round);
             var total = System.currentTimeMillis();
 
-            List<Match> matches = matchPort.findByRoundAndStatus(round, "CLOSED");
+            List<Match> matches = matchPort.findByRoundAndStatusAndMatchDateBetween(
+                    round,
+                    "CLOSED",
+                    startOfYear(year),
+                    startOfYear(year + 1)
+            );
 
             List<String> matchIds = matches.stream()
                     .map(Match::getId)
@@ -54,13 +65,19 @@ public class ScoreBetsUseCase extends AbstractUseCase<Integer> {
 
             closeAllMatchesIfNeeded(matches);
 
-            roundScoreboardService.execute(scoredBets, round);
+            roundScoreboardService.execute(scoredBets, round, year);
 
             log.info("Finished Score bets use case. Took {} s", (System.currentTimeMillis() - total) / 1000);
         } catch (ScoreException e) {
             logError(e);
             throw e;
         }
+    }
+
+    private Date startOfYear(int year) {
+        return Date.from(LocalDate.of(year, 1, 1)
+                .atStartOfDay(ZoneId.systemDefault())
+                .toInstant());
     }
 
     private Map<String, Match> getMatchesWithScoreById(List<Match> matches) {

@@ -34,10 +34,10 @@ class RoundScoreboardServiceTest {
     void shouldInsertNewRoundEntriesForUsersWithoutScore() {
         List<Bet> bets = List.of(bet("lucas", 10), bet("joao", 5));
 
-        when(scoreboardPort.findByRoundAndUsernames(eq(13), anyList())).thenReturn(List.of());
-        when(scoreboardPort.findByRoundAndUsernames(eq(0), anyList())).thenReturn(List.of());
+        when(scoreboardPort.findByRoundAndYearAndUsernames(eq(13), eq(2025), anyList())).thenReturn(List.of());
+        when(scoreboardPort.findByRoundAndYearAndUsernames(eq(0), eq(2025), anyList())).thenReturn(List.of());
 
-        service.execute(bets, 13);
+        service.execute(bets, 13, 2025);
 
         verify(scoreboardPort, times(2)).saveAll(any());
     }
@@ -46,15 +46,15 @@ class RoundScoreboardServiceTest {
     void shouldAccumulatePointsIfUserAlreadyHasScoreInRound() {
         List<Bet> bets = List.of(bet("lucas", 10));
 
-        when(scoreboardPort.findByRoundAndUsernames(eq(13), anyList()))
-                .thenReturn(List.of(new Scoreboard("id-lucas", 13, "lucas", 5)));
+        when(scoreboardPort.findByRoundAndYearAndUsernames(eq(13), eq(2025), anyList()))
+                .thenReturn(List.of(new Scoreboard("id-lucas", 13, "lucas", 5, 2025)));
 
-        when(scoreboardPort.findByRoundAndUsernames(eq(0), anyList()))
-                .thenReturn(List.of(new Scoreboard("total-id", 0, "lucas", 15)));
+        when(scoreboardPort.findByRoundAndYearAndUsernames(eq(0), eq(2025), anyList()))
+                .thenReturn(List.of(new Scoreboard("total-id", 0, "lucas", 15, 2025)));
 
         ArgumentCaptor<List<Scoreboard>> captor = ArgumentCaptor.forClass(List.class);
 
-        service.execute(bets, 13);
+        service.execute(bets, 13, 2025);
 
         verify(scoreboardPort, times(2)).saveAll(captor.capture());
 
@@ -66,26 +66,28 @@ class RoundScoreboardServiceTest {
         assertEquals(13, roundEntry.round());
         assertEquals("lucas", roundEntry.username());
         assertEquals(15, roundEntry.points());
+        assertEquals(2025, roundEntry.year());
 
         Scoreboard totalEntry = total.getFirst();
         assertEquals(0, totalEntry.round());
         assertEquals("lucas", totalEntry.username());
         assertEquals(25, totalEntry.points());
+        assertEquals(2025, totalEntry.year());
     }
 
     @Test
     void shouldInsertNewAndUpdateExistingUsersInSameRound() {
         List<Bet> bets = List.of(bet("lucas", 10), bet("ana", 8));
 
-        when(scoreboardPort.findByRoundAndUsernames(eq(13), anyList()))
-                .thenReturn(List.of(new Scoreboard("id-lucas", 13, "lucas", 5)));
+        when(scoreboardPort.findByRoundAndYearAndUsernames(eq(13), eq(2025), anyList()))
+                .thenReturn(List.of(new Scoreboard("id-lucas", 13, "lucas", 5, 2025)));
 
-        when(scoreboardPort.findByRoundAndUsernames(eq(0), anyList()))
+        when(scoreboardPort.findByRoundAndYearAndUsernames(eq(0), eq(2025), anyList()))
                 .thenReturn(List.of());
 
         ArgumentCaptor<List<Scoreboard>> captor = ArgumentCaptor.forClass(List.class);
 
-        service.execute(bets, 13);
+        service.execute(bets, 13, 2025);
 
         verify(scoreboardPort, times(2)).saveAll(captor.capture());
 
@@ -97,11 +99,13 @@ class RoundScoreboardServiceTest {
 
         assertEquals(15, lucas.points());
         assertEquals(8, ana.points());
+        assertEquals(2025, lucas.year());
+        assertEquals(2025, ana.year());
     }
 
     @Test
     void shouldDoNothingIfNoBetsProvided() {
-        service.execute(List.of(), 13);
+        service.execute(List.of(), 13, 2025);
         verifyNoInteractions(scoreboardPort);
     }
 }

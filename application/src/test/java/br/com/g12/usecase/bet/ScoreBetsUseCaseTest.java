@@ -67,19 +67,20 @@ public class ScoreBetsUseCaseTest {
         List<Bet> bets = List.of(bet1, bet2);
         List<Match> matches = List.of(match);
 
-        when(matchPort.findByRoundAndStatus(13, "CLOSED")).thenReturn(matches);
+        when(matchPort.findByRoundAndStatusAndMatchDateBetween(eq(13), eq("CLOSED"), any(Date.class), any(Date.class)))
+                .thenReturn(matches);
         when(betPort.findByMatchIdInAndPointsEarnedIsNull(List.of("match-1"))).thenReturn(bets);
 
         when(predictionScoringService.calculate(eq(match), eq(bet1), anyList())).thenReturn(0);
         when(predictionScoringService.calculate(eq(match), eq(bet2), anyList())).thenReturn(11);
 
-        useCase.execute(13);
+        useCase.execute(13, 2025);
 
         verify(betPort).saveAll(anyList());
         verify(predictionScoringService, times(2)).calculate(any(), any(), anyList());
 
         ArgumentCaptor<List<Bet>> betCaptor = ArgumentCaptor.forClass(List.class);
-        verify(roundScoreboardService).execute(betCaptor.capture(), eq(13));
+        verify(roundScoreboardService).execute(betCaptor.capture(), eq(13), eq(2025));
 
         List<Bet> scored = betCaptor.getValue();
         assertEquals(2, scored.size());
@@ -101,13 +102,14 @@ public class ScoreBetsUseCaseTest {
 
         List<Match> matches = List.of(match);
 
-        when(matchPort.findByRoundAndStatus(13, "CLOSED")).thenReturn(matches);
+        when(matchPort.findByRoundAndStatusAndMatchDateBetween(eq(13), eq("CLOSED"), any(Date.class), any(Date.class)))
+                .thenReturn(matches);
         when(betPort.findByMatchIdInAndPointsEarnedIsNull(List.of("match-1"))).thenReturn(new ArrayList<>());
 
-        useCase.execute(13);
+        useCase.execute(13, 2025);
 
         verify(betPort, never()).saveAll(anyList());
-        verify(roundScoreboardService, never()).execute(anyList(), anyInt());
+        verify(roundScoreboardService, never()).execute(anyList(), anyInt(), anyInt());
 
     }
 
