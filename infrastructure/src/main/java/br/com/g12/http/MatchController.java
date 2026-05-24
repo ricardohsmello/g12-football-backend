@@ -11,6 +11,7 @@ import br.com.g12.usecase.match.UpdateMatchScoreUseCase;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -47,8 +48,12 @@ public class MatchController {
     }
 
     @GetMapping("/username/{username}/round/{round}")
-    public ResponseEntity<List<MatchResponse>> findByRound(@PathVariable String username, @PathVariable int round) {
-         List<MatchResponse> matches = findMatchesWithUserBetsUseCase.execute(new UserRoundRequest(username, round));
+    public ResponseEntity<List<MatchResponse>> findByRound(
+            @PathVariable String username,
+            @PathVariable int round,
+            @RequestParam(value = "year", required = false) Integer year) {
+        int matchYear = year != null ? year : LocalDate.now().getYear();
+        List<MatchResponse> matches = findMatchesWithUserBetsUseCase.execute(new UserRoundRequest(username, round, matchYear));
         return ResponseEntity.ok(matches);
     }
 

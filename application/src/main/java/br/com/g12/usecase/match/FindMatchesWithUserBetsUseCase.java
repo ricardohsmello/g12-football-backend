@@ -23,7 +23,11 @@ public class FindMatchesWithUserBetsUseCase extends AbstractUseCase<UserRoundReq
         try {
             validate(userRoundRequest);
 
-            List<MatchWithPrediction> matchWithPredictionList = matchPort.findByRoundUser(userRoundRequest.username(), userRoundRequest.round());
+            List<MatchWithPrediction> matchWithPredictionList = matchPort.findByRoundUserAndYear(
+                    userRoundRequest.username(),
+                    userRoundRequest.round(),
+                    userRoundRequest.year()
+            );
 
             logSuccess();
             return matchWithPredictionList.stream().map(MatchResponse::fromModel).toList();
@@ -40,6 +44,10 @@ public class FindMatchesWithUserBetsUseCase extends AbstractUseCase<UserRoundReq
 
         if (userRoundRequest.round() < 0 || userRoundRequest.round() > 38) {
             throw new FindMatchesWithUserException("Round must be between 0 and 38");
+        }
+
+        if (userRoundRequest.year() < 1900) {
+            throw new FindMatchesWithUserException("Year must be greater than or equal to 1900");
         }
     }
 }
