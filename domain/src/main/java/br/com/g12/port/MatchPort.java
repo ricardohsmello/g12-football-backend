@@ -10,7 +10,9 @@ public interface MatchPort {
     Match save(Match match);
     Match find(String id);
     List<Match> findByRoundAndStatus(int round, String status);
+    List<Match> findByRoundAndStatusAndMatchDateBetween(int round, String status, Date startDate, Date endDate);
     List<MatchWithPrediction> findByRoundUser(String username, int round);
+    List<MatchWithPrediction> findByRoundUserAndYear(String username, int round, int year);
     int closeExpiredMatches(Date date);
     int findNextOpenRound();
 }

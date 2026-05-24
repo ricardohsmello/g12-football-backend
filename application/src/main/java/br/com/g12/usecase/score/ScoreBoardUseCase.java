@@ -13,7 +13,7 @@ public class ScoreBoardUseCase {
         this.scoreboardPort = scoreboardPort;
     }
 
-    public List<Scoreboard> execute(int round) {
-        return scoreboardPort.findByRound(round);
+    public List<Scoreboard> execute(int round, int year) {
+        return scoreboardPort.findByRoundAndYear(round, year);
     }
 }

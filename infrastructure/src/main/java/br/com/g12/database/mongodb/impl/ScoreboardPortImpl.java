@@ -18,8 +18,8 @@ public class ScoreboardPortImpl implements ScoreboardPort {
     }
 
     @Override
-    public List<Scoreboard> findByRound(int round) {
-        return repository.findByRoundOrderByPointsDesc(round).stream()
+    public List<Scoreboard> findByRoundAndYear(int round, int year) {
+        return repository.findByRoundAndYearOrderByPointsDesc(round, year).stream()
                 .map(ScoreboardDocument::toModel)
                 .toList();
     }
@@ -35,13 +35,13 @@ public class ScoreboardPortImpl implements ScoreboardPort {
     }
 
     @Override
-    public Scoreboard findByRoundAndUsername(int round, String username) {
-        return repository.findByRoundAndUsername(round, username).map(ScoreboardDocument::toModel).orElse(null);
+    public Scoreboard findByRoundAndYearAndUsername(int round, int year, String username) {
+        return repository.findByRoundAndYearAndUsername(round, year, username).map(ScoreboardDocument::toModel).orElse(null);
     }
 
     @Override
-    public List<Scoreboard> findByRoundAndUsernames(int round, List<String> usernames) {
-        List<ScoreboardDocument> documents = repository.findByRoundAndUsernameIn(round, usernames);
+    public List<Scoreboard> findByRoundAndYearAndUsernames(int round, int year, List<String> usernames) {
+        List<ScoreboardDocument> documents = repository.findByRoundAndYearAndUsernameIn(round, year, usernames);
         return documents.stream()
                 .map(ScoreboardDocument::toModel)
                 .toList();

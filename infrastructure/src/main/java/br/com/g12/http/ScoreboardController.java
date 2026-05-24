@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -20,8 +21,11 @@ public class ScoreboardController {
     }
 
     @GetMapping
-    public List<ScoreboardResponse> getByRound(@RequestParam("round") int round) {
-        return scoreBoardUseCase.execute(round).stream()
+    public List<ScoreboardResponse> getByRound(
+            @RequestParam("round") int round,
+            @RequestParam(value = "year", required = false) Integer year) {
+        int scoreboardYear = year != null ? year : LocalDate.now().getYear();
+        return scoreBoardUseCase.execute(round, scoreboardYear).stream()
                 .map(ScoreboardResponse::fromModel)
                 .toList();
     }

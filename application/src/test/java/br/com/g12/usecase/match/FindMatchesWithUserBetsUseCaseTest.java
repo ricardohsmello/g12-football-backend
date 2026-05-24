@@ -20,23 +20,23 @@ public class FindMatchesWithUserBetsUseCaseTest {
 
     @Test
     public void should_create_match_successfully() {
-        UserRoundRequest request = new UserRoundRequest("ricas", 32);
+        UserRoundRequest request = new UserRoundRequest("ricas", 32, 2025);
 
         List<MatchWithPrediction> mockResult = List.of(
                 new MatchWithPrediction()
         );
 
-        when(matchPort.findByRoundUser("ricas", 32)).thenReturn(mockResult);
+        when(matchPort.findByRoundUserAndYear("ricas", 32, 2025)).thenReturn(mockResult);
 
         List<MatchResponse> result = useCase.execute(request);
 
-        verify(matchPort).findByRoundUser("ricas", 32);
+        verify(matchPort).findByRoundUserAndYear("ricas", 32, 2025);
         assertEquals(mockResult.size(), result.size());
     }
 
     @Test
     public void shouldThrowExceptionWhenUsernameIsNull() {
-        UserRoundRequest request = new UserRoundRequest(null, 10);
+        UserRoundRequest request = new UserRoundRequest(null, 10, 2025);
 
         FindMatchesWithUserException exception = assertThrows(
                 FindMatchesWithUserException.class,
@@ -48,7 +48,7 @@ public class FindMatchesWithUserBetsUseCaseTest {
 
     @Test
     public void shouldThrowExceptionWhenRoundIsInvalid() {
-        UserRoundRequest request = new UserRoundRequest("ricas", 100);
+        UserRoundRequest request = new UserRoundRequest("ricas", 100, 2025);
 
         FindMatchesWithUserException exception = assertThrows(
                 FindMatchesWithUserException.class,
@@ -56,5 +56,17 @@ public class FindMatchesWithUserBetsUseCaseTest {
         );
 
         assertEquals("Round must be between 0 and 38", exception.getMessage());
+    }
+
+    @Test
+    public void shouldThrowExceptionWhenYearIsInvalid() {
+        UserRoundRequest request = new UserRoundRequest("ricas", 10, 1899);
+
+        FindMatchesWithUserException exception = assertThrows(
+                FindMatchesWithUserException.class,
+                () -> useCase.execute(request)
+        );
+
+        assertEquals("Year must be greater than or equal to 1900", exception.getMessage());
     }
 }

@@ -1,4 +1,4 @@
-@host = http://localhost:8080
+@host = https://g12-football-backend.onrender.com
 ### Ingest TOTAL (upload de CSV)
 POST {{host}}/rag-admin/ingest-data
 Content-Type: multipart/form-data; boundary=BOUNDARY
@@ -8,10 +8,10 @@ Content-Disposition: form-data;
 
 RAG
 --BOUNDARY
-Content-Disposition: form-data; name="file"; filename="rag_ingest.csv"
+Content-Disposition: form-data; name="file"; filename="rag-ingest.csv"
 Content-Type: text/csv
 
-< ../rag_data/rag_ingest.csv
+< ../rag_data/rag-ingest.csv
 --BOUNDARY--
 
 ### Pergunta (POST)

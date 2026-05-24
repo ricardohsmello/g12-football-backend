@@ -18,7 +18,7 @@ public class RoundScoreboardService {
         this.scoreboardPort = scoreboardPort;
     }
 
-    public void execute(List<Bet> bets, int round) {
+    public void execute(List<Bet> bets, int round, int year) {
         if (bets == null || bets.isEmpty()) {
             log.warn("No bets provided for round {}. Skipping.", round);
             return;
@@ -26,10 +26,10 @@ public class RoundScoreboardService {
 
         Map<String, Integer> userPoints = computeUserPoints(bets);
 
-        savePerRoundScoreboard(round, userPoints);
-        updateTotalScoreboard(userPoints);
+        savePerRoundScoreboard(round, year, userPoints);
+        updateTotalScoreboard(year, userPoints);
 
-        log.info("Scoreboard updated for round {}", round);
+        log.info("Scoreboard updated for round {} and year {}", round, year);
     }
 
     private Map<String, Integer> computeUserPoints(List<Bet> bets) {
@@ -40,9 +40,9 @@ public class RoundScoreboardService {
                 ));
     }
 
-    private void savePerRoundScoreboard(int round, Map<String, Integer> userPoints) {
+    private void savePerRoundScoreboard(int round, int year, Map<String, Integer> userPoints) {
         List<String> usernames = new ArrayList<>(userPoints.keySet());
-        List<Scoreboard> existing = scoreboardPort.findByRoundAndUsernames(round, usernames);
+        List<Scoreboard> existing = scoreboardPort.findByRoundAndYearAndUsernames(round, year, usernames);
 
         Map<String, Scoreboard> existingMap = existing.stream()
                 .collect(Collectors.toMap(Scoreboard::username, s -> s));
@@ -54,19 +54,19 @@ public class RoundScoreboardService {
                     Scoreboard existingScore = existingMap.get(username);
 
                     return (existingScore == null)
-                            ? new Scoreboard(null, round, username, newPoints)
-                            : new Scoreboard(existingScore.id(), round, username, existingScore.points() + newPoints);
+                            ? new Scoreboard(null, round, username, newPoints, year)
+                            : new Scoreboard(existingScore.id(), round, username, existingScore.points() + newPoints, year);
                 })
                 .sorted(Comparator.comparingInt(Scoreboard::points).reversed())
                 .toList();
 
         scoreboardPort.saveAll(updatedScoreboards);
-        log.info("Saved/Updated {} scoreboard entries for round {}", updatedScoreboards.size(), round);
+        log.info("Saved/Updated {} scoreboard entries for round {} and year {}", updatedScoreboards.size(), round, year);
     }
 
-    private void updateTotalScoreboard(Map<String, Integer> roundScores) {
+    private void updateTotalScoreboard(int year, Map<String, Integer> roundScores) {
         List<String> usernames = new ArrayList<>(roundScores.keySet());
-        List<Scoreboard> existingTotals = scoreboardPort.findByRoundAndUsernames(0, usernames);
+        List<Scoreboard> existingTotals = scoreboardPort.findByRoundAndYearAndUsernames(0, year, usernames);
 
         Map<String, Scoreboard> totalByUser = existingTotals.stream()
                 .collect(Collectors.toMap(Scoreboard::username, s -> s));
@@ -78,8 +78,8 @@ public class RoundScoreboardService {
                     Scoreboard existing = totalByUser.get(username);
 
                     return (existing == null)
-                            ? new Scoreboard(null, 0, username, newPoints)
-                            : new Scoreboard(existing.id(), 0, username, existing.points() + newPoints);
+                            ? new Scoreboard(null, 0, username, newPoints, year)
+                            : new Scoreboard(existing.id(), 0, username, existing.points() + newPoints, year);
                 })
                 .toList();
 

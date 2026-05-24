@@ -4,12 +4,14 @@ import br.com.g12.model.Scoreboard;
 
 public record ScoreboardResponse(
     String username,
-    int points
+    int points,
+    int year
 ) {
     public static ScoreboardResponse fromModel(Scoreboard model) {
         return new ScoreboardResponse(
             model.username(),
-            model.points()
+            model.points(),
+            model.year()
         );
     }
 }

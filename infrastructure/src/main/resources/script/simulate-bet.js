@@ -1,7 +1,7 @@
-const usernames = [
-    "antonio", "braulio", "bruno", "coutinho", "daniel", "edi", "fabio",
-    "gabriel", "giovanni", "jgabriel", "joao", "lucas", "luciano", "matheus",
-    "murilo", "onze", "quinze", "rafael", "ricardo", "zitras", "ricas"
+const usernames =  [
+    "antonio", "braulio", "bruno", "cleber", "daniel", "edmilson", "fabio",
+    "gabriel", "giovanni", "guilherme", "heraldo", "joaozorzella", "lucas", "luciano", "matheus",
+    "murilo", "rafaelcarvalho", "ricardocoutinho", "ricardomello", "weslley", "zitras"
 ];
 
 function generateGoals() {
