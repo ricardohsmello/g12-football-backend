@@ -24,5 +24,19 @@ public record MatchResponse(
     public static MatchResponse fromModel(MatchWithPrediction match) {
         return new MatchResponse(match.getId(), match.getRound(), match.getHomeTeam(), match.getAwayTeam(), match.getMatchDate(), match.getScore(), match.getPrediction(), match.getPointsEarned(), match.getStatus());
     }
+
+    public static MatchResponse fromModel(MatchWithPrediction match, boolean includePrediction) {
+        return new MatchResponse(
+                match.getId(),
+                match.getRound(),
+                match.getHomeTeam(),
+                match.getAwayTeam(),
+                match.getMatchDate(),
+                match.getScore(),
+                includePrediction ? match.getPrediction() : null,
+                includePrediction ? match.getPointsEarned() : null,
+                match.getStatus()
+        );
+    }
 }
 

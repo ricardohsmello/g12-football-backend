@@ -30,16 +30,26 @@ public class FindMatchesWithUserBetsUseCase extends AbstractUseCase<UserRoundReq
             );
 
             logSuccess();
-            return matchWithPredictionList.stream().map(MatchResponse::fromModel).toList();
+            return matchWithPredictionList.stream()
+                    .map(match -> MatchResponse.fromModel(match, shouldIncludePrediction(userRoundRequest, match)))
+                    .toList();
         } catch (FindMatchesWithUserException e) {
             logError(e);
             throw e;
         }
     }
 
+    private boolean shouldIncludePrediction(UserRoundRequest userRoundRequest, MatchWithPrediction match) {
+        return "CLOSED".equals(match.getStatus()) || userRoundRequest.username().equals(userRoundRequest.currentUsername());
+    }
+
     private void validate(UserRoundRequest userRoundRequest) throws FindMatchesWithUserException {
         if (userRoundRequest.username() == null || userRoundRequest.username().isEmpty()) {
             throw new FindMatchesWithUserException("Username is required");
+        }
+
+        if (userRoundRequest.currentUsername() == null || userRoundRequest.currentUsername().isEmpty()) {
+            throw new FindMatchesWithUserException("Current username is required");
         }
 
         if (userRoundRequest.round() < 0 || userRoundRequest.round() > 38) {

@@ -172,6 +172,7 @@ public class MatchPortImpl implements MatchPort {
                 .limit(1);
 
         MatchDocument nextOpenMatch = mongoTemplate.findOne(nextOpenRoundQuery, MatchDocument.class);
+
         if (nextOpenMatch != null) {
             return nextOpenMatch.getRound();
         }
