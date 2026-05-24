@@ -47,14 +47,15 @@ public class MatchController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/username/{username}/round/{round}")
+    @GetMapping({"/username/{username}/round/{round}", "/{username}/round/{round}"})
     public ResponseEntity<List<MatchResponse>> findByRound(
             @PathVariable String username,
             @PathVariable int round,
-            @RequestParam("currentUsername") String currentUsername,
+            @RequestParam(value = "currentUsername", required = false) String currentUsername,
             @RequestParam(value = "year", required = false) Integer year) {
         int matchYear = year != null ? year : LocalDate.now().getYear();
-        List<MatchResponse> matches = findMatchesWithUserBetsUseCase.execute(new UserRoundRequest(username, currentUsername, round, matchYear));
+        String requestUsername = currentUsername != null ? currentUsername : username;
+        List<MatchResponse> matches = findMatchesWithUserBetsUseCase.execute(new UserRoundRequest(username, requestUsername, round, matchYear));
         return ResponseEntity.ok(matches);
     }
 

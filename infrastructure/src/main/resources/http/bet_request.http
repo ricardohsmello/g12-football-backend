@@ -3,15 +3,14 @@ POST https://g12-football-br.onrender.com/bet
 Content-Type: application/json
 
 {
-  "matchId": "684c79b2f46197c82d1476e7",
-  "username": "JOAO",
+  "matchId": "689f3741a6af378b823f5de9",
+  "username": "apagar",
   "prediction": {
     "homeTeam": 4,
     "awayTeam": 0
   },
-  "round": 12
+  "round": 13
 }
 
 ### A
 GET localhost:8080/bet/round/13/bettors-count
-
