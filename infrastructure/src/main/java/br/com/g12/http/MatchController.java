@@ -51,11 +51,10 @@ public class MatchController {
     public ResponseEntity<List<MatchResponse>> findByRound(
             @PathVariable String username,
             @PathVariable int round,
-            @RequestParam(value = "currentUsername", required = false) String currentUsername,
+            @RequestParam("currentUsername") String currentUsername,
             @RequestParam(value = "year", required = false) Integer year) {
         int matchYear = year != null ? year : LocalDate.now().getYear();
-        String loggedUsername = currentUsername != null ? currentUsername : username;
-        List<MatchResponse> matches = findMatchesWithUserBetsUseCase.execute(new UserRoundRequest(username, loggedUsername, round, matchYear));
+        List<MatchResponse> matches = findMatchesWithUserBetsUseCase.execute(new UserRoundRequest(username, currentUsername, round, matchYear));
         return ResponseEntity.ok(matches);
     }
 

@@ -9,16 +9,14 @@ import com.mongodb.client.model.*;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.aggregation.Aggregation;
-import org.springframework.data.mongodb.core.aggregation.AggregationResults;
-import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
-import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
 
@@ -92,11 +90,20 @@ public class BetPortImpl implements BetPort {
 
     @Override
     public int countDistinctUsernamesByRound(int round) {
-        return mongoTemplate.query(Bet.class)
+        int currentYear = LocalDate.now().getYear();
+
+        return mongoTemplate.query(BetDocument.class)
                 .distinct("username")
-                .matching(query(where("round").is(round)))
+                .matching(query(where("round").is(round)
+                        .and("date").gte(startOfYear(currentYear)).lt(startOfYear(currentYear + 1))))
                 .all()
                 .size();
+    }
+
+    private Date startOfYear(int year) {
+        return Date.from(LocalDate.of(year, 1, 1)
+                .atStartOfDay(ZoneId.systemDefault())
+                .toInstant());
     }
 
 }
