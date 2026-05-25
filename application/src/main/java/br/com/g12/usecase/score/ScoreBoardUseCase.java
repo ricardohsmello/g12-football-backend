@@ -14,6 +14,6 @@ public class ScoreBoardUseCase {
     }
 
     public List<Scoreboard> execute(int round, int year) {
-        return scoreboardPort.findByRoundAndYearOrLatestAvailableYear(round, year);
+        return scoreboardPort.findByRoundAndYear(round, year);
     }
 }
