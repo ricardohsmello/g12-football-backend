@@ -108,6 +108,19 @@ public class MatchPortImpl implements MatchPort {
 
     @Override
     public List<MatchWithPrediction> findByRoundUserAndYear(String username, int round, int year) {
+        List<MatchWithPrediction> matches = findByRoundUserAndYearAggregation(username, round, year);
+
+        if (!matches.isEmpty()) {
+            return matches;
+        }
+
+        return findLatestAvailableYearByRound(round, year)
+                .filter(latestYear -> latestYear != year)
+                .map(latestYear -> findByRoundUserAndYearAggregation(username, round, latestYear))
+                .orElse(matches);
+    }
+
+    private List<MatchWithPrediction> findByRoundUserAndYearAggregation(String username, int round, int year) {
         Aggregation aggregation = Aggregation.newAggregation(
                 match(Criteria.where("round").is(round)
                         .and("matchDate").gte(startOfYear(year)).lt(startOfYear(year + 1))),
@@ -145,6 +158,21 @@ public class MatchPortImpl implements MatchPort {
         return new ArrayList<>(results.getMappedResults());
     }
 
+    private Optional<Integer> findLatestAvailableYearByRound(int round, int maxYear) {
+        Query latestYearQuery = new Query(new Criteria().andOperator(
+                Criteria.where("round").is(round),
+                Criteria.where("matchDate").lt(startOfYear(maxYear + 1))
+        ))
+                .with(Sort.by(Sort.Direction.DESC, "matchDate"))
+                .limit(1);
+
+        MatchDocument latestMatch = mongoTemplate.findOne(latestYearQuery, MatchDocument.class);
+        return Optional.ofNullable(latestMatch)
+                .map(match -> match.getMatchDate().toInstant()
+                        .atZone(ZoneId.systemDefault())
+                        .getYear());
+    }
+
     private Date startOfYear(int year) {
         return Date.from(LocalDate.of(year, 1, 1)
                 .atStartOfDay(ZoneId.systemDefault())
@@ -177,14 +205,11 @@ public class MatchPortImpl implements MatchPort {
             return nextOpenMatch.getRound();
         }
 
-        int currentYear = LocalDate.now().getYear();
-        Query lastRoundInCurrentYearQuery = new Query(Criteria.where("matchDate")
-                .gte(startOfYear(currentYear))
-                .lt(startOfYear(currentYear + 1)))
+        Query lastRoundQuery = new Query()
                 .with(Sort.by(Sort.Direction.DESC, "round"))
                 .limit(1);
 
-        MatchDocument lastRoundMatch = mongoTemplate.findOne(lastRoundInCurrentYearQuery, MatchDocument.class);
+        MatchDocument lastRoundMatch = mongoTemplate.findOne(lastRoundQuery, MatchDocument.class);
         if (lastRoundMatch != null) {
             return lastRoundMatch.getRound();
         }

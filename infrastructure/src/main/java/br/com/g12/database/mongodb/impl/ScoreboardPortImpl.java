@@ -25,6 +25,20 @@ public class ScoreboardPortImpl implements ScoreboardPort {
     }
 
     @Override
+    public List<Scoreboard> findByRoundAndYearOrLatestAvailableYear(int round, int year) {
+        List<Scoreboard> scoreboards = findByRoundAndYear(round, year);
+
+        if (!scoreboards.isEmpty()) {
+            return scoreboards;
+        }
+
+        return repository.findFirstByRoundAndYearLessThanEqualOrderByYearDesc(round, year)
+                .map(ScoreboardDocument::toModel)
+                .map(scoreboard -> findByRoundAndYear(round, scoreboard.year()))
+                .orElse(List.of());
+    }
+
+    @Override
     public void saveAll(List<Scoreboard> scoreboards) {
 
         List<ScoreboardDocument> documents = scoreboards.stream()
