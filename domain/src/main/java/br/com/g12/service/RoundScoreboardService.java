@@ -1,6 +1,7 @@
 package br.com.g12.service;
 
 import br.com.g12.model.Bet;
+import br.com.g12.model.CompetitionDefaults;
 import br.com.g12.model.Scoreboard;
 import br.com.g12.port.ScoreboardPort;
 import org.slf4j.Logger;
@@ -19,6 +20,10 @@ public class RoundScoreboardService {
     }
 
     public void execute(List<Bet> bets, int round, int year) {
+        execute(bets, CompetitionDefaults.DEFAULT_COMPETITION_ID, round, year);
+    }
+
+    public void execute(List<Bet> bets, String competitionId, int round, int year) {
         if (bets == null || bets.isEmpty()) {
             log.warn("No bets provided for round {}. Skipping.", round);
             return;
@@ -26,10 +31,10 @@ public class RoundScoreboardService {
 
         Map<String, Integer> userPoints = computeUserPoints(bets);
 
-        savePerRoundScoreboard(round, year, userPoints);
-        updateTotalScoreboard(year, userPoints);
+        savePerRoundScoreboard(competitionId, round, year, userPoints);
+        updateTotalScoreboard(competitionId, year, userPoints);
 
-        log.info("Scoreboard updated for round {} and year {}", round, year);
+        log.info("Scoreboard updated for competition {}, round {} and year {}", competitionId, round, year);
     }
 
     private Map<String, Integer> computeUserPoints(List<Bet> bets) {
@@ -40,9 +45,9 @@ public class RoundScoreboardService {
                 ));
     }
 
-    private void savePerRoundScoreboard(int round, int year, Map<String, Integer> userPoints) {
+    private void savePerRoundScoreboard(String competitionId, int round, int year, Map<String, Integer> userPoints) {
         List<String> usernames = new ArrayList<>(userPoints.keySet());
-        List<Scoreboard> existing = scoreboardPort.findByRoundAndYearAndUsernames(round, year, usernames);
+        List<Scoreboard> existing = scoreboardPort.findByCompetitionIdAndRoundAndYearAndUsernames(competitionId, round, year, usernames);
 
         Map<String, Scoreboard> existingMap = existing.stream()
                 .collect(Collectors.toMap(Scoreboard::username, s -> s));
@@ -54,8 +59,8 @@ public class RoundScoreboardService {
                     Scoreboard existingScore = existingMap.get(username);
 
                     return (existingScore == null)
-                            ? new Scoreboard(null, round, username, newPoints, year)
-                            : new Scoreboard(existingScore.id(), round, username, existingScore.points() + newPoints, year);
+                            ? new Scoreboard(null, competitionId, round, username, newPoints, year)
+                            : new Scoreboard(existingScore.id(), competitionId, round, username, existingScore.points() + newPoints, year);
                 })
                 .sorted(Comparator.comparingInt(Scoreboard::points).reversed())
                 .toList();
@@ -64,9 +69,9 @@ public class RoundScoreboardService {
         log.info("Saved/Updated {} scoreboard entries for round {} and year {}", updatedScoreboards.size(), round, year);
     }
 
-    private void updateTotalScoreboard(int year, Map<String, Integer> roundScores) {
+    private void updateTotalScoreboard(String competitionId, int year, Map<String, Integer> roundScores) {
         List<String> usernames = new ArrayList<>(roundScores.keySet());
-        List<Scoreboard> existingTotals = scoreboardPort.findByRoundAndYearAndUsernames(0, year, usernames);
+        List<Scoreboard> existingTotals = scoreboardPort.findByCompetitionIdAndRoundAndYearAndUsernames(competitionId, 0, year, usernames);
 
         Map<String, Scoreboard> totalByUser = existingTotals.stream()
                 .collect(Collectors.toMap(Scoreboard::username, s -> s));
@@ -78,8 +83,8 @@ public class RoundScoreboardService {
                     Scoreboard existing = totalByUser.get(username);
 
                     return (existing == null)
-                            ? new Scoreboard(null, 0, username, newPoints, year)
-                            : new Scoreboard(existing.id(), 0, username, existing.points() + newPoints, year);
+                            ? new Scoreboard(null, competitionId, 0, username, newPoints, year)
+                            : new Scoreboard(existing.id(), competitionId, 0, username, existing.points() + newPoints, year);
                 })
                 .toList();
 

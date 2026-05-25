@@ -6,6 +6,7 @@ import static br.com.g12.utils.DateUtils.truncateToSeconds;
 
 public class Bet {
     private String id;
+    private String competitionId;
     private String matchId;
     private String username;
     private Score prediction;
@@ -14,7 +15,12 @@ public class Bet {
     private Date date;
 
     public Bet(String id, String matchId, String username, Score prediction, int round, Integer pointsEarned, Date date) {
+        this(id, CompetitionDefaults.DEFAULT_COMPETITION_ID, matchId, username, prediction, round, pointsEarned, date);
+    }
+
+    public Bet(String id, String competitionId, String matchId, String username, Score prediction, int round, Integer pointsEarned, Date date) {
         this.id = id;
+        this.competitionId = CompetitionDefaults.competitionIdOrDefault(competitionId);
         this.matchId = matchId;
         this.username = username;
         this.prediction = prediction;
@@ -24,6 +30,7 @@ public class Bet {
     }
 
     public String getId() { return id; }
+    public String getCompetitionId() { return competitionId; }
     public String getMatchId() { return matchId; }
     public String getUsername() { return username; }
     public Score getPrediction() { return prediction; }

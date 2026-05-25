@@ -3,6 +3,7 @@ package br.com.g12.database.mongodb.impl;
 import br.com.g12.database.mongodb.BetRepository;
 import br.com.g12.entity.BetDocument;
 import br.com.g12.model.Bet;
+import br.com.g12.model.CompetitionDefaults;
 import br.com.g12.port.BetPort;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.*;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.data.mongodb.core.query.Criteria;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
 
@@ -89,15 +91,33 @@ public class BetPortImpl implements BetPort {
     }
 
     @Override
-    public int countDistinctUsernamesByRound(int round) {
+    public int countDistinctUsernamesByCompetitionIdAndRound(String competitionId, int round) {
         int currentYear = LocalDate.now().getYear();
 
         return mongoTemplate.query(BetDocument.class)
                 .distinct("username")
-                .matching(query(where("round").is(round)
-                        .and("date").gte(startOfYear(currentYear)).lt(startOfYear(currentYear + 1))))
+                .matching(query(new Criteria().andOperator(
+                        competitionCriteria(competitionId),
+                        where("round").is(round),
+                        where("date").gte(startOfYear(currentYear)).lt(startOfYear(currentYear + 1))
+                )))
                 .all()
                 .size();
+    }
+
+    private Criteria competitionCriteria(String competitionId) {
+        String normalizedCompetitionId = CompetitionDefaults.competitionIdOrDefault(competitionId);
+        Criteria currentCompetition = where("competitionId").is(normalizedCompetitionId);
+
+        if (!CompetitionDefaults.DEFAULT_COMPETITION_ID.equals(normalizedCompetitionId)) {
+            return currentCompetition;
+        }
+
+        return new Criteria().orOperator(
+                currentCompetition,
+                where("competitionId").exists(false),
+                where("competitionId").is(null)
+        );
     }
 
     private Date startOfYear(int year) {

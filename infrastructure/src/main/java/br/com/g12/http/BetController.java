@@ -26,8 +26,10 @@ public class BetController {
     }
 
     @GetMapping("/round/{round}/bettors-count")
-    public ResponseEntity<Integer> countBettorsByRound(@PathVariable int round) {
-        int count = countBettorsByRoundUseCase.execute(round);
+    public ResponseEntity<Integer> countBettorsByRound(
+            @PathVariable int round,
+            @RequestParam(value = "competitionId", required = false) String competitionId) {
+        int count = countBettorsByRoundUseCase.execute(competitionId, round);
         return ResponseEntity.ok(count);
     }
 }

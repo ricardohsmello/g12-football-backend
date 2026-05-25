@@ -79,7 +79,7 @@ public class BetValidatorTest {
                 .build();
 
         BetException betException = assertThrows(BetException.class, () -> validator.validate(build));
-        assertEquals(betException.getMessage(), "Round must be between 1 and 38");
+        assertEquals("Round must be greater than or equal to 1", betException.getMessage());
     }
 
     @Test
@@ -97,6 +97,7 @@ public class BetValidatorTest {
                 .id(matchId)
                 .homeTeam("Corinthians")
                 .awayTeam("Cruzeiro")
+                .round(21)
                 .matchDate(getDateWithOffset(5))
                 .status("Closed")
                 .build();
@@ -125,6 +126,7 @@ public class BetValidatorTest {
                 .id(matchId)
                 .homeTeam("Juventude")
                 .awayTeam("Mirassol")
+                .round(21)
                 .matchDate(matchTime)
                 .status("Open")
                 .build();
@@ -152,7 +154,7 @@ public class BetValidatorTest {
         var match = MatchFake.builder()
                 .homeTeam("Corinthians")
                 .awayTeam("Barcelona")
-                .round(5)
+                .round(21)
                 .matchDate(matchTime)
                 .status("Open")
                 .build();

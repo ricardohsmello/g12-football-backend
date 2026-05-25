@@ -12,12 +12,16 @@ import java.util.Date;
 @Document(collection = "match")
 @CompoundIndexes({
         @CompoundIndex(name = "statusAndDate", def = "{'status': 1, 'matchDate': 1}"),
-        @CompoundIndex(name = "roundAndStatus", def = "{'round': 1, 'status': 1}"),
-        @CompoundIndex(name = "roundStatusAndDate", def = "{'round': 1, 'status': 1, 'matchDate': 1}")
+        @CompoundIndex(name = "competitionRoundAndStatus", def = "{'competitionId': 1, 'round': 1, 'status': 1}"),
+        @CompoundIndex(name = "competitionRoundStatusAndDate", def = "{'competitionId': 1, 'round': 1, 'status': 1, 'matchDate': 1}")
 })
 
 public class MatchDocument {
     private String id;
+    @Indexed(name = "competitionId_1")
+    private String competitionId;
+    private String stage;
+    private String group;
     @Indexed(name = "round_1")
     private int round;
     private String homeTeam;
@@ -33,8 +37,11 @@ public class MatchDocument {
         return matchDate;
     }
 
-    public MatchDocument(String id, int round, String homeTeam, String awayTeam, Date matchDate, Score score, String status) {
+    public MatchDocument(String id, String competitionId, String stage, String group, int round, String homeTeam, String awayTeam, Date matchDate, Score score, String status) {
         this.id = id;
+        this.competitionId = competitionId;
+        this.stage = stage;
+        this.group = group;
         this.round = round;
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
@@ -43,9 +50,16 @@ public class MatchDocument {
         this.status = status;
     }
 
+    public MatchDocument(String id, int round, String homeTeam, String awayTeam, Date matchDate, Score score, String status) {
+        this(id, null, null, null, round, homeTeam, awayTeam, matchDate, score, status);
+    }
+
     public static MatchDocument fromModel(Match match) {
         return new MatchDocument(
                 match.getId(),
+                match.getCompetitionId(),
+                match.getStage(),
+                match.getGroup(),
                 match.getRound(),
                 match.getHomeTeam(),
                 match.getAwayTeam(),
@@ -59,7 +73,11 @@ public class MatchDocument {
         return round;
     }
 
+    public String getCompetitionId() {
+        return competitionId;
+    }
+
     public Match toModel() {
-        return new Match(id, round, homeTeam, awayTeam, matchDate, score, status);
+        return new Match(id, competitionId, stage, group, round, homeTeam, awayTeam, matchDate, score, status);
     }
 }

@@ -48,15 +48,15 @@ public class MatchValidatorTest {
     }
 
     @Test
-    public void should_throw_error_when_match_date_is_in_the_future() {
+    public void should_throw_error_when_round_is_invalid() {
         var match = MatchFake.builder()
-                .round(39)
+                .round(0)
                 .matchDate(getDateWithOffset(1))
                 .build();
 
         MatchValidator validator = new MatchValidator();
         MatchException matchException = assertThrows(MatchException.class, () -> validator.validate(match));
-        assertEquals("Invalid round: must be between 1 and 38", matchException.getMessage());
+        assertEquals("Invalid round: must be greater than or equal to 1", matchException.getMessage());
     }
 
     @Test

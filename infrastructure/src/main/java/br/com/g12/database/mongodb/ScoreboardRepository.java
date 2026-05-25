@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface ScoreboardRepository extends MongoRepository<ScoreboardDocument, String> {
 
-    List<ScoreboardDocument> findByRoundAndYearOrderByPointsDesc(int round, int year);
-    List<ScoreboardDocument> findByRoundAndYearAndUsernameIn(int round, int year, List<String> usernames);
-    Optional<ScoreboardDocument> findByRoundAndYearAndUsername(int round, int year, String username);
+    List<ScoreboardDocument> findByCompetitionIdAndRoundAndYearOrderByPointsDesc(String competitionId, int round, int year);
+    List<ScoreboardDocument> findByCompetitionIdAndRoundAndYearAndUsernameIn(String competitionId, int round, int year, List<String> usernames);
+    Optional<ScoreboardDocument> findByCompetitionIdAndRoundAndYearAndUsername(String competitionId, int round, int year, String username);
 }
