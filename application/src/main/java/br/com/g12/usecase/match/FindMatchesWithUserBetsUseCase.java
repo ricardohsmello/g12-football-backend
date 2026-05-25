@@ -1,6 +1,7 @@
 package br.com.g12.usecase.match;
 
 import br.com.g12.exception.FindMatchesWithUserException;
+import br.com.g12.model.CompetitionDefaults;
 import br.com.g12.model.MatchWithPrediction;
 import br.com.g12.port.MatchPort;
 import br.com.g12.request.UserRoundRequest;
@@ -23,7 +24,8 @@ public class FindMatchesWithUserBetsUseCase extends AbstractUseCase<UserRoundReq
         try {
             validate(userRoundRequest);
 
-            List<MatchWithPrediction> matchWithPredictionList = matchPort.findByRoundUserAndYear(
+            List<MatchWithPrediction> matchWithPredictionList = matchPort.findByCompetitionIdAndRoundUserAndYear(
+                    CompetitionDefaults.competitionIdOrDefault(userRoundRequest.competitionId()),
                     userRoundRequest.username(),
                     userRoundRequest.round(),
                     userRoundRequest.year()
@@ -52,8 +54,8 @@ public class FindMatchesWithUserBetsUseCase extends AbstractUseCase<UserRoundReq
             throw new FindMatchesWithUserException("Current username is required");
         }
 
-        if (userRoundRequest.round() < 0 || userRoundRequest.round() > 38) {
-            throw new FindMatchesWithUserException("Round must be between 0 and 38");
+        if (userRoundRequest.round() < 0) {
+            throw new FindMatchesWithUserException("Round must be greater than or equal to 0");
         }
 
         if (userRoundRequest.year() < 1900) {

@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface MatchRepository extends MongoRepository<MatchDocument, String> {
 
-    List<MatchDocument> findByRoundAndStatus(int round, String status);
+    List<MatchDocument> findByCompetitionIdAndRoundAndStatus(String competitionId, int round, String status);
 }

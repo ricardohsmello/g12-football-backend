@@ -5,9 +5,10 @@ import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "scoreboard")
-@CompoundIndex(name = "roundYearAndUsername", def = "{'round': 1, 'year': 1, 'username': 1}")
+@CompoundIndex(name = "competitionRoundYearAndUsername", def = "{'competitionId': 1, 'round': 1, 'year': 1, 'username': 1}")
 public class ScoreboardDocument {
     private String id;
+    private String competitionId;
     private int round;
     private String username;
     private int points;
@@ -16,8 +17,9 @@ public class ScoreboardDocument {
     ScoreboardDocument() {
     }
 
-    ScoreboardDocument(String id, int round, String username, int points, int year) {
+    ScoreboardDocument(String id, String competitionId, int round, String username, int points, int year) {
         this.id = id;
+        this.competitionId = competitionId;
         this.round = round;
         this.username = username;
         this.points = points;
@@ -25,12 +27,13 @@ public class ScoreboardDocument {
     }
 
     public Scoreboard toModel() {
-        return new Scoreboard( id, round, username, points, year );
+        return new Scoreboard( id, competitionId, round, username, points, year );
     }
 
     public static ScoreboardDocument fromModel(Scoreboard scoreboard) {
         return new ScoreboardDocument(
                 scoreboard.id(),
+                scoreboard.competitionId(),
                 scoreboard.round(),
                 scoreboard.username(),
                 scoreboard.points(),

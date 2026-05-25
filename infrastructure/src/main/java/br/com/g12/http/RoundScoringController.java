@@ -23,12 +23,13 @@ public class RoundScoringController {
     @PutMapping("/{round}/score")
     public ResponseEntity<Void> scoreBets(
             @PathVariable int round,
+            @RequestParam(value = "competitionId", required = false) String competitionId,
             @RequestParam(value = "year", required = false) Integer year) {
 //        for (int i = 1; i < 39; i++) {
 //            scoreBetsUseCase.execute(i);
 //        }
         int scoreYear = year != null ? year : LocalDate.now().getYear();
-        scoreBetsUseCase.execute(round, scoreYear);
+        scoreBetsUseCase.execute(competitionId, round, scoreYear);
         return ResponseEntity.noContent().build();
     }
 }

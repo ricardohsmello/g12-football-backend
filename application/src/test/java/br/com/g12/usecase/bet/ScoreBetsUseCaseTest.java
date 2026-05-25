@@ -5,6 +5,7 @@ import br.com.g12.fake.BetFake;
 import br.com.g12.fake.MatchFake;
 import br.com.g12.fake.ScoreBoardFake;
 import br.com.g12.model.Bet;
+import br.com.g12.model.CompetitionDefaults;
 import br.com.g12.model.Match;
 import br.com.g12.model.Score;
 import br.com.g12.model.Scoreboard;
@@ -67,7 +68,7 @@ public class ScoreBetsUseCaseTest {
         List<Bet> bets = List.of(bet1, bet2);
         List<Match> matches = List.of(match);
 
-        when(matchPort.findByRoundAndStatusAndMatchDateBetween(eq(13), eq("CLOSED"), any(Date.class), any(Date.class)))
+        when(matchPort.findByCompetitionIdAndRoundAndStatusAndMatchDateBetween(eq(CompetitionDefaults.DEFAULT_COMPETITION_ID), eq(13), eq("CLOSED"), any(Date.class), any(Date.class)))
                 .thenReturn(matches);
         when(betPort.findByMatchIdInAndPointsEarnedIsNull(List.of("match-1"))).thenReturn(bets);
 
@@ -80,7 +81,7 @@ public class ScoreBetsUseCaseTest {
         verify(predictionScoringService, times(2)).calculate(any(), any(), anyList());
 
         ArgumentCaptor<List<Bet>> betCaptor = ArgumentCaptor.forClass(List.class);
-        verify(roundScoreboardService).execute(betCaptor.capture(), eq(13), eq(2025));
+        verify(roundScoreboardService).execute(betCaptor.capture(), eq(CompetitionDefaults.DEFAULT_COMPETITION_ID), eq(13), eq(2025));
 
         List<Bet> scored = betCaptor.getValue();
         assertEquals(2, scored.size());
@@ -102,14 +103,14 @@ public class ScoreBetsUseCaseTest {
 
         List<Match> matches = List.of(match);
 
-        when(matchPort.findByRoundAndStatusAndMatchDateBetween(eq(13), eq("CLOSED"), any(Date.class), any(Date.class)))
+        when(matchPort.findByCompetitionIdAndRoundAndStatusAndMatchDateBetween(eq(CompetitionDefaults.DEFAULT_COMPETITION_ID), eq(13), eq("CLOSED"), any(Date.class), any(Date.class)))
                 .thenReturn(matches);
         when(betPort.findByMatchIdInAndPointsEarnedIsNull(List.of("match-1"))).thenReturn(new ArrayList<>());
 
         useCase.execute(13, 2025);
 
         verify(betPort, never()).saveAll(anyList());
-        verify(roundScoreboardService, never()).execute(anyList(), anyInt(), anyInt());
+        verify(roundScoreboardService, never()).execute(anyList(), anyString(), anyInt(), anyInt());
 
     }
 

@@ -24,8 +24,16 @@ public class MatchValidator {
             throw new MatchException("Match cannot be scheduled for a past date");
         }
 
-        if (match.getRound() < 0 || match.getRound() > 38) {
-            throw new MatchException("Invalid round: must be between 1 and 38");
+        if (match.getCompetitionId() == null || match.getCompetitionId().isBlank()) {
+            throw new MatchException("Competition ID is required");
+        }
+
+        if (match.getStage() == null || match.getStage().isBlank()) {
+            throw new MatchException("Stage is required");
+        }
+
+        if (match.getRound() < 1) {
+            throw new MatchException("Invalid round: must be greater than or equal to 1");
         }
 
     }

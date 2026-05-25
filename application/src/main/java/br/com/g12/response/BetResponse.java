@@ -5,12 +5,13 @@ import br.com.g12.model.Score;
 
 public record BetResponse(
         String id,
+        String competitionId,
         String matchId,
         String username,
         Score prediction,
         int round
 ) {
     public static BetResponse fromModel(Bet bet) {
-        return new BetResponse(bet.getId(), bet.getMatchId(), bet.getUsername(), bet.getPrediction(), bet.getRound());
+        return new BetResponse(bet.getId(), bet.getCompetitionId(), bet.getMatchId(), bet.getUsername(), bet.getPrediction(), bet.getRound());
     }
 }

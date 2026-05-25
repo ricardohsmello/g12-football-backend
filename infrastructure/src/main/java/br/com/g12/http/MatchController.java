@@ -52,10 +52,11 @@ public class MatchController {
             @PathVariable String username,
             @PathVariable int round,
             @RequestParam(value = "currentUsername", required = false) String currentUsername,
+            @RequestParam(value = "competitionId", required = false) String competitionId,
             @RequestParam(value = "year", required = false) Integer year) {
         int matchYear = year != null ? year : LocalDate.now().getYear();
         String requestUsername = currentUsername != null ? currentUsername : username;
-        List<MatchResponse> matches = findMatchesWithUserBetsUseCase.execute(new UserRoundRequest(username, requestUsername, round, matchYear));
+        List<MatchResponse> matches = findMatchesWithUserBetsUseCase.execute(new UserRoundRequest(username, requestUsername, competitionId, round, matchYear));
         return ResponseEntity.ok(matches);
     }
 

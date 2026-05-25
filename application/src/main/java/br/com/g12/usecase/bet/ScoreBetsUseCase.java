@@ -2,6 +2,7 @@ package br.com.g12.usecase.bet;
 
 import br.com.g12.exception.ScoreException;
 import br.com.g12.model.Bet;
+import br.com.g12.model.CompetitionDefaults;
 import br.com.g12.model.Match;
 import br.com.g12.port.BetPort;
 import br.com.g12.port.MatchPort;
@@ -36,11 +37,16 @@ public class ScoreBetsUseCase extends AbstractUseCase<Integer> {
     }
 
     public void execute(int round, int year) {
+        execute(CompetitionDefaults.DEFAULT_COMPETITION_ID, round, year);
+    }
+
+    public void execute(String competitionId, int round, int year) {
         try {
             logInput(round);
             var total = System.currentTimeMillis();
 
-            List<Match> matches = matchPort.findByRoundAndStatusAndMatchDateBetween(
+            List<Match> matches = matchPort.findByCompetitionIdAndRoundAndStatusAndMatchDateBetween(
+                    CompetitionDefaults.competitionIdOrDefault(competitionId),
                     round,
                     "CLOSED",
                     startOfYear(year),
@@ -65,7 +71,7 @@ public class ScoreBetsUseCase extends AbstractUseCase<Integer> {
 
             closeAllMatchesIfNeeded(matches);
 
-            roundScoreboardService.execute(scoredBets, round, year);
+            roundScoreboardService.execute(scoredBets, CompetitionDefaults.competitionIdOrDefault(competitionId), round, year);
 
             log.info("Finished Score bets use case. Took {} s", (System.currentTimeMillis() - total) / 1000);
         } catch (ScoreException e) {

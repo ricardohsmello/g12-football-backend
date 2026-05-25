@@ -23,9 +23,10 @@ public class ScoreboardController {
     @GetMapping
     public List<ScoreboardResponse> getByRound(
             @RequestParam("round") int round,
+            @RequestParam(value = "competitionId", required = false) String competitionId,
             @RequestParam(value = "year", required = false) Integer year) {
         int scoreboardYear = year != null ? year : LocalDate.now().getYear();
-        return scoreBoardUseCase.execute(round, scoreboardYear).stream()
+        return scoreBoardUseCase.execute(competitionId, round, scoreboardYear).stream()
                 .map(ScoreboardResponse::fromModel)
                 .toList();
     }

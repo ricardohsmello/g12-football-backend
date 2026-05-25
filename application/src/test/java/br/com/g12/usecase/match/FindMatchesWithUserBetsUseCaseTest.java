@@ -1,6 +1,7 @@
 package br.com.g12.usecase.match;
 
 import br.com.g12.exception.FindMatchesWithUserException;
+import br.com.g12.model.CompetitionDefaults;
 import br.com.g12.model.MatchWithPrediction;
 import br.com.g12.model.Score;
 import br.com.g12.port.MatchPort;
@@ -28,11 +29,11 @@ public class FindMatchesWithUserBetsUseCaseTest {
                 matchWithPrediction("CLOSED", new Score(1, 0), 11)
         );
 
-        when(matchPort.findByRoundUserAndYear("ricas", 32, 2025)).thenReturn(mockResult);
+        when(matchPort.findByCompetitionIdAndRoundUserAndYear(CompetitionDefaults.DEFAULT_COMPETITION_ID, "ricas", 32, 2025)).thenReturn(mockResult);
 
         List<MatchResponse> result = useCase.execute(request);
 
-        verify(matchPort).findByRoundUserAndYear("ricas", 32, 2025);
+        verify(matchPort).findByCompetitionIdAndRoundUserAndYear(CompetitionDefaults.DEFAULT_COMPETITION_ID, "ricas", 32, 2025);
         assertEquals(mockResult.size(), result.size());
     }
 
@@ -62,14 +63,14 @@ public class FindMatchesWithUserBetsUseCaseTest {
 
     @Test
     public void shouldThrowExceptionWhenRoundIsInvalid() {
-        UserRoundRequest request = new UserRoundRequest("ricas", "ricas", 100, 2025);
+        UserRoundRequest request = new UserRoundRequest("ricas", "ricas", -1, 2025);
 
         FindMatchesWithUserException exception = assertThrows(
                 FindMatchesWithUserException.class,
                 () -> useCase.execute(request)
         );
 
-        assertEquals("Round must be between 0 and 38", exception.getMessage());
+        assertEquals("Round must be greater than or equal to 0", exception.getMessage());
     }
 
     @Test
@@ -89,7 +90,7 @@ public class FindMatchesWithUserBetsUseCaseTest {
         UserRoundRequest request = new UserRoundRequest("friend", "ricas", 13, 2025);
         MatchWithPrediction openMatch = matchWithPrediction("OPEN", new Score(2, 1), 0);
 
-        when(matchPort.findByRoundUserAndYear("friend", 13, 2025)).thenReturn(List.of(openMatch));
+        when(matchPort.findByCompetitionIdAndRoundUserAndYear(CompetitionDefaults.DEFAULT_COMPETITION_ID, "friend", 13, 2025)).thenReturn(List.of(openMatch));
 
         List<MatchResponse> result = useCase.execute(request);
 
@@ -104,7 +105,7 @@ public class FindMatchesWithUserBetsUseCaseTest {
         Score prediction = new Score(2, 1);
         MatchWithPrediction openMatch = matchWithPrediction("OPEN", prediction, 0);
 
-        when(matchPort.findByRoundUserAndYear("ricas", 13, 2025)).thenReturn(List.of(openMatch));
+        when(matchPort.findByCompetitionIdAndRoundUserAndYear(CompetitionDefaults.DEFAULT_COMPETITION_ID, "ricas", 13, 2025)).thenReturn(List.of(openMatch));
 
         List<MatchResponse> result = useCase.execute(request);
 
@@ -118,7 +119,7 @@ public class FindMatchesWithUserBetsUseCaseTest {
         Score prediction = new Score(2, 1);
         MatchWithPrediction closedMatch = matchWithPrediction("CLOSED", prediction, 7);
 
-        when(matchPort.findByRoundUserAndYear("friend", 13, 2025)).thenReturn(List.of(closedMatch));
+        when(matchPort.findByCompetitionIdAndRoundUserAndYear(CompetitionDefaults.DEFAULT_COMPETITION_ID, "friend", 13, 2025)).thenReturn(List.of(closedMatch));
 
         List<MatchResponse> result = useCase.execute(request);
 

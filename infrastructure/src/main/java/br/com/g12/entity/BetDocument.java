@@ -14,11 +14,13 @@ import java.util.Date;
 @Document(collection = "bet")
 @CompoundIndexes({
         @CompoundIndex(name = "matchIdAndUsername", def = "{'matchId': 1, 'username': 1}"),
-        @CompoundIndex(name = "roundAndUsername", def = "{'round': 1, 'username': 1}")
+        @CompoundIndex(name = "competitionRoundAndUsername", def = "{'competitionId': 1, 'round': 1, 'username': 1}")
 })
 public class BetDocument {
     @Id
     private String id;
+    @Indexed(name = "competitionId_1")
+    private String competitionId;
     @Indexed(name = "matchId_1")
     private ObjectId matchId;
     private String username;
@@ -29,8 +31,9 @@ public class BetDocument {
 
     public BetDocument() {}
 
-    public BetDocument(String id, String matchId, String username, Score prediction, int round, Integer pointsEarned, Date date) {
+    public BetDocument(String id, String competitionId, String matchId, String username, Score prediction, int round, Integer pointsEarned, Date date) {
         this.id = id;
+        this.competitionId = competitionId;
         this.matchId = new ObjectId(matchId);
         this.username = username;
         this.prediction = prediction;
@@ -39,9 +42,14 @@ public class BetDocument {
         this.date = date;
     }
 
+    public BetDocument(String id, String matchId, String username, Score prediction, int round, Integer pointsEarned, Date date) {
+        this(id, null, matchId, username, prediction, round, pointsEarned, date);
+    }
+
     public static BetDocument fromModel(Bet bet) {
         return new BetDocument(
                 bet.getId() != null ? bet.getId() : null,
+                bet.getCompetitionId(),
                 bet.getMatchId() != null ? bet.getMatchId() : null,
                 bet.getUsername(),
                 bet.getPrediction(),
@@ -60,7 +68,7 @@ public class BetDocument {
     }
 
     public Bet toModel() {
-        return new Bet(id, matchId.toString(), username, prediction, round, pointsEarned, date);
+        return new Bet(id, competitionId, matchId.toString(), username, prediction, round, pointsEarned, date);
     }
 
     public String getId() {

@@ -1,5 +1,6 @@
 package br.com.g12.usecase.bet;
 
+import br.com.g12.model.CompetitionDefaults;
 import br.com.g12.port.BetPort;
 import org.junit.jupiter.api.Test;
 
@@ -17,10 +18,10 @@ public class CountBettorsByRoundUseCaseTest {
 
         CountBettorsByRoundUseCase createBetUseCase = new CountBettorsByRoundUseCase(betPort);
 
-        when(betPort.countDistinctUsernamesByRound(13)).thenReturn(totalBettors);
+        when(betPort.countDistinctUsernamesByCompetitionIdAndRound(CompetitionDefaults.DEFAULT_COMPETITION_ID, 13)).thenReturn(totalBettors);
         int execute = createBetUseCase.execute(13);
 
-        assertEquals(execute, totalBettors);
+        assertEquals(totalBettors, execute);
 
     }
 }

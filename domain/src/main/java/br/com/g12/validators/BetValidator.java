@@ -28,12 +28,16 @@ public class BetValidator {
             throw new BetException("User ID is required");
         }
 
+        if (bet.getCompetitionId() == null || bet.getCompetitionId().isBlank()) {
+            throw new BetException("Competition ID is required");
+        }
+
         if (bet.getPrediction() == null) {
             throw new BetException("Score prediction must be provided");
         }
 
-        if (bet.getRound() < 1 || bet.getRound() > 38) {
-            throw new BetException("Round must be between 1 and 38");
+        if (bet.getRound() < 1) {
+            throw new BetException("Round must be greater than or equal to 1");
         }
 
         validateMatch(bet);
@@ -45,6 +49,14 @@ public class BetValidator {
 
         if (match == null) {
             throw new NotFoundException("Match");
+        }
+
+        if (!bet.getCompetitionId().equals(match.getCompetitionId())) {
+            throw new BetException("Bet competition must match the match competition");
+        }
+
+        if (bet.getRound() != match.getRound()) {
+            throw new BetException("Bet round must match the match round");
         }
 
         if (match.getStatus().equals("Closed")) {

@@ -1,6 +1,7 @@
 package br.com.g12.service;
 
 import br.com.g12.model.Bet;
+import br.com.g12.model.CompetitionDefaults;
 import br.com.g12.model.Score;
 import br.com.g12.model.Scoreboard;
 import br.com.g12.port.ScoreboardPort;
@@ -34,8 +35,8 @@ class RoundScoreboardServiceTest {
     void shouldInsertNewRoundEntriesForUsersWithoutScore() {
         List<Bet> bets = List.of(bet("lucas", 10), bet("joao", 5));
 
-        when(scoreboardPort.findByRoundAndYearAndUsernames(eq(13), eq(2025), anyList())).thenReturn(List.of());
-        when(scoreboardPort.findByRoundAndYearAndUsernames(eq(0), eq(2025), anyList())).thenReturn(List.of());
+        when(scoreboardPort.findByCompetitionIdAndRoundAndYearAndUsernames(eq(CompetitionDefaults.DEFAULT_COMPETITION_ID), eq(13), eq(2025), anyList())).thenReturn(List.of());
+        when(scoreboardPort.findByCompetitionIdAndRoundAndYearAndUsernames(eq(CompetitionDefaults.DEFAULT_COMPETITION_ID), eq(0), eq(2025), anyList())).thenReturn(List.of());
 
         service.execute(bets, 13, 2025);
 
@@ -46,10 +47,10 @@ class RoundScoreboardServiceTest {
     void shouldAccumulatePointsIfUserAlreadyHasScoreInRound() {
         List<Bet> bets = List.of(bet("lucas", 10));
 
-        when(scoreboardPort.findByRoundAndYearAndUsernames(eq(13), eq(2025), anyList()))
+        when(scoreboardPort.findByCompetitionIdAndRoundAndYearAndUsernames(eq(CompetitionDefaults.DEFAULT_COMPETITION_ID), eq(13), eq(2025), anyList()))
                 .thenReturn(List.of(new Scoreboard("id-lucas", 13, "lucas", 5, 2025)));
 
-        when(scoreboardPort.findByRoundAndYearAndUsernames(eq(0), eq(2025), anyList()))
+        when(scoreboardPort.findByCompetitionIdAndRoundAndYearAndUsernames(eq(CompetitionDefaults.DEFAULT_COMPETITION_ID), eq(0), eq(2025), anyList()))
                 .thenReturn(List.of(new Scoreboard("total-id", 0, "lucas", 15, 2025)));
 
         ArgumentCaptor<List<Scoreboard>> captor = ArgumentCaptor.forClass(List.class);
@@ -79,10 +80,10 @@ class RoundScoreboardServiceTest {
     void shouldInsertNewAndUpdateExistingUsersInSameRound() {
         List<Bet> bets = List.of(bet("lucas", 10), bet("ana", 8));
 
-        when(scoreboardPort.findByRoundAndYearAndUsernames(eq(13), eq(2025), anyList()))
+        when(scoreboardPort.findByCompetitionIdAndRoundAndYearAndUsernames(eq(CompetitionDefaults.DEFAULT_COMPETITION_ID), eq(13), eq(2025), anyList()))
                 .thenReturn(List.of(new Scoreboard("id-lucas", 13, "lucas", 5, 2025)));
 
-        when(scoreboardPort.findByRoundAndYearAndUsernames(eq(0), eq(2025), anyList()))
+        when(scoreboardPort.findByCompetitionIdAndRoundAndYearAndUsernames(eq(CompetitionDefaults.DEFAULT_COMPETITION_ID), eq(0), eq(2025), anyList()))
                 .thenReturn(List.of());
 
         ArgumentCaptor<List<Scoreboard>> captor = ArgumentCaptor.forClass(List.class);

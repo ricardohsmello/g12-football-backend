@@ -4,6 +4,9 @@ import java.util.Date;
 
 public class MatchWithPrediction {
     private String id;
+    private String competitionId;
+    private String stage;
+    private String group;
     private int round;
     private String homeTeam;
     private String awayTeam;
@@ -15,6 +18,18 @@ public class MatchWithPrediction {
 
     public String getId() {
         return id;
+    }
+
+    public String getCompetitionId() {
+        return competitionId;
+    }
+
+    public String getStage() {
+        return stage;
+    }
+
+    public String getGroup() {
+        return group;
     }
 
     public int getRound() {
