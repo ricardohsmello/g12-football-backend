@@ -15,6 +15,12 @@ spring:
 #        collection-name: rag_docs
 #        index-name: vector_index
 #        path-name: embedding
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOAK_ISSUER_URI}
+
 logging:
   level:
     org.springframework.data.mongodb: DEBUG
