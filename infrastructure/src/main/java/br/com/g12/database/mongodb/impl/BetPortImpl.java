@@ -91,6 +91,15 @@ public class BetPortImpl implements BetPort {
     }
 
     @Override
+    public List<Bet> findByMatchIdIn(List<String> matchIds) {
+        List<ObjectId> objectIds = matchIds.stream()
+                .map(ObjectId::new)
+                .toList();
+
+        return betRepository.findByMatchIdIn(objectIds).stream().map(BetDocument::toModel).toList();
+    }
+
+    @Override
     public int countDistinctUsernamesByCompetitionIdAndRound(String competitionId, int round) {
         int currentYear = LocalDate.now().getYear();
 

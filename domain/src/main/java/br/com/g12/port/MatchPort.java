@@ -13,6 +13,7 @@ public interface MatchPort {
     List<Match> findByCompetitionIdAndRoundAndStatus(String competitionId, int round, String status);
     List<Match> findByCompetitionIdAndRoundAndStatusAndMatchDateBetween(String competitionId, int round, String status, Date startDate, Date endDate);
     List<MatchWithPrediction> findByCompetitionIdAndRoundUserAndYear(String competitionId, String username, int round, int year);
+    List<Match> findExpiredOpenMatches(Date now);
     int closeExpiredMatches(Date date);
     int findNextOpenRound(String competitionId);
 
