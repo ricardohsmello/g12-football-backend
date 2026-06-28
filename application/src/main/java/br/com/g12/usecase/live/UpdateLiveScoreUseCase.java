@@ -28,9 +28,11 @@ public class UpdateLiveScoreUseCase extends AbstractUseCase<Void> {
 
         Optional<LiveMatchScore> existing = liveMatchScorePort.findByMatchId(matchId);
 
+        Date now = new Date();
+        Date createdAt = existing.map(LiveMatchScore::getCreatedAt).orElse(now);
         String id = existing.map(LiveMatchScore::getId).orElse(null);
-        LiveMatchScore liveScore = new LiveMatchScore(id, matchId, match.getCompetitionId(), score, new Date());
-        liveMatchScorePort.save(liveScore);
+
+        liveMatchScorePort.save(new LiveMatchScore(id, matchId, match.getCompetitionId(), score, createdAt, now));
 
         log.info("Live score updated for match {} -> {}x{}", matchId, score.homeTeam(), score.awayTeam());
     }

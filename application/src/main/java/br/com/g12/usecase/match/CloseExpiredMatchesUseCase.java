@@ -29,9 +29,12 @@ public class CloseExpiredMatchesUseCase {
         expiredMatches.forEach(match ->
                 liveMatchScorePort.findByMatchId(match.getId()).ifPresentOrElse(
                         existing -> {},
-                        () -> liveMatchScorePort.save(
-                                new LiveMatchScore(null, match.getId(), match.getCompetitionId(), new Score(0, 0), new Date())
-                        )
+                        () -> {
+                            Date createdAt = new Date();
+                            liveMatchScorePort.save(
+                                    new LiveMatchScore(null, match.getId(), match.getCompetitionId(), new Score(0, 0), createdAt, createdAt)
+                            );
+                        }
                 )
         );
 
