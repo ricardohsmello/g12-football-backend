@@ -1,6 +1,7 @@
 package br.com.g12.config;
 
 import br.com.g12.port.BetPort;
+import br.com.g12.port.LiveMatchScorePort;
 import br.com.g12.port.MatchPort;
 import br.com.g12.port.RagPort;
 import br.com.g12.port.ScoreboardPort;
@@ -16,6 +17,8 @@ import br.com.g12.usecase.match.FindMatchesWithUserBetsUseCase;
 import br.com.g12.usecase.match.UpdateMatchScoreUseCase;
 import br.com.g12.usecase.rag.RagAnswerQuestionUseCase;
 import br.com.g12.usecase.rag.RagIngestDataUseCase;
+import br.com.g12.usecase.live.GetLiveScoreboardUseCase;
+import br.com.g12.usecase.live.UpdateLiveScoreUseCase;
 import br.com.g12.usecase.round.FindCurrentRoundUseCase;
 import br.com.g12.usecase.score.ScoreBoardUseCase;
 import br.com.g12.validators.BetValidator;
@@ -68,8 +71,8 @@ public class ApplicationUseCaseConfig {
     }
 
     @Bean
-    public CloseExpiredMatchesUseCase closeExpiredMatchesUseCase(MatchPort matchPort) {
-        return new CloseExpiredMatchesUseCase(matchPort);
+    public CloseExpiredMatchesUseCase closeExpiredMatchesUseCase(MatchPort matchPort, LiveMatchScorePort liveMatchScorePort) {
+        return new CloseExpiredMatchesUseCase(matchPort, liveMatchScorePort);
     }
 
     @Bean
@@ -85,6 +88,18 @@ public class ApplicationUseCaseConfig {
     @Bean
     public CountBettorsByRoundUseCase countBettorsByRoundUseCase(BetPort betPort) {
         return new CountBettorsByRoundUseCase(betPort);
+    }
+
+    @Bean
+    public UpdateLiveScoreUseCase updateLiveScoreUseCase(MatchPort matchPort, LiveMatchScorePort liveMatchScorePort) {
+        return new UpdateLiveScoreUseCase(matchPort, liveMatchScorePort);
+    }
+
+    @Bean
+    public GetLiveScoreboardUseCase getLiveScoreboardUseCase(MatchPort matchPort, BetPort betPort,
+                                                              LiveMatchScorePort liveMatchScorePort,
+                                                              PredictionScoringService predictionScoringService) {
+        return new GetLiveScoreboardUseCase(matchPort, betPort, liveMatchScorePort, predictionScoringService);
     }
 
     @Bean

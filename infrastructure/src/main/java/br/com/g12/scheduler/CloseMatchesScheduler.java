@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.util.concurrent.TimeUnit;
+
 @Component
 public class CloseMatchesScheduler {
 
@@ -17,6 +19,10 @@ public class CloseMatchesScheduler {
         this.closeExpiredMatchesUseCase = useCase;
     }
 
+//    @Scheduled(
+//            fixedRate = 5,
+//            timeUnit = TimeUnit.SECONDS
+//    )
     @Scheduled(
             cron = "0 0,30 0,1,11,13,14,16,17,18,19,20,21,22,23 * * *",
             zone = "America/Sao_Paulo"
