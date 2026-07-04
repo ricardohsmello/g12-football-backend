@@ -55,7 +55,7 @@ public class MatchPortImpl implements MatchPort {
     public List<Match> findByCompetitionIdAndRoundAndStatus(String competitionId, int round, String status) {
         Query query = new Query(new Criteria().andOperator(
                 competitionCriteria(competitionId),
-                Criteria.where("round").is(4),
+                Criteria.where("round").is(round),
                 Criteria.where("status").is(status)
         ));
 
