@@ -18,7 +18,7 @@ public class CloseMatchesScheduler {
     }
 
     @Scheduled(
-            cron = "0 0,30 0,1,11,13,14,16,17,18,19,20,21,22,23 * * *",
+            cron = "0 0,30 0,1,11,13,14,15,16,17,18,19,20,21,22,23 * * *",
             zone = "America/Sao_Paulo"
     )
     public void run() {
