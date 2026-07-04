@@ -128,6 +128,14 @@ public class MatchPortImpl implements MatchPort {
     }
 
     @Override
+    public List<Match> findExpiredOpenMatches(Date now) {
+        Query query = new Query(Criteria.where("status").is("OPEN").and("matchDate").lte(now));
+        return mongoTemplate.find(query, MatchDocument.class).stream()
+                .map(MatchDocument::toModel)
+                .toList();
+    }
+
+    @Override
     public int closeExpiredMatches(Date now) {
         Query query = new Query(Criteria.where("status").is("OPEN").and("matchDate").lte(now));
         Update update = new Update().set("status", "CLOSED");
