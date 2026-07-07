@@ -98,8 +98,9 @@ public class ApplicationUseCaseConfig {
     @Bean
     public GetLiveScoreboardUseCase getLiveScoreboardUseCase(MatchPort matchPort, BetPort betPort,
                                                               LiveMatchScorePort liveMatchScorePort,
+                                                              ScoreboardPort scoreboardPort,
                                                               PredictionScoringService predictionScoringService) {
-        return new GetLiveScoreboardUseCase(matchPort, betPort, liveMatchScorePort, predictionScoringService);
+        return new GetLiveScoreboardUseCase(matchPort, betPort, liveMatchScorePort, scoreboardPort, predictionScoringService);
     }
 
     @Bean

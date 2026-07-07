@@ -1,3 +1,8 @@
 package br.com.g12.model;
 
-public record LiveBetProjection(String username, Score prediction, int projectedPoints) {}
+public record LiveBetProjection(
+        String username,
+        Score prediction,
+        int projectedPoints,
+        int currentTotalPoints,
+        int projectedTotalPoints) {}
