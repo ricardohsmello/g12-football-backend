@@ -38,7 +38,7 @@ public class GetLiveScoreboardUseCase extends AbstractUseCase<List<LiveMatchScor
 
     public List<LiveMatchScoreboard> execute(String competitionId, int round) {
         String resolvedCompetitionId = CompetitionDefaults.competitionIdOrDefault(competitionId);
-        List<Match> openMatches = matchPort.findByCompetitionIdAndRoundAndStatus(resolvedCompetitionId, round, "CLOSED");
+        List<Match> openMatches = matchPort.findByCompetitionIdAndRoundAndStatus(resolvedCompetitionId, 5, "CLOSED");
 
         if (openMatches.isEmpty()) {
             return List.of();
