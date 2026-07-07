@@ -38,7 +38,16 @@ public class GetLiveScoreboardUseCase extends AbstractUseCase<List<LiveMatchScor
 
     public List<LiveMatchScoreboard> execute(String competitionId, int round) {
         String resolvedCompetitionId = CompetitionDefaults.competitionIdOrDefault(competitionId);
-        List<Match> openMatches = matchPort.findByCompetitionIdAndRoundAndStatus(resolvedCompetitionId, 5, "CLOSED");
+
+        List<LiveMatchScoreboard> scoreboard = buildScoreboard(resolvedCompetitionId, round);
+        if (scoreboard.isEmpty() && round > 1) {
+            scoreboard = buildScoreboard(resolvedCompetitionId, round - 1);
+        }
+        return scoreboard;
+    }
+
+    private List<LiveMatchScoreboard> buildScoreboard(String competitionId, int round) {
+        List<Match> openMatches = matchPort.findByCompetitionIdAndRoundAndStatus(competitionId, round, "CLOSED");
 
         if (openMatches.isEmpty()) {
             return List.of();
@@ -93,7 +102,7 @@ public class GetLiveScoreboardUseCase extends AbstractUseCase<List<LiveMatchScor
         }
 
         Map<String, Integer> currentTotalPointsByUsername = scoreboardPort
-                .findByCompetitionIdAndRoundAndYear(resolvedCompetitionId, GENERAL_SCOREBOARD_ROUND, LocalDate.now().getYear())
+                .findByCompetitionIdAndRoundAndYear(competitionId, GENERAL_SCOREBOARD_ROUND, LocalDate.now().getYear())
                 .stream()
                 .collect(Collectors.toMap(Scoreboard::username, Scoreboard::points, (a, b) -> a));
 
