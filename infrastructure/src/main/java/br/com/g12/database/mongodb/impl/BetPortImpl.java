@@ -16,8 +16,10 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
 
@@ -88,15 +90,22 @@ public class BetPortImpl implements BetPort {
     public int countDistinctUsernamesByCompetitionIdAndRound(String competitionId, int round) {
         int currentYear = LocalDate.now().getYear();
 
-        return mongoTemplate.query(BetDocument.class)
-                .distinct("username")
-                .matching(query(new Criteria().andOperator(
-                        competitionCriteria(competitionId),
-                        where("round").is(round),
-                        where("date").gte(startOfYear(currentYear)).lt(startOfYear(currentYear + 1))
-                )))
-                .all()
-                .size();
+        // Queryable Encryption does not accept the distinct command on encrypted collections
+        // (error 40415), so this fetches only the username field and de-duplicates in memory.
+        Query usernamesQuery = query(new Criteria().andOperator(
+                competitionCriteria(competitionId),
+                where("round").is(round),
+                where("date").gte(startOfYear(currentYear)).lt(startOfYear(currentYear + 1))
+        ));
+        usernamesQuery.fields().include("username");
+
+        return (int) mongoTemplate
+                .find(usernamesQuery, Document.class, mongoTemplate.getCollectionName(BetDocument.class))
+                .stream()
+                .map(document -> document.getString("username"))
+                .filter(Objects::nonNull)
+                .distinct()
+                .count();
     }
 
     private Criteria competitionCriteria(String competitionId) {

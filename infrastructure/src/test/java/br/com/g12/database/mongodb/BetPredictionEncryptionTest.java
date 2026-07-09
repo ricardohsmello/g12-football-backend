@@ -178,6 +178,9 @@ public class BetPredictionEncryptionTest {
                 assertNotNull(loaded);
                 assertEquals(new Score(2, 1), loaded.toModel().getPrediction());
                 assertEquals(5, loaded.toModel().getPointsEarned());
+
+                // distinct-bettor count must not use the distinct command (unsupported by QE)
+                assertEquals(2, betPort.countDistinctUsernamesByCompetitionIdAndRound(null, 13));
             }
         }
     }
