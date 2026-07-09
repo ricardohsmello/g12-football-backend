@@ -24,3 +24,16 @@ spring:
 logging:
   level:
     org.springframework.data.mongodb: DEBUG
+
+g12:
+  encryption:
+    # Queryable Encryption of bet.prediction
+    enabled: ${MONGODB_ENCRYPTION_ENABLED:true}
+    # base64-encoded 96-byte local KMS master key: openssl rand -base64 96
+    master-key: ${MONGODB_MASTER_KEY:}
+    key-vault-namespace: encryption.__keyVault
+    # path to the MongoDB Automatic Encryption Shared Library (crypt_shared)
+    crypt-shared-lib-path: ${MONGODB_CRYPT_SHARED_PATH:}
+    migration:
+      # one-shot migration of existing plaintext bets; turn off after it has run
+      enabled: ${MONGODB_ENCRYPTION_MIGRATION_ENABLED:true}

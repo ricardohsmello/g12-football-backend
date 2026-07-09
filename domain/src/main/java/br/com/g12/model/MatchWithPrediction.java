@@ -16,6 +16,25 @@ public class MatchWithPrediction {
     private int pointsEarned;
     private String status;
 
+    public MatchWithPrediction() {}
+
+    public MatchWithPrediction(String id, String competitionId, String stage, String group, int round,
+                               String homeTeam, String awayTeam, Date matchDate, Score score,
+                               Score prediction, int pointsEarned, String status) {
+        this.id = id;
+        this.competitionId = competitionId;
+        this.stage = stage;
+        this.group = group;
+        this.round = round;
+        this.homeTeam = homeTeam;
+        this.awayTeam = awayTeam;
+        this.matchDate = matchDate;
+        this.score = score;
+        this.prediction = prediction;
+        this.pointsEarned = pointsEarned;
+        this.status = status;
+    }
+
     public String getId() {
         return id;
     }
