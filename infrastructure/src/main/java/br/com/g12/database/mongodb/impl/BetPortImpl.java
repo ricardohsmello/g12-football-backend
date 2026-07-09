@@ -14,7 +14,6 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,7 +27,7 @@ public class BetPortImpl implements BetPort {
     private final BetRepository betRepository;
     private final MongoTemplate mongoTemplate;
 
-    BetPortImpl(BetRepository betRepository, MongoTemplate mongoTemplate)
+    public BetPortImpl(BetRepository betRepository, MongoTemplate mongoTemplate)
     {
         this.mongoTemplate = mongoTemplate;
         this.betRepository = betRepository;
@@ -50,34 +49,20 @@ public class BetPortImpl implements BetPort {
 
     @Override
     public void saveAll(List<Bet> bets) {
-        List<BetDocument> documents = bets.stream()
-                .map(BetDocument::fromModel)
-                .toList();
         MongoCollection<Document> collection = mongoTemplate
                 .getCollection(mongoTemplate.getCollectionName(BetDocument.class));
 
-        List<WriteModel<Document>> operations = new ArrayList<>();
-
-        for (BetDocument doc : documents) {
+        for (Bet bet : bets) {
             Document updateDoc = new Document();
-            mongoTemplate.getConverter().write(doc, updateDoc);
+            mongoTemplate.getConverter().write(BetDocument.fromModel(bet), updateDoc);
 
-            Object id = updateDoc.get("_id");
-            updateDoc.remove("_id");
+            Object id = updateDoc.remove("_id");
 
-            Document setDoc = new Document("$set", updateDoc);
-
-            UpdateOneModel<Document> model = new UpdateOneModel<>(
+            collection.updateOne(
                     Filters.eq("_id", id),
-                    setDoc,
+                    new Document("$set", updateDoc),
                     new UpdateOptions().upsert(true)
             );
-
-            operations.add(model);
-        }
-
-        if (!operations.isEmpty()) {
-            collection.bulkWrite(operations, new BulkWriteOptions().ordered(false));
         }
     }
 
