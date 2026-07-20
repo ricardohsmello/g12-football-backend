@@ -2,12 +2,15 @@ package br.com.g12.response;
 
 import br.com.g12.model.Scoreboard;
 
+import java.util.List;
+
 public record ScoreboardResponse(
     String competitionId,
     int round,
     String username,
     int points,
-    int year
+    int year,
+    List<String> prediction
 ) {
     public static ScoreboardResponse fromModel(Scoreboard model) {
         return new ScoreboardResponse(
@@ -15,7 +18,8 @@ public record ScoreboardResponse(
             model.round(),
             model.username(),
             model.points(),
-            model.year()
+            model.year(),
+            model.prediction()
         );
     }
 }
